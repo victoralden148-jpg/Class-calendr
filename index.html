@@ -12,13 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root{--tx:#141a19;--mu:#76827f;--sf:#fff;--ln:rgba(20,50,45,.09);--chip:#f1f5f4;--btn:#121212;--btnt:#fff;--ok:#1d9b6c;--acc:#2f9e83;--front:linear-gradient(180deg,#fff,#edf2f0);--nav:#121212;--navi:#98a5a2;--sh:0 8px 24px rgba(30,80,70,.10);--sh2:0 2px 8px rgba(30,80,70,.10);--gr:linear-gradient(135deg,#bfe9d8,#c9e4f6)}
-
 *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:#f4f7f8}
-
 body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--tx);display:flex;justify-content:center;touch-action:manipulation}
 body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(70% 38% at 15% 0,#bfe9d6 0,transparent 70%),radial-gradient(60% 34% at 95% 8%,#cfe5f8 0,transparent 70%),#f4f7f8}
-
 #app{width:100%;max-width:480px;height:100%;height:100dvh;position:relative;overflow:hidden;display:flex;flex-direction:column}
 .scroll{flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:130px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;position:relative;z-index:1}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;transition:transform .15s ease}
@@ -216,10 +213,7 @@ html.lite{--sf:rgba(255,255,255,.86);--nav:rgba(255,255,255,.92);--mdbg:#fff;--f
 const $=s=>document.querySelector(s);
 const I={img:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',qr:'<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h3v3M20 14v6h-6"/>',me:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',bell:'<path d="M6 9a6 6 0 0 1 12 0c0 6 2 7 2 8H4c0-1 2-2 2-8zM10 21h4"/>',kas:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>'};
 const ic=n=>`<svg class="i" viewBox="0 0 24 24">${I[n]||I.home}</svg>`;
-const G={
- home:'🏠', cal:'📅', img:'🖼️', qr:'🔲', me:'👤', chat:'💬', doc:'📄', pie:'📊', card:'💳', medal:'🏅', sun:'☀️', chk:'✅',
- medalS:'🥈', medalB:'🥉'
-};
+const G={home:'🏠',cal:'📅',img:'🖼️',qr:'🔲',me:'👤',chat:'💬',doc:'📄',pie:'📊',card:'💳',medal:'🏅',sun:'☀️',chk:'✅',medalS:'🥈',medalB:'🥉'};
 const EMO={Kelas:'📚',Belajar:'✏️','Ulang tahun':'🎂',Wisata:'🏞️',Lomba:'🏆',Rapat:'💬'},emo=c=>EMO[c]||'📌';
 const tone=e=>'t'+([...e.id].reduce((s,c)=>s+c.charCodeAt(0),0)%4);
 const isPast=e=>new Date(e.starts_at)<new Date();
@@ -264,7 +258,6 @@ function toast2(t){clearTimeout(toastT);document.querySelectorAll('.toast').forE
 toast=toast2;
 const url=p=>sb.storage.from('media').getPublicUrl(p).data.publicUrl;
 
-/* SCRIPT V3 PETS & KAS DATA */
 const CH=[
 {n:'Piyo',sp:'Anak ayam',c1:'#ffe680',c2:'#ffb92e',x:'chick',st:0,hy:0,t:'Ceria & penuh ide'},
 {n:'Mochi',sp:'Kelinci',c1:'#ffffff',c2:'#ffd6e8',x:'bunny',st:3,hy:2,t:'Lembut & penyayang'},
