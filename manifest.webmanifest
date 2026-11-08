@@ -1,0 +1,1 @@
+{"name":"Kelasku","short_name":"Kelasku","description":"Kalender, absensi QR, dan galeri kenangan kelas","start_url":"./","scope":"./","display":"standalone","background_color":"#0a84ff","theme_color":"#0a84ff","lang":"id","icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"},{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"maskable"}]}
