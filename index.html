@@ -183,6 +183,40 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;bac
 .pod{padding-bottom:0!important;overflow:hidden}.pod .lb{padding:10px 0}.pod .lb:last-child{padding-bottom:16px}
 .pgin .pb{transform-origin:bottom;animation:grow .7s cubic-bezier(.2,.8,.2,1) both}
 @keyframes grow{from{transform:scaleY(.2);opacity:0}}
+
+/* Polished glass + full-screen layout */
+html,body{width:100%;min-height:100%;overflow-x:hidden}
+body{width:100%;max-width:none;margin:0;padding:0}
+#app{width:100%;max-width:none;min-height:100dvh}
+.scroll{padding-bottom:calc(118px + env(safe-area-inset-bottom,0px))}
+.gl,.box,.mon,.tile,.ib,.bar,.wk,.logc{backdrop-filter:blur(8px) saturate(1.15);-webkit-backdrop-filter:blur(8px) saturate(1.15);box-shadow:0 5px 18px rgba(65,105,120,.09),inset 0 1px 0 rgba(255,255,255,.82)}
+.fold .front,.fold .tab{backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 7px 18px rgba(65,105,120,.10),inset 0 1px 0 rgba(255,255,255,.92)}
+.md{backdrop-filter:blur(12px) saturate(1.15);-webkit-backdrop-filter:blur(12px) saturate(1.15)}
+.pet-card{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:center;padding:14px;margin:10px 0 4px;border:1px solid rgba(255,255,255,.72);border-radius:24px;background:linear-gradient(130deg,rgba(255,255,255,.78),rgba(236,247,255,.62));box-shadow:0 8px 22px rgba(76,125,145,.10)}
+.pet-card.pet-compact{grid-template-columns:78px 1fr;padding:10px;margin:10px 0 12px}
+.pet-stage{display:grid;place-items:center;min-height:128px}.pet-compact .pet-stage{min-height:78px}
+.pet-info{display:flex;flex-direction:column;gap:4px;min-width:0}.pet-info>b{font-size:18px}.pet-info small{font-size:11px;color:var(--mu)}
+.pet-meter{height:7px;border-radius:20px;background:rgba(110,140,160,.15);overflow:hidden;margin-top:5px}.pet-meter i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,#a9e8dc,#9eb9ff,#d9aaff);transition:width .5s}
+.pet-art{width:var(--pet-size);height:var(--pet-size);position:relative;border-radius:44% 56% 52% 48%;display:grid;place-items:center;background:var(--pet-skin);box-shadow:inset -9px -10px 18px rgba(70,80,150,.12),inset 5px 5px 12px rgba(255,255,255,.85),0 12px 22px rgba(100,110,180,.18);animation:petFloat 3s ease-in-out infinite}
+.pet-art:before{content:"";position:absolute;inset:12% 15% auto;height:24%;border-radius:50%;background:rgba(255,255,255,.48);filter:blur(6px)}
+.pet-face{font-size:calc(var(--pet-size)*.38);z-index:1;filter:drop-shadow(0 2px 2px rgba(60,60,90,.08))}
+.pet-art small{position:absolute;right:4px;bottom:4px;font-size:calc(var(--pet-size)*.2)}
+.pet-spark{position:absolute;right:0;top:0;color:#fff;font-size:18px;animation:sparkle 2s ease-in-out infinite}
+@keyframes petFloat{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+@keyframes sparkle{50%{transform:scale(.6) rotate(40deg);opacity:.4}}
+.pet-game{grid-column:1/-1;padding:10px!important;margin:0!important}
+.pet-profile{margin-bottom:14px}
+.pet-profile-top{display:flex;gap:16px;align-items:center;margin-bottom:18px}.pet-profile-top h3{font-size:20px}.pet-profile-top p{margin:3px 0}.pet-profile-top small{font-size:11px;color:var(--mu)}
+.pet-subhead{font-size:15px;margin:18px 0 10px}
+.pet-choices,.pet-skins{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:7px}
+.pet-choice,.pet-skin{border:1px solid var(--ln);border-radius:15px;padding:8px 3px;background:rgba(255,255,255,.58);display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.pet-choice span{width:40px;height:40px;border-radius:15px;display:grid;place-items:center;font-size:23px}
+.pet-choice b,.pet-skin b{font-size:10px}.pet-choice.chosen,.pet-skin.chosen{border:2px solid #8f9fff;background:#f4f3ff}
+.pet-skin span{font-size:22px}.pet-skin small{font-size:9px;color:var(--mu)}.pet-skin.locked{opacity:.48}
+.pet-gamebox,.pet-admin{margin-top:16px;padding:13px;border-radius:18px;background:rgba(235,242,255,.65)}
+.pet-gamebox p,.pet-admin p{font-size:12px;margin:4px 0 10px}
+.pet-admin{background:rgba(255,239,221,.6)}
+@media(max-width:380px){.pet-card{grid-template-columns:90px 1fr}.pet-choices,.pet-skins{gap:4px}.pet-choice span{width:34px;height:34px}}
 </style>
 </head>
 <body>
@@ -334,6 +368,42 @@ function podium(rank,mx){
  const has=rank.some(x=>x.n>0);
  const col=(x,i,c)=>x?`<div class="pc ${c}"><span class="pm">${G[['medal','medalS','medalB'][i]]}</span><span class="pav">${esc(ini(x.m.name))}</span><b class="pn">${esc((x.m.name||'').split(' ')[0])}</b><small>${x.n} hadir</small><div class="pb"><i>${i+1}</i></div></div>`:`<div class="pc ${c} e"></div>`;
  return `<div class="sec"><div class="sh"><span>Paling rajin</span><a>Top ${Math.min(5,rank.length)}</a></div><div class="gc gl pod" style="display:block"><div class="pcs">${col(rank[1],1,'c2')}${col(rank[0],0,'c1')}${col(rank[2],2,'c3')}</div>${rank.slice(3).map((x,j)=>`<div class="lb"><span class="md1">${j+4}</span><span class="nm">${esc(x.m.name)}</span><span class="bt"><i style="width:${Math.max(4,Math.round(x.n/mx*100))}%"></i></span><b>${x.n}</b></div>`).join('')}${has?'':'<p class="mu" style="text-align:center;padding:10px 0 14px">Belum ada yang hadir. Jadilah yang pertama!</p>'}</div></div>`}
+
+const PETS=[
+ {id:'mimo',name:'Mimo',emoji:'☁️',skin:'linear-gradient(145deg,#c8c5ff,#8ca8ff)'},
+ {id:'peach',name:'Peachy',emoji:'🍑',skin:'linear-gradient(145deg,#ffd4b5,#ff9bb5)'},
+ {id:'boba',name:'Boba',emoji:'🧋',skin:'linear-gradient(145deg,#d8c3ff,#a68be8)'},
+ {id:'sprout',name:'Sprout',emoji:'🌱',skin:'linear-gradient(145deg,#c9f4cf,#79d9a5)'},
+ {id:'star',name:'Stella',emoji:'⭐',skin:'linear-gradient(145deg,#fff0a9,#ffc76d)'}
+];
+const petKey=()=>`kelasku_pet_${S.user?.id||'guest'}`;
+function petData(){
+ try{return JSON.parse(localStorage.getItem(petKey())||'{}')}catch(e){return{}}
+}
+function savePet(p){localStorage.setItem(petKey(),JSON.stringify({...petData(),...p}));}
+function petMood(){
+ const st=stat(S.user.id),p=petData(),energy=Math.max(12,Math.min(100,42+st.streak*9+st.pct*.35+(p.bonus||0)));
+ return {st,energy,face:energy<30?'🥺':energy<55?'😐':energy<78?'☺️':'🥰',label:energy<30?'Butuh semangat':energy<55?'Menunggu perhatian':energy<78?'Makin ceria':'Jatuh cinta sama progresmu'};
+}
+function petArt(size=112){
+ const p=petData(),m=petMood(),pet=PETS.find(x=>x.id===(p.type||'mimo'))||PETS[0];
+ return `<div class="pet-art" style="--pet-skin:${pet.skin};--pet-size:${size}px"><span class="pet-spark">✦</span><span class="pet-face">${m.face}</span><small>${pet.emoji}</small></div>`;
+}
+function petCard(compact=false){
+ const p=petData(),m=petMood(),pet=PETS.find(x=>x.id===(p.type||'mimo'))||PETS[0];
+ return `<div class="pet-card ${compact?'pet-compact':''}"><div class="pet-stage">${petArt(compact?78:124)}</div><div class="pet-info"><span class="tag2">TEMAN KELASKU</span><b>${esc(p.name||pet.name)}</b><span class="mu">${m.label}</span><div class="pet-meter"><i style="width:${m.energy}%"></i></div><small>Energi ${m.energy}% · 🔥 ${m.streak} streak</small></div>${compact?'':`<button class="btn s pet-game" data-act="petgame">♡ Beri semangat</button>`}</div>`;
+}
+function petSettings(){
+ const p=petData(),m=petMood(),pet=PETS.find(x=>x.id===(p.type||'mimo'))||PETS[0];
+ const skins=[{id:'basic',name:'Cloud',need:0,emoji:'☁️'},{id:'aurora',name:'Aurora',need:3,emoji:'🌈'},{id:'starlight',name:'Starlight',need:7,emoji:'🌟'},{id:'galaxy',name:'Galaxy',need:14,emoji:'🌌'}];
+ return `<div class="box pet-profile"><div class="pet-profile-top">${petArt(116)}<div><span class="tag2">KARAKTERKU</span><h3>${esc(p.name||pet.name)}</h3><p class="mu">${m.label}</p><small>Streak: ${m.st.streak} hari/acara · Energi ${m.energy}%</small></div></div>
+ <label for="petname">Nama karakter</label><input id="petname" maxlength="18" value="${esc(p.name||pet.name)}" placeholder="Beri nama karakter">
+ <button class="btn" data-act="petsave">Simpan nama</button><h3 class="pet-subhead">Pilih karakter</h3><div class="pet-choices">${PETS.map(x=>`<button class="pet-choice ${x.id===pet.id?'chosen':''}" data-pet="${x.id}"><span style="background:${x.skin}">${x.emoji}</span><b>${x.name}</b></button>`).join('')}</div>
+ <h3 class="pet-subhead">Skin berdasarkan streak</h3><div class="pet-skins">${skins.map(x=>{const open=m.st.streak>=x.need||p.allUnlocked;return `<button class="pet-skin ${open?'':'locked'} ${p.skin===x.id?'chosen':''}" data-skin="${x.id}" ${open?'':'disabled'}><span>${x.emoji}</span><b>${x.name}</b><small>${open?'Terbuka':`🔒 ${x.need} streak`}</small></button>`}).join('')}</div>
+ <div class="pet-gamebox"><b>Mini game: Isi energi!</b><p>Rawat karakter dengan hadir, menyelesaikan aktivitas, dan menjaga streak.</p><button class="btn s" data-act="petgame">Main sebentar · + energi</button></div>
+ ${admin()?`<div class="pet-admin"><b>Panel kreator</b><p>Masukkan kode kreator untuk membuka semua karakter dan skin di akun ini.</p><input id="petcode" placeholder="Kode kreator"><button class="btn s" data-act="petunlock">Buka semua skin</button></div>`:''}</div>`;
+}
+
 function home(){
  const wk=weekDays(),all=evs(),now=Date.now(),up=all.filter(e=>dk(e)>=TK),nx=all.find(e=>new Date(e.starts_at)>now),h=new Date().getHours();
  const g=h<11?'Selamat pagi':h<15?'Selamat siang':h<18?'Selamat sore':'Selamat malam',me=stat(S.user.id),de=all.filter(e=>dk(e)===S.sel);
@@ -344,7 +414,7 @@ function home(){
  return `<div class="hero"><div class="hbar"><span class="avl">${esc(ini(S.me.name))}</span><button class="ib" data-act="notif" aria-label="Aktifkan notifikasi">${ic('bell')}</button></div>
  <div class="logo">${G.cal}</div><div class="hs">Nikmati harimu bersama kelas</div><div class="hh">${g},<br>${esc((S.me.name||'').split(' ')[0])}</div>
  <div class="wk">${wk.map(d=>{const k=key(d);return `<button class="wd ${k===S.sel?'on':''}" data-sel="${k}">${HR[d.getDay()]}<b>${d.getDate()}</b>${all.some(e=>dk(e)===k)?'<i></i>':'<i style="background:transparent"></i>'}</button>`}).join('')}</div></div>
- <div class="wrap">
+ <div class="wrap">${petCard(true)}
  ${nx?`<button class="nx gl" data-ev="${nx.id}">${ring(p,96,emo(nx.category))}<div class="nt"><small>Acara berikutnya</small><b>${esc(nx.title)}</b><span class="mu">${fmt(dk(nx))} · ${tm(nx)}</span><span class="cd" id="cd" data-t="${nx.starts_at}">${cdText(ms)} lagi</span></div></button>`:`<div class="nx gl"><span style="font-size:44px">🎈</span><div class="nt"><b>Belum ada acara</b><span class="mu">${admin()?'Ketuk + untuk membuat acara pertama.':'Tunggu ketua kelas membuat jadwal.'}</span></div></div>`}
  <div class="tiles"><button class="tile" data-sel="${TK}"><em>${G.cal}</em><b>${all.filter(e=>dk(e)===TK).length}</b><span>Hari ini</span></button><button class="tile" data-act="all"><em>${G.sun}</em><b>${up.length}</b><span>Mendatang</span></button><div class="tile"><em>${G.chk}</em><b>${mine}</b><span>${admin()?'Dikelola':'Dihadiri'}</span></div></div></div>
  ${podium(rank,mx)}
@@ -432,7 +502,7 @@ function qrTab(){
 function meTab(){
  const st=stat(S.user.id),up=S.media.filter(m=>m.user_id===S.user.id).length;
  const B=[['🔥','Beruntun 3','Hadir 3 acara berturut-turut',st.streak>=3],['🏅','Rajin','Kehadiran minimal 80%',st.past>=3&&st.pct>=80],['📸','Fotografer','Unggah 3 foto atau video',up>=3],['👑','Ketua','Mengelola kelas',admin()]];
- return `<div class="pg"><h2>Profil</h2><div class="box"><div class="who"><span class="avl" style="width:56px;height:56px">${esc(ini(S.me.name))}</span><div><b style="font-size:18px">${esc(S.me.name)}</b><br><span class="mu">${admin()?'Ketua kelas':'Anggota'} · ${esc(S.user.email)}</span></div></div>
+ return `<div class="pg"><h2>Profil</h2>${petSettings()}<div class="box"><div class="who"><span class="avl" style="width:56px;height:56px">${esc(ini(S.me.name))}</span><div><b style="font-size:18px">${esc(S.me.name)}</b><br><span class="mu">${admin()?'Ketua kelas':'Anggota'} · ${esc(S.user.email)}</span></div></div>
  <div class="bdg">${B.map(x=>`<div class="${x[3]?'':'off'}"><em>${x[0]}</em><b>${x[1]}</b>${x[2]}</div>`).join('')}</div></div>
  <div class="box"><b>${esc(S.cls.name)}</b><p class="mu">Kode undangan</p><div class="code">${esc(S.cls.code)}</div><button class="btn" style="margin-top:12px" data-act="share">Ajak teman sekelas</button></div>
  <div class="box"><b>Anggota (${S.members.length})</b>${S.members.map((m,j)=>`<div class="mem"><span class="av" style="background:${COL[j%5]}">${ini(m.name)}</span><div>${esc(m.name)}<br><span class="mu">${m.role==='admin'?'Ketua':'Anggota'}</span></div>${admin()&&m.user_id!==S.user.id?`<button class="mu" data-promote="${m.user_id}" data-r="${m.role}">${m.role==='admin'?'Jadikan anggota':'Jadikan admin'}</button>`:''}</div>`).join('')}</div>
@@ -506,8 +576,10 @@ function schedule(){timers.forEach(clearTimeout);timers=[];if(!('Notification' i
  S.events.forEach(e=>{const ms=new Date(e.starts_at)-Date.now()-36e5;if(ms>0&&ms<2147e6)timers.push(setTimeout(()=>notify('Pengingat: '+e.title,'Mulai pukul '+tm(e)+' di '+e.location),ms))})}
 async function notify(t,b){try{const r=await navigator.serviceWorker.getRegistration();r?r.showNotification(t,{body:b,icon:'icon.svg'}):new Notification(t,{body:b})}catch(e){}}
 document.addEventListener('click',async ev=>{
- const t=ev.target.closest('[data-tab],[data-sel],[data-ev],[data-act],[data-mon],[data-mark],[data-am],[data-promote],[data-go],[data-back],[data-mood],[data-done],[data-vote],[data-kas],[data-pay],[data-del],[data-dis]');if(!t)return;const d=t.dataset;
- if(d.go||d.back){S.tab=d.go||'home';render();const c=$('#sc');if(c)c.scrollTop=0}
+ const t=ev.target.closest('[data-tab],[data-pet],[data-skin],[data-sel],[data-ev],[data-act],[data-mon],[data-mark],[data-am],[data-promote],[data-go],[data-back],[data-mood],[data-done],[data-vote],[data-kas],[data-pay],[data-del],[data-dis]');if(!t)return;const d=t.dataset;
+ if(d.pet){savePet({type:d.pet});render();toast('Karakter berhasil diganti')}
+ else if(d.skin){savePet({skin:d.skin});render();toast('Skin dipakai')}
+ else if(d.go||d.back){S.tab=d.go||'home';render();const c=$('#sc');if(c)c.scrollTop=0}
  else if(d.dis){const a=getDis();a.push(d.dis);try{localStorage.setItem('kdis',JSON.stringify(a))}catch(e){}render()}
  else if(d.mood!==undefined){db(sb.from('moods').upsert({class_id:CID(),user_id:S.user.id,day:key(new Date()),mood:+d.mood},{onConflict:'class_id,user_id,day'}),'Mood tercatat '+MOODS[+d.mood][0])}
  else if(d.done){const has=S.task_done.some(x=>x.task_id===d.done&&x.user_id===S.user.id);db(has?sb.from('task_done').delete().eq('task_id',d.done).eq('user_id',S.user.id):sb.from('task_done').insert({task_id:d.done,class_id:CID(),user_id:S.user.id}))}
@@ -522,6 +594,9 @@ document.addEventListener('click',async ev=>{
  else if(d.mon){const[y,m]=S.mon.split('-').map(Number),n=new Date(y,m-1+ +d.mon,1);S.mon=n.getFullYear()+'-'+pad(n.getMonth()+1);render()}
  else if(d.mark)mark(d.mark);
  else if(d.promote){const r=await sb.from('members').update({role:d.r==='admin'?'member':'admin'}).eq('class_id',S.cls.id).eq('user_id',d.promote);r.error?toast(r.error.message):refresh()}
+ else if(d.act==='petsave'){const n=$('#petname')?.value.trim();if(!n)return toast('Isi nama karakter dulu');savePet({name:n});render();toast('Nama karakter disimpan')}
+ else if(d.act==='petgame'){const p=petData(),day=key(new Date());if(p.gameDay===day)return toast('Mini game hari ini sudah dimainkan. Besok main lagi ya!');savePet({bonus:Math.min(58,(p.bonus||0)+18),gameDay:day});render();toast('Yeay! Karaktermu makin bersemangat ✨')}
+ else if(d.act==='petunlock'){if($('#petcode')?.value.trim()==='KELASKU-CREATOR-2026'){savePet({adminSkin:'galaxy',allUnlocked:true});render();toast('Semua skin kreator terbuka!')}else toast('Kode kreator tidak sesuai')}
  else if(d.act==='auth'){const e=$('#ae').value.trim(),p=$('#ap').value,up=S.authMode==='up';if(!e||p.length<6)return toast('Isi email dan kata sandi (min. 6 karakter)');
   let r;if(up){const n=$('#an').value.trim();if(!n)return toast('Isi nama lengkap');r=await sb.auth.signUp({email:e,password:p,options:{data:{name:n}}});if(!r.error&&!r.data.session)return toast('Cek email untuk konfirmasi, lalu masuk.')}else r=await sb.auth.signInWithPassword({email:e,password:p});
   if(r.error)toast(r.error.message.includes('Invalid login')?'Email atau kata sandi salah':r.error.message)}
