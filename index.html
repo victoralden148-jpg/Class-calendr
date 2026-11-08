@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#cdeede">
+<meta name="theme-color" content="#bdf1ef">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
@@ -123,8 +123,47 @@ video.cam{width:100%;border-radius:18px;background:#000;margin:10px 0}
 @keyframes rise{from{opacity:0;transform:translateY(12px)}}@keyframes fi{from{opacity:0}}@keyframes fo{to{opacity:0}}@keyframes su{from{transform:translateY(60px);opacity:.5}}@keyframes sd{to{transform:translateY(40px);opacity:0}}@keyframes tin{from{opacity:0;transform:translateY(-10px)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
+<style id="glass">
+:root{--sf:rgba(255,255,255,.46);--chip:rgba(255,255,255,.42);--ln:rgba(255,255,255,.6);--mu:#5d6b73;--act:rgba(255,255,255,.88);--front:linear-gradient(180deg,rgba(255,255,255,.68),rgba(255,255,255,.3));--nav:rgba(255,255,255,.42);--sh:0 12px 32px rgba(110,90,170,.16);--sh2:0 4px 14px rgba(110,90,170,.12);--glow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 0 rgba(255,255,255,.3);--mdbg:rgba(255,255,255,.74)}
+@media(prefers-color-scheme:dark){:root{--sf:rgba(255,255,255,.1);--chip:rgba(255,255,255,.12);--ln:rgba(255,255,255,.2);--mu:#a5b8b4;--act:rgba(255,255,255,.24);--front:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.07));--nav:rgba(255,255,255,.12);--sh:0 12px 32px rgba(0,0,0,.38);--sh2:0 4px 14px rgba(0,0,0,.3);--glow:inset 0 1px 0 rgba(255,255,255,.24);--mdbg:rgba(24,40,48,.78)}}
+html,body{background:#cfeee9}
+body::before{background:radial-gradient(60% 26% at 90% 4%,rgba(255,240,170,.95),transparent 70%),radial-gradient(70% 30% at 2% 40%,rgba(170,240,236,.95),transparent 72%),radial-gradient(70% 32% at 98% 72%,rgba(255,168,226,.9),transparent 72%),linear-gradient(180deg,#bdf1ef 0%,#dcf3d4 28%,#f6efc6 46%,#f9d0e6 72%,#efbdf2 100%)}
+@media(prefers-color-scheme:dark){html,body{background:#10302f}body::before{background:radial-gradient(60% 26% at 90% 4%,rgba(120,110,40,.55),transparent 70%),radial-gradient(70% 30% at 2% 40%,rgba(30,120,125,.6),transparent 72%),radial-gradient(70% 32% at 98% 72%,rgba(150,50,130,.55),transparent 72%),linear-gradient(180deg,#0e3a3e,#16322f 32%,#2a2b3d 66%,#3b2048)}}
+.gl,.box,.mon,.tile,.ib,.bar,.wk,.logc{-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border:1px solid var(--ln);box-shadow:var(--sh),var(--glow)}
+.wk{padding:6px;gap:4px;border-radius:28px;background:var(--sf)}
+.wd{background:transparent;box-shadow:none}.wd.on{background:var(--btn)}
+.ib.x{border:0;box-shadow:none}
+.dt,.mc{border:1px solid var(--ln);box-shadow:var(--glow)}.mc.on{border-color:transparent}
+.bar{background:var(--nav);border-radius:34px;padding:6px}
+.bar button{color:inherit}
+.bar button.on{background:var(--act);box-shadow:var(--sh2),var(--glow)}
+.bar .gi{width:30px;height:30px;transition:transform .25s cubic-bezier(.2,.8,.2,1)}.bar button.on .gi{transform:scale(1.12)}
+.fab{background:linear-gradient(145deg,#7db6ff,#3b6bff);color:#fff;border:1px solid rgba(255,255,255,.55);box-shadow:0 12px 28px rgba(59,107,255,.45),inset 0 1px 0 rgba(255,255,255,.6)}
+.fab .gi{width:30px;height:30px}
+.md{background:var(--mdbg);-webkit-backdrop-filter:blur(28px) saturate(1.6);backdrop-filter:blur(28px) saturate(1.6);border-top:1px solid var(--ln)}
+.fold .front,.fold .tab{-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,.75);box-shadow:0 12px 26px rgba(90,80,150,.18),inset 0 1px 0 rgba(255,255,255,.9)}
+.fold .sheet{background:#fff;border:2px solid rgba(255,255,255,.9)}
+.stick{background:linear-gradient(145deg,rgba(255,255,255,.88),var(--st,#fff3c4));border:1px solid #fff;color:#1c2a27}.stick:before{display:none}
+.stp .gi{width:42px;height:42px}
+.flag{display:block}.flag .gi{width:36px;height:36px}
+.tile em{display:block}.tile em .gi{width:36px;height:36px;margin:0 auto 2px}
+.aic{background:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.35));border:1px solid #fff}.aic .gi{width:30px;height:30px}
+.mi .gi{width:56px;height:56px;margin-bottom:6px}
+.gi{display:block;filter:drop-shadow(0 4px 5px rgba(70,80,150,.28))}
+html.lite *,html.lite *::before{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html.lite{--sf:rgba(255,255,255,.86);--nav:rgba(255,255,255,.92);--mdbg:#fff;--front:linear-gradient(180deg,#fff,#edf2f0)}
+@media(prefers-color-scheme:dark){html.lite{--sf:rgba(32,52,58,.95);--nav:rgba(40,62,68,.97);--mdbg:#1a2c32;--front:linear-gradient(180deg,#2a3d42,#223338)}}
+</style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8dbfff"/><stop offset="1" stop-color="#3b6bff"/></linearGradient>
+<linearGradient id="gP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c58bff"/><stop offset="1" stop-color="#6a5cff"/></linearGradient>
+<linearGradient id="gR" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9a78"/><stop offset="1" stop-color="#ff3d55"/></linearGradient>
+<linearGradient id="gG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ff7a6"/><stop offset="1" stop-color="#22c55e"/></linearGradient>
+<linearGradient id="gY" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe985"/><stop offset="1" stop-color="#ffab1f"/></linearGradient>
+<linearGradient id="gW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".92"/><stop offset="1" stop-color="#fff" stop-opacity=".38"/></linearGradient>
+</defs></svg>
 <div id="app"><div class="join"><div class="logo">🌿</div><h1>Kelasku</h1><p>Memuat…</p></div></div>
 <script src="config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
@@ -133,7 +172,26 @@ video.cam{width:100%;border-radius:18px;background:#000;margin:10px 0}
 <script>
 const $=s=>document.querySelector(s);
 const I={img:'<rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/>',home:'<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',cal:'<rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/>',qr:'<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h3v3M20 14v6h-6"/>',me:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',bell:'<path d="M6 9a6 6 0 0 1 12 0c0 6 2 7 2 8H4c0-1 2-2 2-8zM10 21h4"/>'};
-const ic=n=>`<svg class="i" viewBox="0 0 24 24">${I[n]}</svg>`;
+const gi=b=>`<svg class="gi" viewBox="0 0 64 64" aria-hidden="true">${b}</svg>`;
+const G={
+ home:gi('<path d="M10 30 32 12l22 18v22a4 4 0 0 1-4 4H14a4 4 0 0 1-4-4z" fill="url(#gB)"/><path d="M6 33 32 10l26 23" fill="none" stroke="#fff" stroke-opacity=".75" stroke-width="5" stroke-linecap="round"/><rect x="25" y="36" width="14" height="20" rx="4" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/>'),
+ get cal(){return gi(`<rect x="11" y="13" width="42" height="42" rx="10" fill="#fff" fill-opacity=".92"/><path d="M11 23a10 10 0 0 1 10-10h22a10 10 0 0 1 10 10v5H11z" fill="url(#gR)"/><rect x="21" y="7" width="5" height="12" rx="2.5" fill="#fff" stroke="#e5e7ee"/><rect x="38" y="7" width="5" height="12" rx="2.5" fill="#fff" stroke="#e5e7ee"/><text x="32" y="48" text-anchor="middle" font-size="19" font-weight="800" fill="#13211d" font-family="system-ui,sans-serif">${new Date().getDate()}</text>`)},
+ img:gi('<rect x="9" y="12" width="46" height="44" rx="9" fill="url(#gB)"/><circle cx="22" cy="25" r="6" fill="url(#gY)"/><path d="M9 46c9-13 15-13 21-5 5-8 11-9 25 3v3a9 9 0 0 1-9 9H18a9 9 0 0 1-9-9z" fill="url(#gG)" fill-opacity=".92"/><rect x="9" y="12" width="46" height="44" rx="9" fill="none" stroke="#fff" stroke-opacity=".6"/>'),
+ qr:gi('<rect x="9" y="9" width="46" height="46" rx="11" fill="url(#gP)"/><g fill="#fff" fill-opacity=".92"><rect x="16" y="16" width="13" height="13" rx="3.5"/><rect x="35" y="16" width="13" height="13" rx="3.5"/><rect x="16" y="35" width="13" height="13" rx="3.5"/><rect x="35" y="35" width="6" height="6" rx="2"/><rect x="43" y="43" width="5" height="5" rx="1.8"/></g>'),
+ me:gi('<rect x="20" y="14" width="38" height="32" rx="8" fill="url(#gP)"/><rect x="35" y="24" width="16" height="3.5" rx="1.75" fill="#fff" fill-opacity=".85"/><rect x="35" y="32" width="11" height="3.5" rx="1.75" fill="#fff" fill-opacity=".85"/><circle cx="23" cy="30" r="9" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/><path d="M6 56c1-10 8-14 17-14s16 4 17 14z" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/>'),
+ chat:gi('<path d="M10 12h30a7 7 0 0 1 7 7v14a7 7 0 0 1-7 7H24l-9 8v-8h-5a7 7 0 0 1-7-7V19a7 7 0 0 1 7-7z" fill="url(#gP)"/><rect x="24" y="26" width="34" height="24" rx="9" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/><g fill="#8b5cf6"><circle cx="34" cy="38" r="2.6"/><circle cx="41" cy="38" r="2.6"/><circle cx="48" cy="38" r="2.6"/></g>'),
+ doc:gi('<rect x="26" y="8" width="30" height="36" rx="9" fill="url(#gB)"/><rect x="9" y="20" width="36" height="38" rx="10" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/><g fill="#3b6bff" fill-opacity=".7"><rect x="16" y="31" width="22" height="3.5" rx="1.75"/><rect x="16" y="39" width="22" height="3.5" rx="1.75"/><rect x="16" y="47" width="13" height="3.5" rx="1.75"/></g>'),
+ pie:gi('<circle cx="30" cy="35" r="21" fill="url(#gG)"/><path d="M33 12a21 21 0 0 1 21 21H33z" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/>'),
+ card:gi('<rect x="18" y="9" width="40" height="28" rx="8" fill="url(#gR)"/><rect x="6" y="26" width="42" height="29" rx="8" fill="url(#gW)" stroke="#fff" stroke-opacity=".9"/><rect x="12" y="46" width="16" height="3.5" rx="1.75" fill="#ff5a4d" fill-opacity=".75"/><rect x="40" y="16" width="9" height="5" rx="2.5" fill="#fff" fill-opacity=".9"/>'),
+ medal:gi('<path d="M20 36 14 59l18-9 18 9-6-23z" fill="url(#gY)"/><circle cx="32" cy="26" r="17" fill="url(#gW)" stroke="#fff" stroke-opacity=".95"/><path d="M32 16l3.2 6.6 7.2 1-5.3 5 1.3 7.2L32 32.5l-6.4 3.3 1.3-7.2-5.3-5 7.2-1z" fill="url(#gY)"/>'),
+ sun:gi('<circle cx="43" cy="23" r="14" fill="url(#gY)"/><g fill="url(#gW)" fill-opacity=".95"><circle cx="21" cy="42" r="10"/><circle cx="33" cy="38" r="13"/><circle cx="46" cy="44" r="9"/><rect x="17" y="44" width="38" height="11" rx="5.5"/></g>'),
+ chk:gi('<path d="M32 7 53 15v16c0 14-9 22-21 26C20 53 11 45 11 31V15z" fill="url(#gG)"/><circle cx="25" cy="41" r="11" fill="url(#gW)" stroke="#fff" stroke-opacity=".95"/><path d="M19.5 41l4.2 4.2 7.6-8.6" fill="none" stroke="#18a05e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>')
+};
+G.mem=G.img;
+const MI={ann:'chat',task:'doc',poll:'pie',kas:'card',bday:'medal',mood:'sun'};
+const CI={Kelas:'doc',Belajar:'doc','Ulang tahun':'medal',Wisata:'img',Lomba:'medal',Rapat:'chat'};
+const cic=c=>G[CI[c]||'cal'];
+const ic=n=>G[n]||`<svg class="i" viewBox="0 0 24 24">${I[n]}</svg>`;
 const MON=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'],HR=['Min','Sen','Sel','Rab','Kam','Jum','Sab'],COL=['#ffd9a8','#c7f0d8','#ffc9d6','#cfe0ff','#f3d6ff'];
 const pad=n=>String(n).padStart(2,'0'),key=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -236,7 +294,7 @@ const stamp=e=>{const d=new Date(e.starts_at);return `<span class="stp"><b>${d.g
 const avs=()=>S.members.slice(0,3).map((m,j)=>`<span class="av" style="background:${COL[j]}">${ini(m.name)}</span>`).join('');
 const sheetsOf=(ms,e)=>{const im=ms.filter(m=>m.kind!=='video').slice(0,3);return [0,1,2].map(i=>im[i]?`<img loading="lazy" decoding="async" src="${url(im[i].path)}" alt="">`:`<span class="phx" style="background:${PH[i]}">${i===1&&e?emo(e.category):''}</span>`)};
 function evFolder(e){const dd=Math.round((new Date(dk(e)+'T00:00')-new Date(TK+'T00:00'))/864e5);
- return folder({attr:`data-ev="${e.id}"`,sheets:sheetsOf(S.media.filter(m=>m.event_id===e.id),e),flag:emo(e.category),stick:stamp(e),st:'#fff1bd',av:avs(),title:esc(e.title),sub:`${dd<=0?'Hari ini':dd+' hari lagi'} · ${tm(e)} · ${attOf(e.id).length} hadir`})}
+ return folder({attr:`data-ev="${e.id}"`,sheets:sheetsOf(S.media.filter(m=>m.event_id===e.id),e),flag:cic(e.category),stick:stamp(e),st:'#fff1bd',av:avs(),title:esc(e.title),sub:`${dd<=0?'Hari ini':dd+' hari lagi'} · ${tm(e)} · ${attOf(e.id).length} hadir`})}
 function home(){
  const wk=weekDays(),all=evs(),now=Date.now(),up=all.filter(e=>dk(e)>=TK),nx=all.find(e=>new Date(e.starts_at)>now),h=new Date().getHours();
  const g=h<11?'Selamat pagi':h<15?'Selamat siang':h<18?'Selamat sore':'Selamat malam',me=stat(S.user.id),de=all.filter(e=>dk(e)===S.sel);
@@ -249,7 +307,7 @@ function home(){
  <div class="wk">${wk.map(d=>{const k=key(d);return `<button class="wd ${k===S.sel?'on':''}" data-sel="${k}">${HR[d.getDay()]}<b>${d.getDate()}</b>${all.some(e=>dk(e)===k)?'<i></i>':'<i style="background:transparent"></i>'}</button>`}).join('')}</div></div>
  <div class="wrap">
  ${nx?`<button class="nx gl" data-ev="${nx.id}">${ring(p,96,emo(nx.category))}<div class="nt"><small>Acara berikutnya</small><b>${esc(nx.title)}</b><span class="mu">${fmt(dk(nx))} · ${tm(nx)}</span><span class="cd" id="cd" data-t="${nx.starts_at}">${cdText(ms)} lagi</span></div></button>`:`<div class="nx gl"><span style="font-size:44px">🎈</span><div class="nt"><b>Belum ada acara</b><span class="mu">${admin()?'Ketuk + untuk membuat acara pertama.':'Tunggu ketua kelas membuat jadwal.'}</span></div></div>`}
- <div class="tiles"><button class="tile" data-sel="${TK}"><em>🗓️</em><b>${all.filter(e=>dk(e)===TK).length}</b><span>Hari ini</span></button><button class="tile" data-act="all"><em>⏳</em><b>${up.length}</b><span>Mendatang</span></button><div class="tile"><em>${admin()?'🛠️':'✅'}</em><b>${mine}</b><span>${admin()?'Dikelola':'Dihadiri'}</span></div></div></div>
+ <div class="tiles"><button class="tile" data-sel="${TK}"><em>${G.cal}</em><b>${all.filter(e=>dk(e)===TK).length}</b><span>Hari ini</span></button><button class="tile" data-act="all"><em>${G.sun}</em><b>${up.length}</b><span>Mendatang</span></button><div class="tile"><em>${G.chk}</em><b>${mine}</b><span>${admin()?'Dikelola':'Dihadiri'}</span></div></div></div>
  ${hubBlocks()}
  <div class="sec" id="evs"><div class="sh"><span>Acara mendatang</span><a data-go="cal">Kalender</a></div>${up.length?`<div class="row">${up.map(evFolder).join('')}</div>`:'<div class="empty">Belum ada acara.</div>'}</div>
  ${menuBlock()}
@@ -261,7 +319,7 @@ function home(){
 const li=e=>`<button class="li" data-ev="${e.id}"><div class="dt"><b>${new Date(e.starts_at).getDate()}</b>${tm(e)}</div><div><h4>${emo(e.category)} ${esc(e.title)}</h4><p>${esc(e.location)}</p></div></button>`;
 function memTab(){
  const w=evs().filter(e=>S.media.some(m=>m.event_id===e.id)).reverse();
- return `<div class="pg"><div class="hs" style="text-align:left">Album kelas</div><h2 style="font-size:32px;font-weight:600">Kenangan</h2>${w.length?`<div class="fgrid">${w.map(e=>{const ms=S.media.filter(m=>m.event_id===e.id);return folder({attr:`data-ev="${e.id}"`,sheets:sheetsOf(ms,e),flag:emo(e.category),av:avs(),title:esc(e.title),sub:ms.length+' foto & video'})}).join('')}</div>`:'<div class="box empty">Belum ada foto. Buka sebuah acara lalu ketuk Unggah foto/video.</div>'}</div>`;
+ return `<div class="pg"><div class="hs" style="text-align:left">Album kelas</div><h2 style="font-size:32px;font-weight:600">Kenangan</h2>${w.length?`<div class="fgrid">${w.map(e=>{const ms=S.media.filter(m=>m.event_id===e.id);return folder({attr:`data-ev="${e.id}"`,sheets:sheetsOf(ms,e),flag:cic(e.category),av:avs(),title:esc(e.title),sub:ms.length+' foto & video'})}).join('')}</div>`:'<div class="box empty">Belum ada foto. Buka sebuah acara lalu ketuk Unggah foto/video.</div>'}</div>`;
 }
 const SUB=['ann','task','poll','kas','bday','mood'];
 const nm=uid=>(S.members.find(m=>m.user_id===uid)||{}).name||'Anggota';
@@ -285,11 +343,11 @@ function hubBlocks(){
  if(an)c.push({k:'a'+an.id,e:'📢',l:'Pengumuman',t:an.title,go:'ann'});
  const as=c.find(x=>!dis.includes(x.k)),mine=S.moods.find(x=>x.user_id===me&&x.day===t);
  return `${S.v2?'':'<div class="wrap"><div class="box"><b>Fitur baru belum aktif</b><p class="mu">Jalankan schema2.sql di Supabase (SQL Editor), lalu muat ulang.</p></div></div>'}
- ${as?`<div class="wrap" style="padding-bottom:0"><div class="sh" style="padding:8px 0 10px"><span>Asisten kelas</span><a data-go="${as.go}">Buka</a></div><div class="asst gl"><button class="ae" data-go="${as.go}"><span class="aic">${as.e}</span><div><small class="mu">${as.l}</small><b style="display:block">${esc(as.t)}</b></div></button><button class="ib x" data-dis="${as.k}" aria-label="Tutup">✕</button></div></div>`:''}
+ ${as?`<div class="wrap" style="padding-bottom:0"><div class="sh" style="padding:8px 0 10px"><span>Asisten kelas</span><a data-go="${as.go}">Buka</a></div><div class="asst gl"><button class="ae" data-go="${as.go}"><span class="aic">${G[MI[as.go]]}</span><div><small class="mu">${as.l}</small><b style="display:block">${esc(as.t)}</b></div></button><button class="ib x" data-dis="${as.k}" aria-label="Tutup">✕</button></div></div>`:''}
  <div class="wrap" style="padding-bottom:0"><div class="sh" style="padding:18px 0 10px"><span>Catat hari ini</span><a data-go="mood">Lihat semua</a></div><div class="gl logc"><div class="logg">${MOODS.map((m,i)=>`<button class="mc ${mine&&mine.mood===i?'on':''}" data-mood="${i}"><span>${m[0]}</span>${m[1]}</button>`).join('')}</div></div></div>`}
 function menuBlock(){const t=key(new Date()),me=S.user.id,open=S.tasks.filter(x=>!S.task_done.some(d=>d.task_id===x.id&&d.user_id===me)).length;
  const it=[['ann','📢','Pengumuman',S.announcements.length+' pengumuman','#ffe3cf'],['task','📝','Tugas & PR',open+' belum selesai','#d9f1e6'],['poll','📊','Polling',S.polls.length+' polling','#e2d9fc'],['kas','💰','Kas kelas',S.kas_items.length+' iuran','#fff0b8'],['bday','🎂','Ulang tahun',S.members.filter(m=>m.birthday).length+' tercatat','#ffd6e2'],['mood','😊','Mood kelas',S.moods.filter(x=>x.day===t).length+' mengisi','#d6e9f7']];
- return `<div class="sec"><div class="sh"><span>Menu kelas</span></div><div class="row">${it.map(x=>folder({cls:'sm',attr:`data-go="${x[0]}"`,sheets:PH.map(c=>`<span class="phx" style="background:${c}"></span>`),stick:`<span class="stp" style="font-size:28px">${x[1]}</span>`,st:x[4],title:x[2],sub:x[3]})).join('')}</div></div>`}
+ return `<div class="sec"><div class="sh"><span>Menu kelas</span></div><div class="row">${it.map(x=>folder({cls:'sm',attr:`data-go="${x[0]}"`,sheets:PH.map(c=>`<span class="phx" style="background:${c}"></span>`),stick:`<span class="stp" >${G[MI[x[0]]]}</span>`,st:x[4],title:x[2],sub:x[3]})).join('')}</div></div>`}
 function annPg(){const l=S.announcements.slice().sort((a,b)=>(b.pinned-a.pinned)||b.created_at.localeCompare(a.created_at));
  return `<div class="pg">${hd('Pengumuman 📢',l.length+' pengumuman')}${warn()}${l.map(a=>`<div class="box ann ${a.pinned?'pin':''}">${a.pinned?'<span class="tag2">📌 Disematkan</span><br>':''}<b>${esc(a.title)}</b><p style="margin:6px 0;white-space:pre-wrap">${esc(a.body)}</p><span class="mu">${esc(nm(a.created_by))} · ${ago(a.created_at)}</span>${admin()?`<button class="mu" style="display:block;margin-top:8px" data-del="announcements" data-id="${a.id}">Hapus</button>`:''}</div>`).join('')||`<div class="empty">Belum ada pengumuman.${admin()?' Ketuk + untuk membuat.':''}</div>`}</div>`}
 function taskPg(){const l=S.tasks.slice().sort((a,b)=>a.due_at.localeCompare(b.due_at)),n=S.members.length;
@@ -339,13 +397,13 @@ function meTab(){
  <div class="bdg">${B.map(x=>`<div class="${x[3]?'':'off'}"><em>${x[0]}</em><b>${x[1]}</b>${x[2]}</div>`).join('')}</div></div>
  <div class="box"><b>${esc(S.cls.name)}</b><p class="mu">Kode undangan</p><div class="code">${esc(S.cls.code)}</div><button class="btn" style="margin-top:12px" data-act="share">Ajak teman sekelas</button></div>
  <div class="box"><b>Anggota (${S.members.length})</b>${S.members.map((m,j)=>`<div class="mem"><span class="av" style="background:${COL[j%5]}">${ini(m.name)}</span><div>${esc(m.name)}<br><span class="mu">${m.role==='admin'?'Ketua':'Anggota'}</span></div>${admin()&&m.user_id!==S.user.id?`<button class="mu" data-promote="${m.user_id}" data-r="${m.role}">${m.role==='admin'?'Jadikan anggota':'Jadikan admin'}</button>`:''}</div>`).join('')}</div>
- <button class="btn s" data-act="leave" style="margin-bottom:10px">Keluar dari kelas</button><button class="btn d" data-act="logout">Keluar akun</button></div>`;
+ <button class="btn s" data-act="lite" style="margin-bottom:10px">${document.documentElement.classList.contains('lite')?'Efek kaca: mati (mode ringan)':'Efek kaca: aktif'}</button><button class="btn s" data-act="leave" style="margin-bottom:10px">Keluar dari kelas</button><button class="btn d" data-act="logout">Keluar akun</button></div>`;
 }
 function closeModal(){const o=$('.ov');modal=null;render();if(o){o.classList.add('out');$('#app').append(o);setTimeout(()=>o.remove(),230)}}
 function showModal(){const o=document.createElement('div');o.className='ov';o.innerHTML=`<div class="md" role="dialog">${modal.html()}</div>`;o.onclick=e=>{if(e.target===o){closeModal()}};$('#app').append(o);modal.bind&&modal.bind(o)}
 function evModal(id){
  modal={form:false,html:()=>{const e=S.events.find(x=>x.id===id);if(!e)return'<p>Acara tidak ditemukan.</p>';const ph=S.media.filter(x=>x.event_id===id),at=attOf(id).length;
- return `<div style="font-size:46px">${emo(e.category)}</div><h2>${esc(e.title)}</h2><p class="mu">${fmt(dk(e))} · ${tm(e)} · ${esc(e.location)}</p><p style="margin:12px 0">${esc(e.description)}</p><p class="mu">${at} dari ${S.members.length} anggota sudah hadir</p>
+ return `<div class="mi">${cic(e.category)}</div><h2>${esc(e.title)}</h2><p class="mu">${fmt(dk(e))} · ${tm(e)} · ${esc(e.location)}</p><p style="margin:12px 0">${esc(e.description)}</p><p class="mu">${at} dari ${S.members.length} anggota sudah hadir</p>
  <div class="sh" style="padding:16px 0 0"><span>Galeri kenangan</span></div><div class="gal">${ph.map(p=>p.kind==='video'?`<video src="${url(p.path)}" controls preload="metadata"></video>`:`<a href="${url(p.path)}" target="_blank" rel="noopener"><img loading="lazy" src="${url(p.path)}" alt=""></a>`).join('')}</div>${ph.length?'':'<p class="mu">Belum ada foto atau video.</p>'}
  <label class="btn s" style="cursor:pointer;margin:10px 0">Unggah foto/video<input type="file" id="up" accept="image/*,video/*" multiple hidden></label>
  ${admin()?'<div class="two"><button class="btn s" id="ed">Ubah</button><button class="btn d" id="dl">Hapus</button></div>':''}`},
@@ -419,6 +477,7 @@ document.addEventListener('click',async ev=>{
  else if(d.act==='create'){const n=$('#cn').value.trim();if(!n)return toast('Isi nama kelas');const r=await sb.rpc('create_class',{p_class:n,p_name:S.user.user_metadata.name||S.user.email});r.error?toast(r.error.message):refresh()}
  else if(d.act==='resetcfg'){localStorage.removeItem('kelasku_cfg');location.reload()}
  else if(d.act==='new')(SUBF[S.tab]||formModal)();
+ else if(d.act==='lite'){const l=document.documentElement.classList.toggle('lite');try{localStorage.setItem('klite',l?'1':'0')}catch(e){}render();toast(l?'Mode ringan aktif':'Efek kaca aktif')}
  else if(d.act==='bday'){const v=$('#bd').value;if(!v)return toast('Pilih tanggal');db(sb.rpc('set_birthday',{p_date:v}),'Tanggal lahir disimpan')}
  else if(d.act==='myqr'){S.tab='qr';render()}
  else if(d.act==='cam')startCam();
@@ -432,6 +491,7 @@ document.addEventListener('click',async ev=>{
 document.addEventListener('change',e=>{if(e.target.id==='se'){S.scanEv=e.target.value;render()}});
 setInterval(()=>{const el=document.getElementById('cd');if(el)el.textContent=cdText(new Date(el.dataset.t)-Date.now())+' lagi'},30000);
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+try{const p=localStorage.getItem('klite');if(p==='1'||(p===null&&navigator.deviceMemory&&navigator.deviceMemory<=2))document.documentElement.classList.add('lite')}catch(e){}
 boot();
 </script>
 </body>
