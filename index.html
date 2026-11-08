@@ -89,8 +89,25 @@ const ini=n=>String(n||'?').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('')
 const today=new Date(),TK=key(today);
 const dk=e=>key(new Date(e.starts_at)),tm=e=>{const d=new Date(e.starts_at);return pad(d.getHours())+':'+pad(d.getMinutes())};
 const fmt=k=>{const d=new Date(k+'T00:00');return `${HR[d.getDay()]}, ${d.getDate()} ${MON[d.getMonth()].slice(0,3)}`};
-if(!window.CFG||!CFG.url||CFG.url.includes('ISI')){document.body.innerHTML='<div class="join"><h1>Belum dikonfigurasi</h1><p>Isi URL dan key Supabase di config.js (lihat BACA-SAYA.md).</p></div>';throw 0}
-const sb=supabase.createClient(CFG.url,CFG.key);
+let CF=window.CFG&&CFG.url&&CFG.key&&!/ISI_/.test(CFG.url+CFG.key)?CFG:null;
+if(!CF){try{CF=JSON.parse(localStorage.getItem('kelasku_cfg'))}catch(e){}}
+if(!CF||!CF.url||!CF.key){
+ document.getElementById('app').innerHTML='<div class="join"><h1>Hubungkan Supabase</h1><p>Tempel dua data dari Supabase (Project Settings). Hanya sekali.</p><div class="box"><label for="cu">Project URL</label><input id="cu" placeholder="https://xxxxxxxx.supabase.co" autocapitalize="none" autocorrect="off"><label for="ck">Publishable / anon key</label><input id="ck" placeholder="sb_publishable_... atau eyJ..." autocapitalize="none" autocorrect="off"><button class="btn" id="cs">Simpan dan tes koneksi</button><p class="mu" id="cm" style="margin-top:10px"></p></div></div>';
+ document.getElementById('cs').onclick=async()=>{
+  const m=document.getElementById('cm'),clean=v=>v.trim().replace(/^["']|["',;]+$/g,'').trim();
+  let u=clean(document.getElementById('cu').value).replace(/\/+$/,'').replace(/\.+$/,''),k=clean(document.getElementById('ck').value);
+  if(u&&!/^https?:\/\//.test(u))u='https://'+u;
+  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(u)){m.textContent='URL harus berbentuk https://xxxxxxxx.supabase.co (tanpa tambahan di belakang).';return}
+  if(k.length<20||/^https?:/i.test(k)){m.textContent='Key salah. Isi dengan key panjang (sb_publishable_... atau eyJ...), bukan alamat.';return}
+  m.textContent='Mengetes koneksi…';
+  try{const r=await fetch(u+'/auth/v1/settings',{headers:{apikey:k}});
+   if(r.status===404){m.textContent='URL tidak ditemukan (404). Salin ulang Project URL dari Project Settings > Data API.';return}
+   if(r.status===401||r.status===403){m.textContent='Key ditolak. Salin ulang key publishable atau anon public.';return}
+   if(!r.ok){m.textContent='Gagal, kode '+r.status;return}
+  }catch(e){m.textContent='Tidak bisa terhubung. Periksa penulisan URL dan koneksi internet.';return}
+  localStorage.setItem('kelasku_cfg',JSON.stringify({url:u,key:k}));location.reload()};
+ throw 0}
+const sb=supabase.createClient(CF.url,CF.key);
 let S={user:null,cls:null,me:null,members:[],events:[],att:[],media:[],tab:'home',sel:TK,mon:TK.slice(0,7),scanEv:null,authMode:'in'},modal=null,toastT,stream=null,chan=null;
 const admin=()=>S.me&&S.me.role==='admin';
 const evs=()=>S.events.slice().sort((a,b)=>a.starts_at.localeCompare(b.starts_at));
@@ -128,7 +145,7 @@ function render(){
   <div class="seg"><button data-am="in" class="${up?'':'on'}">Masuk</button><button data-am="up" class="${up?'on':''}">Daftar</button></div>
   ${up?'<label for="an">Nama lengkap</label><input id="an" autocomplete="name">':''}
   <label for="ae">Email</label><input id="ae" type="email" autocomplete="email"><label for="ap">Kata sandi (min. 6 karakter)</label><input id="ap" type="password" autocomplete="${up?'new-password':'current-password'}">
-  <button class="btn" data-act="auth">${up?'Daftar':'Masuk'}</button></div></div>`;return}
+  <button class="btn" data-act="auth">${up?'Daftar':'Masuk'}</button></div><button class="btn s" data-act="resetcfg" style="background:rgba(255,255,255,.2);color:#fff">Ubah koneksi Supabase</button></div>`;return}
  if(!S.cls){
   a.innerHTML=`<div class="join"><h1>Halo, ${esc(S.user.user_metadata.name||'')}</h1><p>Gabung ke kelasmu atau buat kelas baru.</p><div class="box">
   <label for="jc">Kode undangan kelas</label><input id="jc" placeholder="Contoh: A1B2C3" autocapitalize="characters"><button class="btn" data-act="join">Gabung kelas</button></div>
@@ -249,6 +266,7 @@ document.addEventListener('click',async ev=>{
   if(r.error)toast(r.error.message.includes('Invalid login')?'Email atau kata sandi salah':r.error.message)}
  else if(d.act==='join'){const c=$('#jc').value.trim().toUpperCase();if(!c)return toast('Isi kode undangan');const r=await sb.rpc('join_class',{p_code:c,p_name:S.user.user_metadata.name||S.user.email});r.error?toast(r.error.message):refresh()}
  else if(d.act==='create'){const n=$('#cn').value.trim();if(!n)return toast('Isi nama kelas');const r=await sb.rpc('create_class',{p_class:n,p_name:S.user.user_metadata.name||S.user.email});r.error?toast(r.error.message):refresh()}
+ else if(d.act==='resetcfg'){localStorage.removeItem('kelasku_cfg');location.reload()}
  else if(d.act==='new')formModal();
  else if(d.act==='myqr'){S.tab='qr';render()}
  else if(d.act==='cam')startCam();
