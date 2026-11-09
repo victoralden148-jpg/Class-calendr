@@ -413,10 +413,10 @@ html[data-ph=dusk] .phero::before,html[data-ph=dawn] .phero::before{background:r
 @keyframes ringp{50%{transform:scale(1.08);opacity:.7}}
 .wrs .pet{position:relative;z-index:1;margin-top:14px;animation:flo 3.2s ease-in-out infinite;filter:drop-shadow(0 12px 12px rgba(40,30,80,.25))}
 .wrb{position:absolute;left:14px;top:12px;z-index:2}.wrl{position:absolute;right:14px;top:14px;z-index:2;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.85);font-size:12px;font-weight:800;box-shadow:var(--sh2)}
-.wrp{display:flex;gap:6px;justify-content:space-between;padding:16px 10px 8px;margin-top:12px;border-radius:99px;background:var(--sf);border:1px solid var(--ln);box-shadow:var(--sh2);overflow-x:auto;scrollbar-width:none}.wrp::-webkit-scrollbar{display:none}
-.wt{position:relative;flex:none;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.7);border:2px solid transparent;display:grid;place-items:center;transition:transform .25s cubic-bezier(.3,1.5,.5,1),border-color .2s}
-.wt .pet{width:44px;height:44px}.wt.on{border-color:#ff5a4d;transform:scale(1.14);box-shadow:0 0 0 3px rgba(255,90,77,.18)}.wt.lock .pet{filter:grayscale(1);opacity:.5}.wt .lk{position:absolute;right:-2px;bottom:-2px;font-size:13px}
-.wtag{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-style:normal;font-size:9.5px;font-weight:800;color:#fff;background:#ff5a4d;padding:2px 7px;border-radius:8px;white-space:nowrap}
+.wrp{display:flex;gap:4px;padding:22px 8px 8px;margin-top:12px;border-radius:30px;background:var(--sf);border:1px solid var(--ln);box-shadow:var(--sh2);overflow:visible}
+.wt{position:relative;flex:1 1 0;min-width:0;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.7);border:2px solid transparent;display:grid;place-items:center;transition:transform .25s cubic-bezier(.3,1.5,.5,1),border-color .2s}
+.wt .pet{width:88%;height:88%}.wt.on{border-color:#ff5a4d;transform:scale(1.14);box-shadow:0 0 0 3px rgba(255,90,77,.18)}.wt.lock .pet{filter:grayscale(1);opacity:.5}.wt .lk{position:absolute;right:-2px;bottom:-2px;font-size:13px}
+.wtag{position:absolute;top:-19px;left:50%;transform:translateX(-50%);font-style:normal;font-size:9px;font-weight:800;color:#fff;background:#ff5a4d;padding:2px 7px;border-radius:8px;white-space:nowrap}
 .wrn{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 2px 4px}.wrn small{display:block;font-size:12px;color:var(--mu)}.wrn b{font-size:16px}.btn.sm:disabled{opacity:.55}
 /* kartu streak */
 .stt{display:flex;align-items:center;gap:16px}.stb{display:flex;flex-direction:column;align-items:center;gap:2px}.stb b{font-size:13px}
@@ -462,8 +462,7 @@ button.pc{cursor:pointer}.pcr{position:relative;display:inline-block}.pcb{positi
 .gres{display:flex;gap:12px;align-items:center}.gri{font-size:30px}.gres p{margin:2px 0 0}
 .gl2{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--ln)}.gl2:last-child{border:0}.gl2>div{flex:1;min-width:0}.gl2 b{display:block}.gl2 small{font-size:12px;color:var(--mu)}
 /* animasi umum, buka tutup */
-.cb{display:grid;grid-template-rows:1fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1),opacity .3s}.cb.c{grid-template-rows:0fr;opacity:0}
-.ci{min-height:0;overflow:hidden}.cb.done .ci{overflow:visible}
+.cb{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}.cb.c{display:none}.cb.done{animation:none}
 .sec>.sh[data-col]{cursor:pointer}.chev{font-style:normal;margin-left:8px;color:var(--mu);transition:transform .35s cubic-bezier(.3,1.5,.5,1);display:inline-block}.sh.colp .chev{transform:rotate(180deg)}.sh[data-col]{gap:8px}.sh[data-col]>span:first-child{flex:1}
 .md{position:relative}.mx{float:right;position:sticky;top:0;z-index:3;width:34px;height:34px;margin:-4px -4px 0 8px;border-radius:50%;background:var(--chip);border:1px solid var(--ln);font-size:14px;transition:transform .2s}.mx:active{transform:rotate(90deg) scale(.9)}
 @keyframes su{from{transform:translateY(70px) scale(.97);opacity:0}}
@@ -473,6 +472,7 @@ button.pc{cursor:pointer}.pcr{position:relative;display:inline-block}.pcb{positi
 .mt .mti{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}.mt:active .mti{transform:rotate(-8deg) scale(1.1)}
 .st2 u,.lb .bt i{transform-origin:left;animation:barg .8s cubic-bezier(.2,.8,.2,1) both}
 .pgin .mgrid .mt{animation:rise .4s cubic-bezier(.2,.8,.2,1) both}.pgin .mgrid .mt:nth-child(2){animation-delay:.05s}.pgin .mgrid .mt:nth-child(3){animation-delay:.1s}.pgin .mgrid .mt:nth-child(n+4){animation-delay:.15s}
+.evw{padding:0}.two .btn.s{white-space:nowrap;font-size:14px;padding:14px 6px;min-width:0}
 </style>
 </head>
 <body>
@@ -1082,7 +1082,7 @@ return `<div class="pg"><h2>Profil</h2>
 <div class="rlrow">${chipsOf(m.role,m.jabatan)||'<span class="rl">Anggota</span>'}<span class="rl cn">${esc(S.cls.name)}</span></div>
 ${!S.v3?'<div class="box"><b>Karakter belum aktif</b><p class="mu">Jalankan schema3.sql di Supabase SQL Editor, lalu muat ulang.</p></div>':!has?'':`<div class="hab m-${ps.mood}"><div class="cl cl1"></div><div class="cl cl2"></div><div class="sun"></div><div class="gnd"></div><span class="flw fl1">🌸</span><span class="flw fl2">🌼</span><span class="flw fl3">🌷</span><div class="hnm"><b>${esc(m.pet_name||c.n)}</b><small>Lv ${ps.skin+1} · ${STN[ps.skin]}</small></div><button class="hpet" data-pa="pet" aria-label="Sentuh ${esc(c.n)}">${petSvg(m.pet_char,{stage:ps.skin,mood:ps.mood,size:176,anim:1})}</button><div class="hfx" id="hfx"></div></div>
 <div class="st2">${bar('Energi',ps.vit,'linear-gradient(90deg,#8fe0c3,#4fc3a1)')}${bar('Cinta',ps.love,'linear-gradient(90deg,#ffb3d0,#ff6fa5)')}${bar('Kenyang',Math.round(fd.n/3*100),'linear-gradient(90deg,#ffe27a,#ffb020)')}</div>
-<div class="two"><button class="btn s" data-pa="feed">🍙 Beri makan (${3-fd.n} sisa)</button><button class="btn s" data-pa="play">🎈 Ajak main</button></div>
+<div class="two"><button class="btn s" data-pa="feed">🍙 Beri makan · ${3-fd.n}</button><button class="btn s" data-pa="play">🎈 Ajak main</button></div>
 <div class="box" style="margin-top:14px"><div class="two" style="justify-content:space-around;text-align:center"><div><b style="font-size:22px">🔥 ${ps.cur}</b><div class="mu">Streak</div></div><div><b style="font-size:22px">${ps.best}</b><div class="mu">Terbaik</div></div><div><b style="font-size:22px">${st.pct}%</b><div class="mu">Hadir</div></div></div>${nxT?`<p class="mu" style="margin-top:10px">Skin berikutnya di streak ${nxT} hari (${ps.best}/${nxT})</p><div class="st2" style="margin:6px 0 0"><div><i><u style="width:${pr}%;background:linear-gradient(90deg,#b99bff,#6ec0ea)"></u></i></div></div>`:'<p class="mu" style="margin-top:10px">Skin maksimal terbuka. Kamu legenda! 👑</p>'}</div>
 <div class="sh" style="padding:6px 0 0"><span>Skin & evolusi</span></div><div class="row skins" style="margin:0 -20px">${STN.map((s,i)=>{const un=i<=ps.unlocked;return `<button class="sk ${un?'':'lock'} ${i===ps.skin?'on':''}" data-pa="skin" data-i="${i}">${petSvg(m.pet_char,{stage:i,mood:'happy',size:84})}<b>${s}</b><small>${un?(i===ps.skin?'Dipakai':'Terbuka'):'Streak '+TH[i]+' hari'}</small>${un?'':'<span class="lk">🔒</span>'}</button>`}).join('')}</div>`}
 ${has?`<div class="box"><label for="un">Nama kamu</label><input id="un" value="${esc(m.name)}" maxlength="30"><label for="pn">Nama karakter</label><input id="pn" value="${esc(m.pet_name||c.n)}" maxlength="14"><button class="btn" data-pa="savenames">Simpan nama</button><button class="btn s" style="margin-top:8px" data-pa="chchar">Ganti karakter</button></div>`:''}
@@ -1338,13 +1338,13 @@ async function rollDice(){const day=todayK();if(S.rolling)return;
  if(box)box.innerHTML=dieHtml(r.data);S.gjust=Date.now();await new Promise(z=>setTimeout(z,500));await refresh();
  const g=S.gmap[S.user.id],t=GT[g?g.pos:0];toast(`Dadu ${r.data}! ${GI[t]} ${GL[t]}`)}
 function gameCard(){
- if(S.v5===false)return '<div class="wrap"><div class="box"><b>Game & jabatan baru belum aktif</b><p class="mu">Jalankan schema5.sql di Supabase SQL Editor, lalu muat ulang.</p></div></div>';
+ if(S.v5===false)return '<div class="evw"><div class="box"><b>Game & jabatan baru belum aktif</b><p class="mu">Jalankan schema5.sql di Supabase SQL Editor, lalu muat ulang.</p></div></div>';
  if(!S.v5)return '';
  const d=new Date(),left=Math.max(1,Math.round((new Date(d.getFullYear(),d.getMonth()+1,1)-new Date(TK+'T00:00'))/864e5)),day=todayK(),mine=S.game.some(r=>r.user_id===S.user.id&&r.day===day),n=S.gday[day]||0;
  const pool=S.members.filter(m=>m.pet_char!=null).map(m=>({c:m.pet_char,s:petState(m.user_id).skin,u:m.user_id}));
  pool.sort((a,b)=>(a.u===S.user.id?-1:b.u===S.user.id?1:0));while(pool.length<5)pool.push({c:(pool.length*4+3)%CH.length,s:1+pool.length%3});
  const P=[[50,4,116,0],[21,14,78,-7],[79,14,78,7],[8,108,54,-14],[92,112,54,14]];
- return `<div class="sec"><div class="sh"><span>Petualangan kelas</span><a data-go="game">Main</a></div><div class="wrap" style="padding-top:0"><button class="evt" data-go="game"><div class="evt-top"><i class="ebl e1"></i><i class="ebl e2"></i>${P.map((p,i)=>`<span class="evc" style="left:${p[0]}%;bottom:${p[1]}px;--r:${p[3]}deg;animation-delay:${i*.35}s">${petSvg(pool[i].c,{stage:pool[i].s,mood:'happy',size:p[2]})}</span>`).join('')}</div><div class="evb"><h3>Petualangan Kelas</h3><span class="evx">⏱ Musim berakhir dalam ${left} hari</span><p>Lempar dadu tiap hari bareng teman. Makin banyak yang ikut, streak bonus makin banyak!</p><span class="evk">${mine?'Lihat papan ('+n+' teman main)':'Lempar dadu hari ini'}</span></div></button></div></div>`}
+ return `<div class="sec"><div class="sh"><span>Petualangan kelas</span><a data-go="game">Main</a></div><div class="evw"><button class="evt" data-go="game"><div class="evt-top"><i class="ebl e1"></i><i class="ebl e2"></i>${P.map((p,i)=>`<span class="evc" style="left:${p[0]}%;bottom:${p[1]}px;--r:${p[3]}deg;animation-delay:${i*.35}s">${petSvg(pool[i].c,{stage:pool[i].s,mood:'happy',size:p[2]})}</span>`).join('')}</div><div class="evb"><h3>Petualangan Kelas</h3><span class="evx">⏱ Musim berakhir dalam ${left} hari</span><p>Lempar dadu tiap hari bareng teman. Makin banyak yang ikut, streak bonus makin banyak!</p><span class="evk">${mine?'Lihat papan ('+n+' teman main)':'Lempar dadu hari ini'}</span></div></button></div></div>`}
 G.game=gi('<rect x="10" y="10" width="44" height="44" rx="12" fill="url(#gP)"/><rect x="10" y="10" width="44" height="44" rx="12" fill="none" stroke="#fff" stroke-opacity=".7"/><g fill="#fff"><circle cx="23" cy="23" r="4.2"/><circle cx="41" cy="23" r="4.2"/><circle cx="32" cy="32" r="4.2"/><circle cx="23" cy="41" r="4.2"/><circle cx="41" cy="41" r="4.2"/></g>');
 SUB.push('game');LB.game='Petualangan';
 /* ---- peringkat (podium) dengan lencana ---- */
