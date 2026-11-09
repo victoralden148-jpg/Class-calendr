@@ -353,6 +353,126 @@ img.zoom{display:block;width:100%;max-height:70vh;object-fit:contain;border-radi
 .csend{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--btn);color:var(--btnt);font-size:19px}
 .recdot{width:12px;height:12px;border-radius:50%;background:#ff3d55;animation:pls 1s ease-in-out infinite;flex:none}
 .comp #rect{font-variant-numeric:tabular-nums}.rechint{flex:1;color:var(--mu);font-size:13px}
+/* ===== v5 ===== */
+.pet .au{transform-box:fill-box;transform-origin:center;animation:pls 2.6s ease-in-out infinite}
+.bdgs{display:block;overflow:visible;flex:none}.bdgs.lk{filter:grayscale(1);opacity:.4}
+.bdgs .bgl{transform-box:fill-box;transform-origin:center;animation:pls 2.6s ease-in-out infinite}
+.bdgs .tw{transform-box:fill-box;transform-origin:center;animation:twk 1.8s ease-in-out infinite}
+.mb5{margin-left:auto;padding-left:6px}.mem .mlnk{padding-right:4px}
+.strk{display:inline-flex;align-items:center;gap:6px;padding:5px 12px 5px 8px}.strk small{font-size:11px;color:var(--ok);font-weight:800}
+.ptier{display:flex;flex-direction:column;align-items:center;gap:2px;margin:2px 0 10px}.ptier small{font-size:12px;font-weight:700;color:var(--mu)}
+/* warna waktu */
+html[data-ph=night] body::before{background:radial-gradient(60% 28% at 82% 0,rgba(150,160,255,.6),transparent 70%),radial-gradient(70% 34% at 0 46%,rgba(190,170,255,.55),transparent 72%),linear-gradient(180deg,#c3cdf3,#ddd5f5 55%,#efd6ec)}
+html[data-ph=dusk] body::before{background:radial-gradient(60% 28% at 85% 0,rgba(255,176,130,.7),transparent 70%),radial-gradient(70% 34% at 0 46%,rgba(255,200,220,.6),transparent 72%),linear-gradient(180deg,#ffe3d2,#ffe9ef 55%,#f3dcf6)}
+html[data-ph=dawn] body::before{background:radial-gradient(60% 28% at 15% 0,rgba(255,206,170,.7),transparent 70%),radial-gradient(70% 34% at 100% 46%,rgba(200,226,255,.7),transparent 72%),linear-gradient(180deg,#ffeede,#eaf3ff 60%,#f3e6fa)}
+body::before{transition:background 1.2s}
+.phero::before{content:"";position:absolute;left:50%;top:44px;width:200px;height:200px;margin-left:-100px;border-radius:50%;background:radial-gradient(circle,rgba(255,236,150,.85),transparent 68%);animation:pls 3.4s ease-in-out infinite;pointer-events:none}
+html[data-ph=night] .phero::before{background:radial-gradient(circle,rgba(170,180,255,.75),transparent 68%)}
+html[data-ph=dusk] .phero::before,html[data-ph=dawn] .phero::before{background:radial-gradient(circle,rgba(255,190,150,.8),transparent 68%)}
+.phero .pet,.phero .bub,.phero .pname{position:relative;z-index:1}.phero .pet{animation:flo 3.2s ease-in-out infinite}
+/* habitat */
+.hab{height:316px;isolation:isolate;background:#7ecbff;--h1:#9fdcae;--h2:#7fcf8f;--g1:#9be8a2;--g2:#55c776}
+.hab .sk{position:absolute;inset:0;opacity:0;transition:opacity 1.3s ease;z-index:0}
+.sk-day{background:linear-gradient(180deg,#6fc3ff,#dff4ff 78%)}.sk-dawn{background:linear-gradient(180deg,#ffb48f,#ffe1ee 55%,#cfe6ff)}.sk-dusk{background:linear-gradient(180deg,#6b6fd0,#ff9a86 62%,#ffd7a8)}.sk-night{background:linear-gradient(180deg,#121a4c,#2f3b88 62%,#5e58ac)}
+.ph-day .sk-day,.ph-dawn .sk-dawn,.ph-dusk .sk-dusk,.ph-night .sk-night{opacity:1}
+.hab.ph-dawn{--h1:#add7a6;--h2:#8ccb94;--g1:#a8e2a4;--g2:#63c47c}.hab.ph-dusk{--h1:#6f9f9e;--h2:#528f82;--g1:#75c48b;--g2:#43a068}.hab.ph-night{--h1:#3b5b82;--h2:#2c4d6c;--g1:#33806a;--g2:#1f5c4e}
+.hills{position:absolute;left:0;bottom:0;width:100%;height:48%;z-index:1}.hills path{transition:fill 1.3s}.hills .hb{fill:var(--h1)}.hills .hm{fill:var(--h2)}
+.hab .gnd{z-index:2;left:-12%;right:-12%;bottom:-46px;height:130px;background:linear-gradient(180deg,var(--g1),var(--g2))}
+.hstars{position:absolute;inset:0 0 40% 0;z-index:1;opacity:0;transition:opacity 1.3s}.ph-night .hstars{opacity:1}.ph-dusk .hstars{opacity:.4}
+.hstars i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px 2px rgba(255,255,255,.7);animation:tw2 2.4s ease-in-out infinite}
+@keyframes tw2{50%{opacity:.25;transform:scale(.6)}}
+.cel{position:absolute;z-index:1;width:54px;height:54px;margin:-27px 0 0 -27px;transition:left 1.4s ease,top 1.4s ease;pointer-events:none}
+.cel span{display:block;width:100%;height:100%;border-radius:50%}
+.sunb{background:radial-gradient(circle at 35% 35%,#fffbd0,#ffd23f 60%,#ffb020);box-shadow:0 0 34px 12px rgba(255,214,90,.65);animation:pls 3s ease-in-out infinite}
+.ph-dusk .sunb,.ph-dawn .sunb{background:radial-gradient(circle at 35% 35%,#fff0d0,#ff9a5a 65%,#ff6f6f);box-shadow:0 0 40px 16px rgba(255,150,110,.6)}
+.moon{position:relative;background:radial-gradient(circle at 36% 34%,#fff,#e2e8ff 60%,#b9c4ee);box-shadow:0 0 30px 10px rgba(190,205,255,.55)}
+.moon:after{content:"";position:absolute;left:56%;top:28%;width:10px;height:10px;border-radius:50%;background:rgba(150,165,215,.45);box-shadow:-18px 16px 0 -2px rgba(150,165,215,.4)}
+.hab .cl{z-index:1;transition:opacity 1.3s,filter 1.3s}.ph-night .cl{opacity:.22;filter:brightness(.6)}.ph-dusk .cl{filter:sepia(.5) saturate(2.2) hue-rotate(-25deg)}
+.cl3{left:58%;top:104px;width:70px;opacity:.7;animation:cld 34s linear infinite -14s}.cl3:before{width:30px;height:30px;left:10px;top:-14px}.cl3:after{width:22px;height:22px;left:36px;top:-8px}
+.birds{position:absolute;z-index:1;top:58px;left:-12%;opacity:0;animation:fly 18s linear infinite}.ph-day .birds,.ph-dawn .birds{opacity:1}
+@keyframes fly{to{transform:translate(520px,-20px)}}
+.tree{position:absolute;left:2%;bottom:34px;width:66px;height:100px;z-index:2;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite;filter:drop-shadow(0 6px 6px rgba(30,60,40,.2))}
+.ph-night .tree,.ph-dusk .tree{filter:brightness(.7) saturate(.9)}
+@keyframes sway{50%{transform:rotate(2.4deg)}}
+.ffs{position:absolute;inset:0;z-index:2;opacity:0;transition:opacity 1.3s;pointer-events:none}.ph-night .ffs{opacity:1}.ph-dusk .ffs{opacity:.5}
+.ffs i{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff7a8;box-shadow:0 0 8px 3px rgba(255,240,140,.8);animation:ff 6s ease-in-out infinite}
+@keyframes ff{0%,100%{transform:translate(0,0);opacity:.3}30%{transform:translate(14px,-10px);opacity:1}60%{transform:translate(-8px,-18px);opacity:.5}}
+.hab .flw{position:absolute;z-index:2;font-size:0;transform-origin:50% 100%;animation:sway 3.6s ease-in-out infinite}
+.lamp{position:absolute;right:8%;bottom:40px;z-index:2;width:6px;height:74px;background:linear-gradient(#8b95b8,#59628a);border-radius:3px;opacity:0;transition:opacity 1.2s}
+.lamp:before{content:"";position:absolute;left:50%;top:-12px;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:#fff3b0;box-shadow:0 0 30px 14px rgba(255,236,140,.6);animation:pls 3s ease-in-out infinite}
+.ph-night .lamp,.ph-dusk .lamp{opacity:1}
+.hab .hpet{z-index:3;bottom:16px}.ph-night .hpet .pet{filter:drop-shadow(0 8px 10px rgba(10,10,40,.45)) brightness(.93)}.hab .hfx{z-index:4}
+.hab .hnm,.hab .hph{z-index:5}
+.hph{position:absolute;right:12px;top:12px;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.78);font-size:12px;font-weight:700;box-shadow:var(--sh2)}
+.hab.m-sad .sk{filter:saturate(.55)}
+/* lemari skin */
+.wrs{position:relative;height:262px;border-radius:30px;overflow:hidden;display:grid;place-items:center;background:var(--wb);box-shadow:var(--sh);border:1px solid rgba(255,255,255,.7);transition:background .5s}
+.wrs:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0) 60%)}
+.wrw{position:absolute;left:0;right:0;top:46px;text-align:center;font-size:58px;font-weight:800;letter-spacing:-.02em;color:#fff;opacity:.28;white-space:nowrap;pointer-events:none}
+.wrr{position:absolute;bottom:20px;left:50%;width:200px;height:46px;margin-left:-100px;border-radius:50%;border:2px solid rgba(255,255,255,.65);background:radial-gradient(ellipse,rgba(255,255,255,.65),rgba(255,255,255,0) 70%);animation:ringp 3s ease-in-out infinite}
+@keyframes ringp{50%{transform:scale(1.08);opacity:.7}}
+.wrs .pet{position:relative;z-index:1;margin-top:14px;animation:flo 3.2s ease-in-out infinite;filter:drop-shadow(0 12px 12px rgba(40,30,80,.25))}
+.wrb{position:absolute;left:14px;top:12px;z-index:2}.wrl{position:absolute;right:14px;top:14px;z-index:2;padding:5px 11px;border-radius:99px;background:rgba(255,255,255,.85);font-size:12px;font-weight:800;box-shadow:var(--sh2)}
+.wrp{display:flex;gap:6px;justify-content:space-between;padding:16px 10px 8px;margin-top:12px;border-radius:99px;background:var(--sf);border:1px solid var(--ln);box-shadow:var(--sh2);overflow-x:auto;scrollbar-width:none}.wrp::-webkit-scrollbar{display:none}
+.wt{position:relative;flex:none;width:50px;height:50px;border-radius:50%;background:rgba(255,255,255,.7);border:2px solid transparent;display:grid;place-items:center;transition:transform .25s cubic-bezier(.3,1.5,.5,1),border-color .2s}
+.wt .pet{width:44px;height:44px}.wt.on{border-color:#ff5a4d;transform:scale(1.14);box-shadow:0 0 0 3px rgba(255,90,77,.18)}.wt.lock .pet{filter:grayscale(1);opacity:.5}.wt .lk{position:absolute;right:-2px;bottom:-2px;font-size:13px}
+.wtag{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-style:normal;font-size:9.5px;font-weight:800;color:#fff;background:#ff5a4d;padding:2px 7px;border-radius:8px;white-space:nowrap}
+.wrn{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 2px 4px}.wrn small{display:block;font-size:12px;color:var(--mu)}.wrn b{font-size:16px}.btn.sm:disabled{opacity:.55}
+/* kartu streak */
+.stt{display:flex;align-items:center;gap:16px}.stb{display:flex;flex-direction:column;align-items:center;gap:2px}.stb b{font-size:13px}
+.stg{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:8px}.stg>div{padding:8px 10px;border-radius:16px;background:var(--chip);border:1px solid var(--ln)}.stg b{display:block;font-size:18px}.stg small{font-size:11px;color:var(--mu)}
+.tiers{display:grid;grid-template-columns:repeat(6,1fr);gap:2px;margin-top:16px}.tr{text-align:center;transition:transform .3s cubic-bezier(.3,1.5,.5,1)}.tr .bdgs{margin:0 auto}.tr small{display:block;font-size:10px;color:var(--mu);margin-top:2px}.tr.cur{transform:translateY(-4px) scale(1.12)}
+.gbar{height:10px;border-radius:99px;background:var(--chip);border:1px solid var(--ln);overflow:hidden}.gbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#ffb347,#ff4fa3);transform-origin:left;animation:barg .8s cubic-bezier(.2,.8,.2,1) both;transition:width .6s}
+@keyframes barg{from{transform:scaleX(0)}}.lnk{color:#4f6fe8;font-weight:700;cursor:pointer}
+/* struktur */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.sl{padding:10px;border-radius:18px;background:var(--chip);border:1px solid var(--ln);display:flex;flex-direction:column;gap:6px;min-width:0}.sl small{font-size:11.5px;font-weight:700;color:var(--mu)}.sl.em{border-style:dashed;opacity:.7}
+.slp{display:flex;align-items:center;gap:8px;text-align:left;min-width:0}.slp b{font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rl.j-sekretaris{background:linear-gradient(135deg,#bfe6ff,#8fc3ff);color:#0f3d73;border-color:transparent}.rl.j-wasek{background:linear-gradient(135deg,#dcefff,#b3d4ff);color:#1c4d86;border-color:transparent}
+.rl.j-wabend{background:linear-gradient(135deg,#d9f7e8,#a8e6c8);color:#0c4a37;border-color:transparent}
+.rl.j-kebersihan,.rl.j-keamanan,.rl.j-olahraga,.rl.j-kesenian,.rl.j-akademik,.rl.j-kerohanian,.rl.j-humas,.rl.j-konsumsi{background:linear-gradient(135deg,#ffe8d6,#ffcfae);color:#7a3510;border-color:transparent}
+/* podium */
+button.pc{cursor:pointer}.pcr{position:relative;display:inline-block}.pcb{position:absolute;right:-9px;bottom:-4px}.pod .lb .bdgs{margin-left:2px}
+/* kartu event */
+.evt{display:block;width:100%;border-radius:30px;overflow:hidden;text-align:left;box-shadow:var(--sh);border:1px solid rgba(255,255,255,.75)}
+.evt-top{position:relative;height:210px;background:linear-gradient(180deg,#fff6d6,#cfe9ff 70%,#a9ccff);overflow:hidden}
+.ebl{position:absolute;border-radius:50%;background:rgba(255,255,255,.55)}.e1{width:140px;height:140px;left:-40px;top:-50px}.e2{width:110px;height:110px;right:-30px;top:20px}
+.evc{position:absolute;transform:translateX(-50%) rotate(var(--r));animation:bob 3.4s ease-in-out infinite;filter:drop-shadow(0 8px 8px rgba(40,60,120,.22))}.evc .pet{display:block}
+@keyframes bob{50%{transform:translateX(-50%) translateY(-7px) rotate(var(--r))}}
+.evb{padding:18px 20px 20px;background:linear-gradient(180deg,rgba(32,98,196,.96),rgba(18,62,140,.98));color:#fff;border-top:1px solid rgba(255,255,255,.45)}
+.evb h3{font-size:22px;font-weight:800;letter-spacing:-.01em}.evx{display:block;margin-top:8px;font-size:12.5px;font-weight:800;color:#ffe27a}.evb p{color:#d6e6ff;margin:8px 0 14px;font-size:14px}
+.evk{display:block;text-align:center;padding:13px;border-radius:99px;background:#fff;color:#1a4fa0;font-weight:800}
+/* papan game */
+.gm .gmh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.gm p{margin:8px 0 0}
+.board{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(6,1fr);gap:4px;aspect-ratio:1;padding:8px;border-radius:32px;background:rgba(255,255,255,.72);border:1px solid #fff;box-shadow:var(--sh);margin:14px 0}
+.tl{position:relative;border-radius:12px;display:grid;place-items:center;background:var(--tc);min-width:0;min-height:0;overflow:hidden}.tl.alt{filter:brightness(1.14)}
+.tA{--tc:#ffc94d}.tB{--tc:#4caf6a}.tC{--tc:#4f8df0}.tD{--tc:#a45cc9}
+.ti{font-size:clamp(14px,4.6vw,22px);transition:opacity .3s}.tl.has .ti{opacity:.28}
+.tk2{position:absolute;inset:0;display:flex;flex-wrap:wrap;align-items:center;align-content:center;justify-content:center}.tk2 em{position:absolute;right:2px;bottom:0;font-size:9px;font-style:normal;font-weight:800;color:#fff}
+.tok{display:block;border-radius:50%}.tok.me{box-shadow:0 0 0 2px #fff,0 0 0 4px #ff5a4d;z-index:2}.tok.hop{animation:hop .7s ease-out 2}
+@keyframes hop{35%{transform:translateY(-18px) scale(1.3)}70%{transform:translateY(0) scale(.9)}}
+.gcen{grid-area:2/2/6/6;position:relative;border-radius:20px;background:radial-gradient(circle at 50% 40%,#5bd17f,#2e9e57);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:8px;overflow:hidden;box-shadow:inset 0 2px 8px rgba(0,0,0,.18)}
+.gmo{color:#eaffef;font-weight:700;font-size:12px}
+.gcard{position:absolute;width:32px;height:42px;border-radius:8px;display:grid;place-items:center;font-size:15px;box-shadow:0 4px 8px rgba(0,0,0,.2)}
+.c1c{left:8px;top:8px;background:linear-gradient(145deg,#6db8ff,#2f6fe0);transform:rotate(-14deg)}.c2c{right:8px;bottom:8px;background:linear-gradient(145deg,#ffe27a,#ffb020);transform:rotate(12deg)}
+.die{width:58px;height:58px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);padding:8px;border-radius:14px;background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.25),inset 0 -3px 0 rgba(0,0,0,.08)}
+.die i{border-radius:50%;margin:auto;width:9px;height:9px}.die i.on{background:#2a2f45}.die.roll{animation:droll .45s linear infinite}
+@keyframes droll{50%{transform:rotate(180deg) scale(1.12)}100%{transform:rotate(360deg)}}
+.gbtn{padding:10px 16px;border-radius:99px;background:linear-gradient(145deg,#ffd86b,#ff9a3d);color:#5a2d00;font-weight:800;font-size:13px;box-shadow:0 8px 16px rgba(0,0,0,.22);animation:fabp 1.8s ease-in-out infinite}.gbtn:disabled{animation:none;opacity:.7}
+.gdone{padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.28);color:#fff;font-weight:700;font-size:12.5px}
+.gres{display:flex;gap:12px;align-items:center}.gri{font-size:30px}.gres p{margin:2px 0 0}
+.gl2{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--ln)}.gl2:last-child{border:0}.gl2>div{flex:1;min-width:0}.gl2 b{display:block}.gl2 small{font-size:12px;color:var(--mu)}
+/* animasi umum, buka tutup */
+.cb{display:grid;grid-template-rows:1fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1),opacity .3s}.cb.c{grid-template-rows:0fr;opacity:0}
+.ci{min-height:0;overflow:hidden}.cb.done .ci{overflow:visible}
+.sec>.sh[data-col]{cursor:pointer}.chev{font-style:normal;margin-left:8px;color:var(--mu);transition:transform .35s cubic-bezier(.3,1.5,.5,1);display:inline-block}.sh.colp .chev{transform:rotate(180deg)}.sh[data-col]{gap:8px}.sh[data-col]>span:first-child{flex:1}
+.md{position:relative}.mx{float:right;position:sticky;top:0;z-index:3;width:34px;height:34px;margin:-4px -4px 0 8px;border-radius:50%;background:var(--chip);border:1px solid var(--ln);font-size:14px;transition:transform .2s}.mx:active{transform:rotate(90deg) scale(.9)}
+@keyframes su{from{transform:translateY(70px) scale(.97);opacity:0}}
+.fab{animation:fabp 2.4s ease-in-out infinite}@keyframes fabp{50%{transform:scale(1.06)}}
+.bar button.on{animation:navp .45s cubic-bezier(.3,1.6,.5,1)}@keyframes navp{from{transform:scale(.8)}}
+.tile,.mt,.ec,.evt,.kr,.frow,.li{transition:transform .2s ease,box-shadow .2s}.tile:active,.mt:active,.ec:active,.evt:active,.li:active{transform:scale(.97)}
+.mt .mti{transition:transform .3s cubic-bezier(.3,1.6,.5,1)}.mt:active .mti{transform:rotate(-8deg) scale(1.1)}
+.st2 u,.lb .bt i{transform-origin:left;animation:barg .8s cubic-bezier(.2,.8,.2,1) both}
+.pgin .mgrid .mt{animation:rise .4s cubic-bezier(.2,.8,.2,1) both}.pgin .mgrid .mt:nth-child(2){animation-delay:.05s}.pgin .mgrid .mt:nth-child(3){animation-delay:.1s}.pgin .mgrid .mt:nth-child(n+4){animation-delay:.15s}
 </style>
 </head>
 <body>
@@ -722,62 +842,30 @@ try{const p=localStorage.getItem('klite');if(p==='1'||(p===null&&navigator.devic
 S.pet_log=[];S.kas_tx=[];S.v3=true;S.kasMon=TK.slice(0,7);
 LB.kas='Kas';G.kas=G.card;
 {const i=SUB.indexOf('kas');if(i>=0)SUB.splice(i,1);SUB.push('pick','qr','chat','person','chatroom')}
+const TH=[0,3,7,14,30,60],STN=['Baru menetas','Tumbuh','Aktif','Keren','Hebat','Legenda'],SKN=['Polos','Syal Zamrud','Bintang Emas','Jubah Safir','Mahkota Ametis','Aura Pelangi'];
+const TC=[['#eef1fa','#98a2bd'],['#6ee9b0','#16a36c'],['#ffe680','#ff9a1a'],['#94d3ff','#2d5cff'],['#d6a3ff','#6a3dff'],['#ffb347','#ff4fa3']],TN=['Perak','Zamrud','Emas','Safir','Ametis','Pelangi'];
 const CH=[
-{n:'Piyo',sp:'Anak ayam',c1:'#ffe680',c2:'#ffb92e',x:'chick',st:0,hy:0,t:'Ceria & penuh ide'},
-{n:'Mochi',sp:'Kelinci',c1:'#ffffff',c2:'#ffd6e8',x:'bunny',st:3,hy:2,t:'Lembut & penyayang'},
-{n:'Nyan',sp:'Kucing',c1:'#ffd8ad',c2:'#ff9d52',x:'cat',st:1,hy:0,t:'Mandiri & penasaran'},
-{n:'Bruno',sp:'Beruang',c1:'#e8bd96',c2:'#bb7b4c',x:'bear',st:2,hy:0,t:'Setia & hangat'},
-{n:'Pandi',sp:'Panda',c1:'#ffffff',c2:'#dfe8ec',x:'panda',st:3,hy:0,t:'Santai & damai'},
-{n:'Foxi',sp:'Rubah',c1:'#ffb98a',c2:'#ff7a3d',x:'fox',st:1,hy:0,t:'Cerdik & lincah'},
-{n:'Dino',sp:'Dino mungil',c1:'#b0f0be',c2:'#3fc57a',x:'dino',st:2,hy:-2,t:'Berani & kuat'},
-{n:'Uni',sp:'Unicorn',c1:'#efdcff',c2:'#b99bff',x:'uni',st:1,hy:0,t:'Kreatif & pemimpi'},
-{n:'Kero',sp:'Katak',c1:'#cdf59a',c2:'#6fcf4d',x:'frog',st:3,hy:-10,t:'Humoris & lincah'},
-{n:'Peng',sp:'Penguin',c1:'#86aadf',c2:'#3d5fa8',x:'peng',st:0,hy:-6,t:'Tenang & tertib'},
-{n:'Boo',sp:'Hantu lucu',c1:'#ffffff',c2:'#c8d6ff',x:'ghost',st:1,hy:-2,t:'Misterius & jahil'},
-{n:'Beebo',sp:'Lebah',c1:'#ffe97e',c2:'#ffc21f',x:'bee',st:2,hy:0,t:'Rajin & ceria'},
-{n:'Tunas',sp:'Tunas daun',c1:'#d3f8dd',c2:'#7bdc9a',x:'sprout',st:3,hy:2,t:'Sabar & terus tumbuh'},
-{n:'Awan',sp:'Awan',c1:'#f1f9ff',c2:'#a9d6ff',x:'cloud',st:0,hy:-6,t:'Santai & imajinatif'},
-{n:'Octi',sp:'Gurita',c1:'#ffc1e0',c2:'#ff6fb5',x:'octo',st:2,hy:-4,t:'Serbabisa & pintar'},
-{n:'Peachy',sp:'Persik',c1:'#ffdccf',c2:'#ff8f8f',x:'peach',st:1,hy:2,t:'Manis & ramah'}];
-const TH=[0,3,7,14,30,60],STN=['Baru menetas','Tumbuh','Aktif','Keren','Hebat','Legenda'];
-const SK=[
-[[],['scarf'],['scarf','tiara'],['scarf','tiara','cape'],['scarf','tiara','cape','wings'],['scarf','crown','cape','wings','aura']],
-[[],['bow'],['bow','star'],['witch','star'],['witch','cape','star'],['witch','cape','halo','aura']],
-[[],['band'],['band','medal'],['cap','medal'],['cap','medal','shades'],['crown','medal','shades','aura']],
-[[],['flower'],['flower','bell'],['flower','bell','bow'],['flower','bell','wings'],['halo','flower','bell','wings','aura']]];
-const ACC={
-scarf:['f','<path d="M27 80q23 9 46 0v8q-23 9-46 0z" fill="#ff6a7a"/><rect x="60" y="84" width="9" height="15" rx="4" fill="#ff4f66"/>'],
-cape:['b','<path d="M25 62q-9 28-7 38l32-9 32 9q2-10-7-38z" fill="#7a5cff"/><path d="M25 62q-9 28-7 38l8-2q-1-14 4-36z" fill="#6444e0"/>'],
-tiara:['h','<path d="M38 31l4-8 4 5 4-9 4 9 4-5 4 8z" fill="#ffd23f" stroke="#e0a800" stroke-width="1.2" stroke-linejoin="round"/>'],
-crown:['h','<path d="M32 32l2-15 10 9 6-13 6 13 10-9 2 15z" fill="#ffd23f" stroke="#e0a800" stroke-width="1.4" stroke-linejoin="round"/><circle cx="50" cy="18" r="2.2" fill="#ff4d6d"/><circle cx="36" cy="22" r="1.8" fill="#4da3ff"/><circle cx="64" cy="22" r="1.8" fill="#4da3ff"/>'],
-wings:['b','<path d="M22 56q-22-16-17 8 4 12 19 9z" fill="#fff" opacity=".92"/><path d="M78 56q22-16 17 8-4 12-19 9z" fill="#fff" opacity=".92"/>'],
-bow:['h','<g transform="translate(66 34)"><path d="M0 0l-12-7v14zM0 0l12-7v14z" fill="#ff6fb5"/><circle r="3.4" fill="#ff3d8f"/></g>'],
-star:['x','<path class="tw" d="M82 22l2.6 6 6.4.7-4.8 4.4 1.4 6.4-5.6-3.3-5.6 3.3 1.4-6.4-4.8-4.4 6.4-.7z" fill="#ffd23f"/>'],
-witch:['h','<ellipse cx="50" cy="32" rx="27" ry="6.5" fill="#6f55e0"/><path d="M33 32q18-5 34 0Q60 18 55 3q-5 6-9 2-8 12-13 27z" fill="#5b43c9"/><rect x="36" y="27" width="28" height="4" rx="2" fill="#ffd23f"/>'],
-halo:['h','<ellipse class="hl" cx="50" cy="17" rx="17" ry="4.5" fill="none" stroke="#ffd23f" stroke-width="3.2"/>'],
-band:['h','<path d="M27 40q23-14 46 0" fill="none" stroke="#ff4d4d" stroke-width="6" stroke-linecap="round"/><path d="M70 38l9-4-2 10z" fill="#ff4d4d"/>'],
-medal:['f','<path d="M42 78l-4 18 12-7 12 7-4-18z" fill="#4da3ff"/><circle cx="50" cy="92" r="7.5" fill="#ffd23f" stroke="#e0a800" stroke-width="1.4"/><path d="M50 87.5l1.5 3 3.3.4-2.4 2.2.7 3.2-3.1-1.7-3.1 1.7.7-3.2-2.4-2.2 3.3-.4z" fill="#fff"/>'],
-cap:['h','<path d="M30 40q20-20 40 0z" fill="#3b82f6"/><path d="M62 40h18q-3 5-18 5z" fill="#2563eb"/><circle cx="50" cy="26" r="2.4" fill="#fff"/>'],
-shades:['e','<rect x="29" y="50" width="19" height="12" rx="5.5" fill="#1f2433" opacity=".9"/><rect x="52" y="50" width="19" height="12" rx="5.5" fill="#1f2433" opacity=".9"/><path d="M48 54h4" stroke="#1f2433" stroke-width="2"/>'],
-flower:['h','<circle cx="33" cy="36" r="4.5" fill="#ff8fb0"/><circle cx="33" cy="36" r="1.7" fill="#ffe27a"/><circle cx="43" cy="30" r="4.5" fill="#ffb86b"/><circle cx="43" cy="30" r="1.7" fill="#fff"/><circle cx="57" cy="30" r="4.5" fill="#b48cff"/><circle cx="57" cy="30" r="1.7" fill="#ffe27a"/><circle cx="67" cy="36" r="4.5" fill="#7fd6ff"/><circle cx="67" cy="36" r="1.7" fill="#fff"/>'],
-bell:['f','<path d="M30 80q20 8 40 0" fill="none" stroke="#ff6a7a" stroke-width="5" stroke-linecap="round"/><circle cx="50" cy="87" r="4.8" fill="#ffd23f" stroke="#e0a800"/>']};
-const SPX={
-chick:()=>({b:'<ellipse cx="16" cy="62" rx="8" ry="11" fill="%2" transform="rotate(-18 16 62)"/><ellipse cx="84" cy="62" rx="8" ry="11" fill="%2" transform="rotate(18 84 62)"/>',o:'<path d="M45 30q3-11 8-2M52 29q2-9 7-6" stroke="%2" stroke-width="3" fill="none" stroke-linecap="round"/>',f:'<path d="M44 59h12l-6 8z" fill="#ff9d2e"/>',nm:1}),
-bunny:m=>{const d=(m==='sad'||m==='sleep')?30:0;return{b:`<g transform="rotate(${-8-d} 38 46)"><ellipse cx="36" cy="20" rx="8.5" ry="21" fill="%1"/><ellipse cx="36" cy="22" rx="4.4" ry="15" fill="#ffb3cd"/></g><g transform="rotate(${8+d} 62 46)"><ellipse cx="64" cy="20" rx="8.5" ry="21" fill="%1"/><ellipse cx="64" cy="22" rx="4.4" ry="15" fill="#ffb3cd"/></g>`,f:'<path d="M47 61q3 3 6 0z" fill="#ff8fb0"/>'}},
-cat:()=>({b:'<path d="M17 48L21 13l24 17z" fill="%2"/><path d="M83 48L79 13 55 30z" fill="%2"/><path d="M23 38l2-14 11 8z" fill="#ffb3c4"/><path d="M77 38l-2-14-11 8z" fill="#ffb3c4"/>',o:'<path d="M44 33v7M50 32v8M56 33v7" stroke="%2" stroke-width="2.6" stroke-linecap="round"/>',f:'<path d="M47 61h6l-3 3.4z" fill="#ff8f9f"/><path d="M15 64h14M16 71l13-3M85 64H71M84 71l-13-3" stroke="#6b4a3a" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>'}),
-bear:()=>({b:'<circle cx="23" cy="34" r="11" fill="%2"/><circle cx="77" cy="34" r="11" fill="%2"/><circle cx="23" cy="34" r="5.5" fill="#f7d2b5"/><circle cx="77" cy="34" r="5.5" fill="#f7d2b5"/>',o:'<ellipse cx="50" cy="66" rx="13" ry="9" fill="#fbe7d2"/>',f:'<ellipse cx="50" cy="62" rx="4.2" ry="3" fill="#5b3a2a"/>'}),
-panda:()=>({b:'<circle cx="23" cy="34" r="11" fill="#2b2f3a"/><circle cx="77" cy="34" r="11" fill="#2b2f3a"/><ellipse cx="14" cy="64" rx="8" ry="12" fill="#2b2f3a"/><ellipse cx="86" cy="64" rx="8" ry="12" fill="#2b2f3a"/>',o:'<ellipse cx="38" cy="56" rx="8.5" ry="10.5" fill="#2b2f3a" transform="rotate(-18 38 56)"/><ellipse cx="62" cy="56" rx="8.5" ry="10.5" fill="#2b2f3a" transform="rotate(18 62 56)"/>',f:'<ellipse cx="50" cy="63" rx="4" ry="3" fill="#2b2f3a"/>',ec:'#fff'}),
-fox:()=>({b:'<path d="M16 48L22 11l24 20z" fill="%2"/><path d="M84 48L78 11 54 31z" fill="%2"/><path d="M23 38l2-13 10 8z" fill="#6b2d12"/><path d="M77 38l-2-13-10 8z" fill="#6b2d12"/>',o:'<path d="M15 64q17-5 35 5 18-10 35-5-6 22-35 24-29-2-35-24z" fill="#fff"/>',f:'<ellipse cx="50" cy="62" rx="4" ry="3" fill="#3a2216"/>'}),
-dino:()=>({b:'<path d="M82 74q15 1 17 15-14-2-23-7z" fill="%2"/>',o:'<ellipse cx="50" cy="78" rx="18" ry="11" fill="#effcdd"/><path d="M35 33l4-12 5 9 6-13 6 13 5-9 4 12z" fill="%2"/>',f:'<circle cx="46" cy="61" r="1.3" fill="#2b6b43"/><circle cx="54" cy="61" r="1.3" fill="#2b6b43"/>'}),
-uni:()=>({b:'<circle cx="21" cy="46" r="10" fill="#ffb3e6"/><circle cx="24" cy="59" r="8" fill="#b9e8ff"/><path d="M28 38L30 20l14 10z" fill="%2"/><path d="M72 38L70 20 56 30z" fill="%2"/>',o:'<path d="M44 32L50 5l6 27z" fill="#ffd86b" stroke="#f0b429" stroke-width="1.2" stroke-linejoin="round"/><path d="M46 24l8-2M45 29l10-2" stroke="#fff" stroke-width="1.4" opacity=".8"/>',f:'<path d="M47 62q3 2.4 6 0" fill="none" stroke="#c07bd0" stroke-width="1.4"/>'}),
-frog:()=>({b:'<circle cx="31" cy="36" r="13" fill="%1"/><circle cx="69" cy="36" r="13" fill="%1"/>',body:'<ellipse cx="50" cy="63" rx="38" ry="27" fill="%G"/>',o:'<circle cx="31" cy="36" r="9.5" fill="#fff"/><circle cx="69" cy="36" r="9.5" fill="#fff"/>',ey:36,ex:[31,69],my:26,ch:1}),
-peng:()=>({b:'<ellipse cx="15" cy="64" rx="7" ry="15" fill="%2" transform="rotate(14 15 64)"/><ellipse cx="85" cy="64" rx="7" ry="15" fill="%2" transform="rotate(-14 85 64)"/><ellipse cx="38" cy="95" rx="9" ry="4" fill="#ffb02e"/><ellipse cx="62" cy="95" rx="9" ry="4" fill="#ffb02e"/>',body:'<ellipse cx="50" cy="58" rx="31" ry="36" fill="%G"/>',o:'<ellipse cx="50" cy="68" rx="21" ry="24" fill="#f4f7ff"/>',f:'<path d="M44 58h12l-6 8z" fill="#ffb02e"/>',nm:1,ey:50}),
-ghost:()=>({body:'<path d="M15 90V58Q15 24 50 24T85 58V90q-7-8-14 0t-14 0-14 0-14 0-14 0z" fill="%G"/>',b:'<ellipse cx="12" cy="68" rx="6" ry="8" fill="%1"/><ellipse cx="88" cy="68" rx="6" ry="8" fill="%1"/>'}),
-bee:()=>({b:'<ellipse cx="33" cy="32" rx="13" ry="8" fill="#e6f6ff" opacity=".9" transform="rotate(-25 33 32)"/><ellipse cx="67" cy="32" rx="13" ry="8" fill="#e6f6ff" opacity=".9" transform="rotate(25 67 32)"/><path d="M42 32q-4-12-9-16M58 32q4-12 9-16" stroke="#4a3a1a" stroke-width="2.2" fill="none" stroke-linecap="round"/><circle cx="33" cy="15" r="3" fill="#4a3a1a"/><circle cx="67" cy="15" r="3" fill="#4a3a1a"/>',o:'<path d="M17 75q33 9 66 0v6q-33 9-66 0z" fill="#3a2d1a" opacity=".82"/><path d="M24 85q26 6 52 0v4q-26 6-52 0z" fill="#3a2d1a" opacity=".82"/>'}),
-sprout:()=>({o:'<path d="M50 30q-3-14 9-20 5 12-9 20z" fill="#5bd17f"/><path d="M50 30q-11-9-19-4 6 11 19 4z" fill="#3bbf6a"/>'}),
-cloud:()=>({body:'<circle cx="31" cy="58" r="20" fill="%G"/><circle cx="52" cy="45" r="24" fill="%G"/><circle cx="73" cy="59" r="19" fill="%G"/><rect x="25" y="58" width="54" height="27" rx="13" fill="%G"/>'}),
-octo:()=>({b:'<path d="M20 68q-9 15 4 21 6-6 2-19zM38 76q-5 16 8 18 4-8-2-18zM62 76q5 16-8 18-4-8 2-18zM80 68q9 15-4 21-6-6-2-19z" fill="%2"/>',body:'<ellipse cx="50" cy="50" rx="34" ry="32" fill="%G"/>',o:'<circle cx="30" cy="33" r="3" fill="%2" opacity=".5"/><circle cx="70" cy="34" r="2.4" fill="%2" opacity=".5"/><circle cx="62" cy="26" r="2" fill="%2" opacity=".5"/>',ey:50}),
-peach:()=>({body:'<path d="M50 91C22 91 12 71 14 55 16 37 32 29 50 35 68 29 84 37 86 55 88 71 78 91 50 91z" fill="%G"/>',o:'<path d="M50 35q-4 22 0 54" stroke="%2" opacity=".4" fill="none" stroke-width="2"/><path d="M50 35q-2-15 12-17-2 13-12 17z" fill="#5bd17f"/>'})};
+{n:'Bibi',sp:'Kelinci biru',t:'Lembut & setia',b:['#9ccdf5','#4f8fd8'],w:'#fff',f:'#4f8fd8',e:['bunny','#6aa7e6','#e8f4ff']},
+{n:'Ori',sp:'Hiu mungil',t:'Tenang & cerdik',b:['#c3cfe0','#8393ad'],w:'#fff',f:'#8393ad',e:['fin','#8393ad','#c9d4e6'],mk:'#fff'},
+{n:'Pupu',sp:'Hantu tunas',t:'Bijak & ceria',b:['#fff3c8','#f0d27e'],w:'#fff',f:'#f0d27e',tp:['leaf'],mk:'#fffaf0',bk:1},
+{n:'Bulbo',sp:'Bola biru',t:'Santai & ramah',b:['#8fd0f2','#3f93cf'],w:'#fff',f:'#3f93cf',sh:'round',ck:'#ff9ec0',pt:'<circle cx="30" cy="38" r="5" fill="#cdeeff" opacity=".8"/><circle cx="52" cy="30" r="4" fill="#cdeeff" opacity=".8"/><circle cx="70" cy="40" r="6" fill="#cdeeff" opacity=".8"/><circle cx="18" cy="58" r="3.4" fill="#cdeeff" opacity=".8"/><circle cx="84" cy="60" r="3.4" fill="#cdeeff" opacity=".8"/>'},
+{n:'Jamo',sp:'Jamur emas',t:'Hangat & periang',b:['#fff0b8','#f6cb62'],w:'#fffaf0',f:'#f3b64a',e:['round','#f3b64a','#ffe9b4'],tp:['spikes','#f3a43a']},
+{n:'Hami',sp:'Hamster',t:'Lincah & manis',b:['#fffaf2','#f4e6d4'],w:'#fff',f:'#ffb7a0',e:['round','#f5a04a','#ffd3a3'],tp:['tuft','#fff'],ck:'#ff9ec0',pt:'<ellipse cx="20" cy="40" rx="18" ry="22" fill="#f5a04a"/><ellipse cx="80" cy="30" rx="14" ry="12" fill="#f5a04a"/>'},
+{n:'Uni',sp:'Unicorn mungil',t:'Kreatif & pemimpi',b:['#ffffff','#f1e4ff'],w:'#fff',f:'#cf8df0',e:['round','#e2b5f8','#fff'],tp:['horn','#fff'],pt:'<ellipse cx="16" cy="52" rx="14" ry="22" fill="#e3b0f7"/><ellipse cx="86" cy="70" rx="12" ry="18" fill="#f3a7e0"/>'},
+{n:'Robi',sp:'Robot putih',t:'Rapi & pintar',b:['#ffffff','#d8e4f5'],w:'#eaf3ff',f:'#9fb9e0',e:['fin','#e6efff','#6ea8f0'],tp:['antenna','#6ea8f0'],vz:['#3d82e0','#9be7ff'],ya:58},
+{n:'Marmo',sp:'Marmut',t:'Ramah & penasaran',b:['#f6b56a','#dd8a3a'],w:'#fff',f:'#e9a25a',e:['round','#6b4529','#c98d5d'],tp:['tuft','#fff'],pt:'<ellipse cx="18" cy="42" rx="17" ry="24" fill="#3b302e"/>'},
+{n:'Redo',sp:'Jamur merah',t:'Misterius & berani',b:['#ffffff','#efe6ee'],w:'#fff',f:'#e9c6cf',cap:'#d8344a',ey:'#3b6fe0',ya:60},
+{n:'Bolt',sp:'Robot biru',t:'Gesit & setia',b:['#ffffff','#dbe8ff'],w:'#fff',f:'#4a86e8',tp:['spikes','#4a86e8'],vz:['#222a48','#69e6ff'],ya:58,pt:'<rect x="0" y="80" width="100" height="30" fill="#4a86e8"/>'},
+{n:'Kero',sp:'Katak',t:'Humoris & lincah',b:['#a6e07a','#55ae43'],w:'#eaf9c9',f:'#55ae43',sh:'round',ck:'#ffb56b',pt:'<circle cx="26" cy="34" r="7" fill="#6cbf4f"/><circle cx="44" cy="26" r="5" fill="#6cbf4f"/><circle cx="64" cy="32" r="7" fill="#6cbf4f"/><circle cx="78" cy="46" r="4.5" fill="#6cbf4f"/><circle cx="14" cy="54" r="4" fill="#6cbf4f"/>'},
+{n:'Lyra',sp:'Kucing zamrud',t:'Elegan & manja',b:['#fbfff6','#dcf1cc'],w:'#fff',f:'#c8aef3',e:['point','#dcf1cc','#c8aef3'],mk:'#fff',pt:'<path d="M6 46Q30 36 24 66 8 62 6 46zM94 46Q70 36 76 66 92 62 94 46z" fill="#c6a9f2" opacity=".85"/>'},
+{n:'Lobi',sp:'Lobak merah muda',t:'Manis & ceria',b:['#ffffff','#ffe1ec'],w:'#fff',f:'#ff7fb0',tp:['leaf'],ck:'#ff7fb0',ms:'cat',pt:'<rect x="0" y="36" width="100" height="8" fill="#ff7fb0" opacity=".85"/><rect x="0" y="76" width="100" height="8" fill="#ff7fb0" opacity=".85"/>'},
+{n:'Kumo',sp:'Kelelawar emas',t:'Tangguh & jahil',b:['#4a4566','#25223d'],w:'#f8c540',f:'#f2b52b',e:['horn','#f6c63a','#f6c63a'],ey:'#6cecff',ov:'<path d="M32 70h36M30 78h40M32 86h36" stroke="#3a2f2f" stroke-width="2.4" stroke-linecap="round" opacity=".55"/>'},
+{n:'Pika',sp:'Tikus listrik',t:'Energik & berani',b:['#ffe073','#f5a928'],w:'#fff',f:'#e9a21f',e:['point','#f5a928','#5b3a1b'],ck:'#ff6f5e'},
+{n:'Pipi',sp:'Babi mungil',t:'Lembut & periang',b:['#ffc1d6','#f08cb2'],w:'#fff',f:'#f08cb2',e:['fin','#ff9fc0','#ffd9e7'],ns:'pig',pt:'<rect x="0" y="40" width="100" height="7" fill="#ffd9e7" opacity=".7"/><rect x="0" y="82" width="100" height="7" fill="#ffd9e7" opacity=".7"/>'},
+{n:'Moo',sp:'Sapi mungil',t:'Setia & santai',b:['#d29a65','#9d6338'],w:'#fff',f:'#9d6338',e:['hornear','#9d6338','#f3e0c4']},
+{n:'Draco',sp:'Naga ungu',t:'Gagah & pelindung',b:['#8b64d6','#4b2f95'],w:'#eadfff',f:'#f2ecff',e:['wing','#6a46c0','#b99af0'],tp:['tuft','#fff'],ey:'#ff4d62'},
+{n:'Nagi',sp:'Naga hijau',t:'Tenang & bersahabat',b:['#ffffff','#e6f7ed'],w:'#fff',f:'#52cf86',e:['hornear','#52cf86','#d9f6e4'],pt:'<ellipse cx="12" cy="60" rx="14" ry="28" fill="#6fdc9b"/><ellipse cx="90" cy="72" rx="14" ry="24" fill="#6fdc9b"/>'}
+];
 const HT='M0 5c-7-4.5-6-10.5-2-10.5 1.4 0 2 1.2 2 1.2s.6-1.2 2-1.2c4 0 5 6-2 10.5z';
 function eyesSvg(m,ex,ey,col){col=col||'#2b2b3a';
 if(m==='sleep')return `<path d="M${ex[0]-5} ${ey}q5 5 10 0M${ex[1]-5} ${ey}q5 5 10 0" stroke="${col==='#fff'?'#fff':'#2b2b3a'}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`;
@@ -796,12 +884,41 @@ m==='happy'?'<path class="tw" d="M82 22l2 4.5 4.8.5-3.6 3.2 1 4.8-4.2-2.4-4.2 2.
 m==='sad'?`<path class="tear" d="M31 ${ey+7}q-3.6 5.2 0 7.4 3.6-2.2 0-7.4z" fill="#8ad4ff"/><path d="M76 34q-3 4 0 6 3-2 0-6z" fill="#8ad4ff" opacity=".8"/>`:
 '<text class="zz" x="70" y="30" font-size="13" font-weight="800" fill="#7a86b8">z</text><text class="zz" style="animation-delay:.9s" x="79" y="19" font-size="9" font-weight="800" fill="#7a86b8">z</text>';
 let PID=0;
+const BODY={bean:'M50 16C80 16 92 40 92 62C92 82 76 95 50 95C24 95 8 82 8 62C8 40 20 16 50 16z',round:'M50 26C82 24 96 46 96 66C96 85 77 95 50 95C23 95 4 85 4 66C4 46 18 24 50 26z'};
+const EAR={
+bunny:(o,i)=>`<g transform="rotate(-9 36 40)"><ellipse cx="34" cy="24" rx="9" ry="20" fill="${o}"/><ellipse cx="34" cy="26" rx="4.4" ry="14" fill="${i}"/></g><g transform="rotate(9 64 40)"><ellipse cx="66" cy="24" rx="9" ry="20" fill="${o}"/><ellipse cx="66" cy="26" rx="4.4" ry="14" fill="${i}"/></g>`,
+point:(o,i)=>`<path d="M16 46L20 8l28 16z" fill="${o}"/><path d="M84 46L80 8 52 24z" fill="${o}"/><path d="M23 34l2-14 11 7z" fill="${i}"/><path d="M77 34l-2-14-11 7z" fill="${i}"/>`,
+round:(o,i)=>`<circle cx="22" cy="30" r="11" fill="${o}"/><circle cx="78" cy="30" r="11" fill="${o}"/><circle cx="22" cy="30" r="5.5" fill="${i}"/><circle cx="78" cy="30" r="5.5" fill="${i}"/>`,
+fin:(o,i)=>`<g><path d="M16 60Q-8 46 4 22Q20 28 28 46z" fill="${o}"/><path d="M13 50Q4 40 8 29Q17 33 22 44z" fill="${i}"/></g><g transform="translate(100 0) scale(-1 1)"><path d="M16 60Q-8 46 4 22Q20 28 28 46z" fill="${o}"/><path d="M13 50Q4 40 8 29Q17 33 22 44z" fill="${i}"/></g>`,
+hornear:(o,i)=>`<path d="M28 30Q20 12 30 6Q34 18 38 28z" fill="${i}"/><path d="M72 30Q80 12 70 6Q66 18 62 28z" fill="${i}"/><ellipse cx="12" cy="42" rx="12" ry="7" fill="${o}" transform="rotate(-25 12 42)"/><ellipse cx="88" cy="42" rx="12" ry="7" fill="${o}" transform="rotate(25 88 42)"/>`,
+horn:(o)=>`<path d="M26 34Q16 14 30 6Q34 22 40 30z" fill="${o}"/><path d="M74 34Q84 14 70 6Q66 22 60 30z" fill="${o}"/>`,
+wing:(o,i)=>`<path d="M22 66Q-12 62 -8 22Q8 34 16 38Q8 20 18 8Q34 28 32 52z" fill="${o}"/><path d="M18 54Q0 50 0 32Q10 40 18 44z" fill="${i}" opacity=".8"/><g transform="translate(100 0) scale(-1 1)"><path d="M22 66Q-12 62 -8 22Q8 34 16 38Q8 20 18 8Q34 28 32 52z" fill="${o}"/><path d="M18 54Q0 50 0 32Q10 40 18 44z" fill="${i}" opacity=".8"/></g>`};
+const TOP={
+leaf:()=>`<path d="M50 24Q47 12 50 6" stroke="#4fb36a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M50 10Q60 0 72 6Q64 18 50 10z" fill="#58d17f"/><path d="M50 12Q38 2 28 8Q36 18 50 12z" fill="#3fb866"/>`,
+tuft:c=>`<path d="M43 26Q40 8 50 5Q50 16 49 26zM50 26Q54 6 63 10Q57 19 55 26z" fill="${c}"/>`,
+horn:c=>`<path d="M43 26L50 2l7 24z" fill="${c}" stroke="#e6d4ff" stroke-width="1.2" stroke-linejoin="round"/><path d="M46 18l9-2M45 23l11-2" stroke="#d6b8ff" stroke-width="1.4"/>`,
+spikes:c=>`<path d="M26 30l3-15 9 11 6-15 6 15 9-11 3 15z" fill="${c}"/>`,
+antenna:c=>`<path d="M50 24Q50 10 57 8Q63 8 62 14" stroke="#9aa8c4" fill="none" stroke-width="2.4" stroke-linecap="round"/><circle cx="62" cy="14" r="2.8" fill="${c}"/>`};
+function star5(x,y,r){let p='';for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,q=i%2?r*.45:r;p+=(i?'L':'M')+(x+q*Math.cos(a)).toFixed(1)+' '+(y+q*Math.sin(a)).toFixed(1)}return p+'z'}
 function petSvg(ci,o){o=o||{};const c=CH[ci];if(!c)return eggSvg(o.size);
-const st=o.stage||0,m=o.mood||'happy',sz=o.size||80,id='p'+(++PID),sp=SPX[c.x](m),ls=SK[c.st][st]||[],has=k=>ls.includes(k);
-const rep=t=>(t||'').replace(/%1/g,c.c1).replace(/%2/g,c.c2).replace(/%G/g,`url(#${id})`);
-const ey=sp.ey||56,ex=sp.ex||[39,61],my=ey+(sp.my===undefined?10:sp.my),acc=l=>ls.map(k=>ACC[k]).filter(a=>a&&a[0]===l).map(a=>a[1]).join('');
-const ck=m==='love'?.75:(m==='sad'||m==='sleep')?.22:.5;
-return `<svg class="pet ${m}${o.anim?' anim':''}" viewBox="0 0 100 100" width="${sz}" height="${sz}" aria-hidden="true"><defs><radialGradient id="${id}" gradientUnits="userSpaceOnUse" cx="34" cy="34" r="74"><stop offset="0" stop-color="${c.c1}"/><stop offset="1" stop-color="${c.c2}"/></radialGradient>${has('aura')?`<radialGradient id="${id}a"><stop offset=".55" stop-color="#ffe27a" stop-opacity=".55"/><stop offset="1" stop-color="#ffe27a" stop-opacity="0"/></radialGradient>`:''}</defs>${has('aura')?`<circle cx="50" cy="56" r="49" fill="url(#${id}a)"/><path class="tw" d="M10 30l1.6 3.6 3.8.4-2.8 2.6.8 3.8-3.4-2-3.4 2 .8-3.8-2.8-2.6 3.8-.4z" fill="#ffd23f"/>`:''}<g transform="translate(50 100) scale(${(1+st*.025).toFixed(3)}) translate(-50 -100)"><g class="pbd">${acc('b')}${rep(sp.b)}${rep(sp.body||'<ellipse cx="50" cy="60" rx="35" ry="31" fill="%G"/>')}<ellipse cx="37" cy="${ey-14}" rx="13" ry="7" fill="#fff" opacity=".3" transform="rotate(-24 37 ${ey-14})"/>${rep(sp.o)}<ellipse cx="${ex[0]-9}" cy="${ey+9}" rx="6" ry="4" fill="#ff8fa8" opacity="${ck}"/><ellipse cx="${ex[1]+9}" cy="${ey+9}" rx="6" ry="4" fill="#ff8fa8" opacity="${ck}"/>${eyesSvg(m,ex,ey,sp.ec)}${sp.nm?'':mouthSvg(m,my)}${rep(sp.f)}${acc('e')}<g transform="translate(0 ${c.hy})">${acc('h')}</g>${acc('f')}</g>${acc('x')}${fxSvg(m,ey)}</g></svg>`}
+const st=Math.max(0,Math.min(5,o.stage||0)),m=o.mood||'happy',sz=o.size||80,id='p'+(++PID),bd=BODY[c.sh||'bean'],tc=TC[st],T=`url(#${id}t)`;
+const ey=c.ya||(c.sh==='round'?58:56),ex=[39,61],ck=m==='love'?.75:(m==='sad'||m==='sleep')?.22:.5,ec=c.vz?(m==='sleep'?'#fff':c.vz[1]):(c.ey||'#2b2b3a'),cc=c.ck||'#ff8fb0';
+const ear=c.e?EAR[c.e[0]](c.e[1],c.e[2]):'',top=c.tp?TOP[c.tp[0]](c.tp[1]):'';
+const face=(c.mk?`<ellipse cx="50" cy="56" rx="29" ry="19" fill="${c.mk}" opacity=".92"/>`:'')
++(c.vz?`<rect x="15" y="${ey-11}" width="70" height="22" rx="11" fill="${c.vz[0]}"/><path d="M24 ${ey-6}h30" stroke="#fff" stroke-opacity=".35" stroke-width="2.4" stroke-linecap="round"/>`:`<ellipse cx="29" cy="${ey+8}" rx="5.5" ry="3.4" fill="${cc}" opacity="${ck}"/><ellipse cx="71" cy="${ey+8}" rx="5.5" ry="3.4" fill="${cc}" opacity="${ck}"/>`)
++(c.ey&&!c.vz?ex.map(x=>`<circle cx="${x}" cy="${ey}" r="8" fill="${c.ey}" opacity=".22"/>`).join(''):'')
++eyesSvg(m,ex,ey,ec)
++(c.bk?'<path d="M46 63h8l-4 6z" fill="#ffa63a"/>':c.ns==='pig'?'<ellipse cx="50" cy="66" rx="9" ry="6" fill="#ffd2e1"/><circle cx="47" cy="66" r="1.4" fill="#d46a95"/><circle cx="53" cy="66" r="1.4" fill="#d46a95"/>':c.vz?'':c.ms==='cat'?`<path d="M44 ${ey+9}q3 4 6 0q3 4 6 0" fill="none" stroke="#2b2b3a" stroke-width="2" stroke-linecap="round"/>`:mouthSvg(m,ey+10));
+const scarf=`<path d="M0 72Q50 86 100 72L100 82Q50 96 0 82z" fill="${T}"/><path d="M0 72Q50 86 100 72" stroke="#fff" stroke-opacity=".6" stroke-width="1.6" fill="none"/><rect x="60" y="84" width="11" height="14" rx="5" fill="${T}" stroke="#fff" stroke-opacity=".5"/>`;
+const cap=c.cap?`<path d="M0 44Q0 4 50 4T100 44q-6 8-12.5 0-6.5 8-12.5 0-6.5 8-12.5 0-6.5 8-12.5 0-6.5 8-12.5 0-6.5 8-12.5 0z" fill="${c.cap}"/><ellipse cx="34" cy="20" rx="14" ry="6" fill="#fff" opacity=".3" transform="rotate(-20 34 20)"/>`:'';
+return `<svg class="pet ${m}${o.anim?' anim':''}" viewBox="0 0 100 100" width="${sz}" height="${sz}" aria-hidden="true"><defs><radialGradient id="${id}" gradientUnits="userSpaceOnUse" cx="34" cy="30" r="80"><stop offset="0" stop-color="${c.b[0]}"/><stop offset="1" stop-color="${c.b[1]}"/></radialGradient><linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="${c.w||'#fff'}"/></linearGradient><linearGradient id="${id}t" x1="0" y1="0" x2="1" y2="1">${st===5?'<stop offset="0" stop-color="#ffc247"/><stop offset=".55" stop-color="#ff4fa3"/><stop offset="1" stop-color="#8a5cff"/>':`<stop offset="0" stop-color="${tc[0]}"/><stop offset="1" stop-color="${tc[1]}"/>`}</linearGradient><radialGradient id="${id}a"><stop offset=".5" stop-color="#ffd86b" stop-opacity=".55"/><stop offset=".8" stop-color="#ff8fc8" stop-opacity=".3"/><stop offset="1" stop-color="#ff8fc8" stop-opacity="0"/></radialGradient><clipPath id="${id}c"><path d="${bd}"/></clipPath></defs>`
++(st>=5?`<circle class="au" cx="50" cy="56" r="50" fill="url(#${id}a)"/>`:'')
++(st>=3?`<path d="M26 56Q4 84 8 98L50 92 92 98Q96 84 74 56z" fill="${T}" opacity=".95"/><path d="M8 98Q4 84 26 56L32 58Q16 84 18 96z" fill="#000" opacity=".08"/>`:'')
++`<g transform="translate(8 15) scale(.82)"><g class="pbd"><ellipse cx="50" cy="97" rx="32" ry="4" fill="#4a5a9a" opacity=".16"/>${ear}${top}<ellipse cx="33" cy="93" rx="11" ry="5" fill="${c.f}"/><ellipse cx="67" cy="93" rx="11" ry="5" fill="${c.f}"/><ellipse cx="9" cy="74" rx="5.5" ry="8" fill="${c.b[1]}" transform="rotate(14 9 74)"/><ellipse cx="91" cy="74" rx="5.5" ry="8" fill="${c.b[1]}" transform="rotate(-14 91 74)"/><path d="${bd}" fill="url(#${id})" stroke="#fff" stroke-opacity=".8" stroke-width="1.6"/><g clip-path="url(#${id}c)">${c.pt||''}<ellipse cx="50" cy="73" rx="23" ry="19" fill="url(#${id}w)" opacity=".96"/>${c.ov||''}${st>=1?scarf:''}${cap}</g>${face}${fxSvg(m,ey)}<ellipse cx="33" cy="34" rx="14" ry="7" fill="#fff" opacity=".38" transform="rotate(-30 33 34)"/><circle cx="22" cy="48" r="2.4" fill="#fff" opacity=".55"/></g></g>`
++(st>=2?`<path class="tw" d="${star5(11,24,5.5)}" fill="${T}" stroke="#fff" stroke-width=".8"/><path class="tw" style="animation-delay:.8s" d="${star5(89,24,5.5)}" fill="${T}" stroke="#fff" stroke-width=".8"/>`:'')
++(st>=4?`<g class="hl"><path d="M37 11l1.6-8 5.4 4.4 6-6.4 6 6.4 5.4-4.4L63 11z" fill="${T}" stroke="#fff" stroke-width=".9" stroke-linejoin="round"/><rect x="37" y="10" width="26" height="3.4" rx="1.7" fill="${T}" stroke="#fff" stroke-width=".7"/><circle cx="50" cy="6" r="1.5" fill="#fff"/></g>`:'')
++(st>=5?`<path class="tw" style="animation-delay:.4s" d="${star5(22,8,3.4)}" fill="#fff"/><path class="tw" style="animation-delay:1.1s" d="${star5(80,9,3.4)}" fill="#fff"/><path class="tw" style="animation-delay:1.6s" d="${star5(95,58,3)}" fill="#fff"/><path class="tw" d="${star5(5,60,3)}" fill="#fff"/>`:'')
++`</svg>`}
 function eggSvg(sz){return `<svg class="pet" viewBox="0 0 100 100" width="${sz||80}" height="${sz||80}" aria-hidden="true"><ellipse cx="50" cy="58" rx="28" ry="36" fill="#fff6e0" stroke="#ffd9a0" stroke-width="3"/><circle cx="40" cy="48" r="5" fill="#ffd9a0"/><circle cx="58" cy="66" r="6" fill="#ffd9a0"/><circle cx="52" cy="40" r="3" fill="#ffd9a0"/></svg>`}
 const todayK=()=>key(new Date());
 function petState(uid){
@@ -814,9 +931,9 @@ const last=arr.length?arr[arr.length-1]:null,away=last?Math.round((t0-new Date(l
 const m=S.members.find(x=>x.user_id===uid)||{},at=stat(uid),LV=['sleep','sad','ok','happy','love'];
 let lv=away>=5?0:away>=3?1:cur>=14?4:(away===0||cur>=3)?3:2;
 if(at.past>=3){if(at.pct<50)lv=Math.max(0,lv-1);else if(at.pct>=90)lv=Math.min(4,lv+1)}
-const un=Math.max(TH.reduce((s,t,i)=>best>=t?i:s,0),m.pet_gift||0,m.role==='admin'?5:0),skin=Math.min(m.pet_skin==null?un:m.pet_skin,un);
+const gb=gbOf(uid),un=Math.max(TH.reduce((s,t,i)=>(best+gb)>=t?i:s,0),m.pet_gift||0,m.role==='admin'?5:0),skin=Math.min(m.pet_skin==null?un:m.pet_skin,un);
 const vit=Math.max(5,Math.min(100,Math.round(100-away*14-(at.past>=3?(100-at.pct)*.25:0)))),love=Math.min(100,Math.round(cur*6+(at.pct||0)*.4));
-return{cur,best,away,mood:LV[lv],unlocked:un,skin,vit,love,at}}
+return{cur,best,gb,away,mood:LV[lv],unlocked:un,skin,vit,love,at}}
 function avP(m,sz){if(m.pet_char==null)return `<span class="av" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz/3)}px;background:${COL[(m.name||'').length%5]}">${esc(ini(m.name))}</span>`;const ps=petState(m.user_id);return `<span class="pav2" style="width:${sz}px;height:${sz}px">${petSvg(m.pet_char,{stage:ps.skin,mood:ps.mood,size:sz-2})}</span>`}
 const SAY={love:['Aku sayang kamu! 💖','Kita tim terbaik! ✨','Kamu hebat banget!'],happy:['Hari ini seru ya!','Yuk cek jadwal kelas!','Semangat terus! 💪'],ok:['Check-in tiap hari ya!','Aku nunggu kamu~'],sad:['Aku kangen… jangan lama-lama ya 🥺','Ayo ke kelas, aku sepi…'],sleep:['Zzz… bangunin aku dengan check-in…','Aku lemes… kamu ke mana? 💤']};
 const say=m=>{const a=SAY[m];return a[(new Date().getDate()+new Date().getHours())%a.length]};
@@ -875,7 +992,7 @@ stopCam();
 const has=!!S.me&&S.me.pet_char!=null;if(S.v3&&S.me&&!has&&S.tab!=='pick')S.tab='pick';
 if(S.tab==='chatroom'){if(!S.cw)S.tab='chat';else{a.innerHTML=roomHtml();const ms=$('#msgs');ms.scrollTop=ms.scrollHeight;hydrate(ms);markRead();S._lt='chatroom';if(modal)showModal();return}}
 const ps=has?petState(S.user.id):null,onb=S.tab==='pick'&&!has;
-const body=({home:home2,cal:calTab,mem:memTab2,qr:qrTab,me:meTab2,kas:kasPg2,pick:petPick,ann:annPg,task:taskPg,poll:pollPg,bday:bdayPg,mood:moodPg,chat:chatPg,person:personPg})[S.tab]();
+const body=({home:home2,cal:calTab,mem:memTab2,qr:qrTab,me:meTab2,kas:kasPg2,pick:petPick,ann:annPg,task:taskPg,poll:pollPg,bday:bdayPg,mood:moodPg,chat:chatPg,person:personPg,game:gamePg})[S.tab]();
 const anim=S._lt!==S.tab;S._lt=S.tab;const sc=$('#sc'),y=sc?sc.scrollTop:0;
 const nb=t=>`<button data-tab="${t}" class="${(S.tab===t||(t==='home'&&SUB.includes(S.tab)))?'on':''}" aria-label="${LB[t]}">${t==='me'&&has?petSvg(S.me.pet_char,{stage:ps.skin,mood:ps.mood==='sleep'?'ok':ps.mood,size:36}):ic(t)}</button>`;
 a.innerHTML=`<div class="scroll" id="sc"><div class="${anim?'pgin':''}">${body}</div></div>${onb?'':`<nav><div class="bar">${['home','cal','kas','mem','me'].map(nb).join('')}</div>${(admin()||(S.tab==='kas'&&canKas()))?'<button class="fab" data-act="new" aria-label="Tambah">+</button>':'<button class="fab" data-act="myqr" aria-label="Kode saya">'+ic('qr')+'</button>'}</nav>`}`;
@@ -989,10 +1106,10 @@ document.addEventListener('click',async ev=>{
 const t=ev.target.closest('[data-pa]');if(!t)return;const d=t.dataset,a=d.pa,m=S.me;
 if(a==='pick')pickSel(+d.i);
 else if(a==='pickgo'){const i=S.pk==null?(m.pet_char||0):S.pk,nm2=(($('#pkn').value||'').trim()||CH[i].n).slice(0,14),first=m.pet_char==null;
- if(await db(sb.rpc('set_pet',{p_char:i,p_name:nm2,p_skin:null,p_uname:null}),first?'Selamat datang, '+nm2+'! 🎉':'Karakter diganti')){S.tab='home';S.pk=null;S.pkEd=0;render()}}
+ if(await db(sb.rpc('set_pet5',{p_char:i,p_name:nm2,p_skin:null,p_uname:null}),first?'Selamat datang, '+nm2+'! 🎉':'Karakter diganti')){S.tab='home';S.pk=null;S.pkEd=0;render()}}
 else if(a==='chchar'){S.tab='pick';S.pk=m.pet_char;S.pkEd=0;render()}
-else if(a==='savenames'){const pn=($('#pn').value||'').trim().slice(0,14),un=($('#un').value||'').trim();db(sb.rpc('set_pet',{p_char:m.pet_char,p_name:pn||CH[m.pet_char].n,p_skin:m.pet_skin==null?null:m.pet_skin,p_uname:un||null}),'Nama disimpan')}
-else if(a==='skin'){const i=+d.i,ps=petState(S.user.id);if(i>ps.unlocked)return toast('Terkunci. Capai streak '+TH[i]+' hari untuk membuka.');db(sb.rpc('set_pet',{p_char:m.pet_char,p_name:m.pet_name||CH[m.pet_char].n,p_skin:i,p_uname:null}),'Skin '+STN[i]+' dipakai')}
+else if(a==='savenames'){const pn=($('#pn').value||'').trim().slice(0,14),un=($('#un').value||'').trim();db(sb.rpc('set_pet5',{p_char:m.pet_char,p_name:pn||CH[m.pet_char].n,p_skin:m.pet_skin==null?null:m.pet_skin,p_uname:un||null}),'Nama disimpan')}
+else if(a==='skin'){const i=+d.i,ps=petState(S.user.id);if(i>ps.unlocked)return toast('Terkunci. Capai streak '+TH[i]+' hari untuk membuka.');db(sb.rpc('set_pet5',{p_char:m.pet_char,p_name:m.pet_name||CH[m.pet_char].n,p_skin:i,p_uname:null}),'Skin '+STN[i]+' dipakai')}
 else if(a==='pet'){petAnim('tap',650);hearts(3);if(navigator.vibrate)navigator.vibrate(20)}
 else if(a==='play'){petAnim('dance',1700);hearts(6,'✨');toast('Seru banget! Dia senang main bareng kamu')}
 else if(a==='feed'){const f=getFeed();if(f.n>=3)return toast('Dia sudah kenyang. Besok lagi ya!');f.n++;try{localStorage.setItem('kfeed',JSON.stringify(f))}catch(e){}render();petAnim('tap',650);hearts(4,'🍙');toast('Nyam nyam! Enak banget 😋')}
@@ -1160,6 +1277,152 @@ document.addEventListener('click',async ev=>{
 setInterval(()=>{if(S.tab==='chatroom'&&!document.hidden&&S.user&&!REC)refresh()},9000);
 
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.user){S._ci=0;refresh()}});
+/* ===== Kelasku v5: karakter baru, habitat hidup, lencana streak, game, jabatan, animasi ===== */
+S.game=[];S.gmap={};S.gday={};S.gneed=2;S.v5=undefined;S.hph=null;S.wp=null;
+const COLP=(()=>{try{return JSON.parse(localStorage.getItem('kcol')||'{}')}catch(e){return{}}})();
+/* ---- jabatan ---- */
+Object.assign(JB,{sekretaris:'Sekretaris',wasek:'Wakil sekretaris',wabend:'Wakil bendahara',kebersihan:'Seksi kebersihan',keamanan:'Seksi keamanan',olahraga:'Seksi olahraga',kesenian:'Seksi kesenian',akademik:'Seksi akademik',kerohanian:'Seksi kerohanian',humas:'Seksi humas',konsumsi:'Seksi konsumsi'});
+const JI={ketua:'👑',wakil:'🥈',sekretaris:'📝',wasek:'🖋',bendahara:'💰',wabend:'🪙',kebersihan:'🧹',keamanan:'🛡',olahraga:'⚽',kesenian:'🎨',akademik:'📚',kerohanian:'🕊',humas:'📣',konsumsi:'🍱'};
+const CORE=['ketua','wakil','sekretaris','wasek','bendahara','wabend'],SEKSI=Object.keys(JB).filter(k=>!CORE.includes(k));
+chipsOf=function(role,jab){return(jab&&JB[jab]?`<span class="rl j-${jab}">${JI[jab]||''} ${JB[jab]}</span>`:'')+(role==='admin'?'<span class="rl j-admin">Admin</span>':'')};
+mgrModal=function(u){const m=memb(u);if(!m)return;const self=u===myId();
+ const fields=[{id:'jab',label:'Jabatan',type:'select',opts:[['','Tidak ada']].concat(Object.keys(JB).map(k=>[k,JB[k]])),val:m.jabatan||''}];
+ if(!self)fields.push({id:'role',label:'Hak akses',type:'select',opts:[['member','Anggota'],['admin','Admin (kelola kelas)']],val:m.role||'member'});
+ fm2('Atur '+m.name,fields,async v=>{
+  if(!self&&v.role!==m.role){const r=await sb.from('members').update({role:v.role}).eq('class_id',S.cls.id).eq('user_id',u);if(r.error)return toast(r.error.message)||false}
+  const r2=await sb.rpc('set_jabatan',{p_user:u,p_jab:v.jab||null});if(r2.error)return toast(r2.error.message)||false;
+  await refresh();toast('Tersimpan');return true})};
+function strukturCard(){const by=k=>S.members.filter(m=>m.jabatan===k);
+ const slot=k=>{const l=by(k);return `<div class="sl${l.length?'':' em'}"><small>${JI[k]} ${JB[k]}</small>${l.length?l.map(m=>`<button class="slp" data-pa="person" data-u="${m.user_id}">${avP(m,44)}<b>${esc((m.name||'').split(' ')[0])}</b></button>`).join(''):'<span class="mu">Belum ada</span>'}</div>`};
+ const sk=SEKSI.filter(k=>admin()||by(k).length);
+ return `<div class="box"><b>Struktur kelas</b><div class="sgrid">${CORE.map(slot).join('')}</div>${sk.length?`<div class="sh" style="padding:14px 0 0"><span>Seksi</span></div><div class="sgrid">${sk.map(slot).join('')}</div>`:''}${admin()?'<p class="mu" style="margin-top:10px">Atur jabatan lewat ⚙ di daftar anggota.</p>':''}</div>`}
+/* ---- lencana tingkatan ---- */
+const ROS=(()=>{let p='';for(let i=0;i<=120;i++){const a=i/120*Math.PI*2,r=30+2.6*Math.cos(a*12);p+=(i?'L':'M')+(50+r*Math.cos(a)).toFixed(1)+' '+(48+r*Math.sin(a)).toFixed(1)}return p+'z'})();
+function badge(t,sz,lock){const id='b'+(++PID),c=TC[t],r5=t===5;
+return `<svg class="bdgs${t>=3?' glow':''}${lock?' lk':''}" viewBox="0 0 100 112" width="${sz}" height="${Math.round(sz*1.12)}" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">${r5?'<stop offset="0" stop-color="#ffc247"/><stop offset=".55" stop-color="#ff4fa3"/><stop offset="1" stop-color="#8a5cff"/>':`<stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/>`}</linearGradient><radialGradient id="${id}g"><stop offset=".4" stop-color="${r5?'#ff6fb5':c[1]}" stop-opacity=".55"/><stop offset="1" stop-color="${c[1]}" stop-opacity="0"/></radialGradient></defs>${t>=3?`<circle class="bgl" cx="50" cy="48" r="48" fill="url(#${id}g)"/>`:''}${t>=2?`<path d="M36 70L28 106l14-8 8 10 2-38z" fill="url(#${id})"/><path d="M64 70l8 36-14-8-8 10-2-38z" fill="url(#${id})" opacity=".85"/>`:''}<path d="${ROS}" fill="url(#${id})" stroke="#fff" stroke-opacity=".7" stroke-width="1.4"/><circle cx="50" cy="48" r="22" fill="#fff" fill-opacity=".22" stroke="#fff" stroke-opacity=".75" stroke-width="1.6"/><circle cx="50" cy="48" r="17" fill="url(#${id})"/><path d="${star5(50,48,11)}" fill="#fff"/><path d="M30 34Q40 20 58 22" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round" fill="none"/>${t>=4?`<path class="tw" d="${star5(14,22,4)}" fill="#fff"/><path class="tw" style="animation-delay:.7s" d="${star5(88,30,3.4)}" fill="#fff"/>`:''}</svg>`}
+/* ---- game kebersamaan ---- */
+const GN=20,GT=['start','rest','card','fire','quest','gift','rest','card','fire','quest','rest','gift','card','fire','quest','gift','rest','fire','card','quest'];
+const GI={start:'🏠',rest:'🌴',card:'⭐',fire:'🔥',quest:'❓',gift:'🎁'},GL={start:'Start',rest:'Istirahat',card:'Kartu pujian',fire:'Api bonus',quest:'Tantangan',gift:'Hadiah'};
+const GX={start:['Kembali ke garis start. Putaran baru!'],rest:['Santai sebentar. Minum air dulu 💧','Tarik napas dalam, lalu lanjut semangat!'],card:['Puji satu teman sekelas hari ini 💬','Sebut satu hal keren dari temanmu di chat.','Kirim ucapan semangat ke ketua kelas.'],fire:['Api menyala! Kamu dapat +1 hari bonus streak 🔥'],quest:['Sapa teman yang jarang ngobrol denganmu.','Ajak 1 teman main dadu hari ini.','Upload satu memori di profilmu.'],gift:['Kamu dapat kartu semangat. Bagikan ke teman!','Hadiah senyum: kirim stiker atau foto lucu ke teman.']};
+function cellOf(i){return i<=5?[0,i]:i<=9?[i-5,5]:i<=15?[5,15-i]:[20-i,0]}
+function gCalc(){const mem=new Set(S.members.map(m=>m.user_id)),rows=S.game.filter(r=>mem.has(r.user_id)).sort((a,b)=>a.day.localeCompare(b.day)),bd={};rows.forEach(r=>bd[r.day]=(bd[r.day]||0)+1);
+ const n=S.members.length,need=Math.min(Math.max(n,1),Math.max(2,Math.ceil(n*.4))),mp={};
+ rows.forEach(r=>{const u=r.user_id,mo=r.day.slice(0,7),x=mp[u]||(mp[u]={bonus:0,pos:0,laps:0,rolls:0,mo,sum:0});
+  if(x.mo!==mo){x.mo=mo;x.sum=0}x.sum+=r.roll;x.pos=x.sum%GN;x.laps=Math.floor(x.sum/GN);x.rolls++;
+  const t=GT[x.pos],tg=bd[r.day]>=need;x.bonus+=(tg?1:0)+(t==='fire'?1:0);r._t=t});
+ S.gmap=mp;S.gneed=need;S.gday=bd}
+function gbOf(uid){return(S.gmap[uid]||{}).bonus||0}
+const _rf=refresh;
+refresh=async function(){if(!S.user)return;const r=await sb.from('game_rolls').select('*');S.v5=!r.error;S.game=r.data||[];gCalc();await _rf();if(!S._gc&&S.members.length){S._gc=1;gCalc();if(!(modal&&modal.form))render()}};
+function dieHtml(n){const P={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]}[n]||[];return `<div class="die">${[0,1,2,3,4,5,6,7,8].map(i=>`<i class="${P.includes(i)?'on':''}"></i>`).join('')}</div>`}
+function gamePg(){
+ if(S.v5===false)return `<div class="pg">${hd('Petualangan Kelas','')}<div class="box"><b>Fitur belum aktif</b><p class="mu">Jalankan schema5.sql di Supabase SQL Editor, lalu muat ulang.</p></div></div>`;
+ const me=S.user.id,day=todayK(),ym=day.slice(0,7),played=S.game.find(r=>r.user_id===me&&r.day===day),n=S.gday[day]||0,need=S.gneed,hot=S.gjust&&Date.now()-S.gjust<3000;
+ const toks={};S.members.forEach(m=>{const g=S.gmap[m.user_id],p=g&&g.mo===ym?g.pos:0;(toks[p]=toks[p]||[]).push(m)});
+ const tiles=GT.map((t,i)=>{const[r,c]=cellOf(i),L=toks[i]||[];
+  return `<div class="tl ${'tABCD'[i<=5?1:i<=9?2:i<=15?3:4]}${i%2?' alt':''}${L.length?' has':''}" style="grid-area:${r+1}/${c+1}"><span class="ti">${GI[t]}</span><div class="tk2">${L.slice(0,4).map(m=>`<span class="tok${m.user_id===me?' me':''}${hot&&m.user_id===me?' hop':''}">${avP(m,22)}</span>`).join('')}${L.length>4?`<em>+${L.length-4}</em>`:''}</div></div>`}).join('');
+ const my=S.gmap[me],laps=my&&my.mo===ym?my.laps:0;
+ const center=`<div class="gcen"><span class="gcard c1c">⚙</span><span class="gcard c2c">❗</span><small class="gmo">${MON[+ym.slice(5)-1]} · ${laps} putaran</small><div id="dieBox">${dieHtml(played?played.roll:5)}</div>${played?'<div class="gdone">Sudah main ✓</div>':'<button class="gbtn" data-pa="roll">🎲 Lempar dadu</button>'}</div>`;
+ const meter=`<div class="box gm"><div class="gmh"><b>${n>=need?'🎉 Kebersamaan tercapai!':'Ajak teman main hari ini'}</b><span class="chip">${n}/${need}</span></div><div class="gbar"><i style="width:${Math.min(100,Math.round(n/need*100))}%"></i></div><p class="mu">${n>=need?'Semua yang melempar dadu hari ini dapat +1 hari bonus streak.':`Butuh ${need-n} teman lagi supaya bonus streak hari ini aktif. Ajak lewat chat!`}</p></div>`;
+ let res='';if(played){const t=played._t||GT[(my||{}).pos||0],px=GX[t],tx=px[(played.roll+day.charCodeAt(9))%px.length];res=`<div class="box gres"><span class="gri">${GI[t]}</span><div><b>Dadu ${played.roll} · ${GL[t]}</b><p class="mu">${tx}</p></div></div>`}
+ const rk=S.members.map(m=>({m,g:S.gmap[m.user_id]||{},p:S.game.some(r=>r.user_id===m.user_id&&r.day===day)})).sort((a,b)=>((b.g.mo===ym?b.g.sum:0)-(a.g.mo===ym?a.g.sum:0))||((b.g.bonus||0)-(a.g.bonus||0)));
+ return `<div class="pg">${hd('Petualangan Kelas','Main bareng, streak naik')}${meter}<div class="board">${tiles}${center}</div>${res}
+<div class="sec"><div class="sh"><span>Papan skor kelas</span></div><div class="box">${rk.map(x=>{const ps=x.m.pet_char!=null?petState(x.m.user_id):null;return `<div class="gl2"><span>${avP(x.m,38)}</span><div><b>${esc(x.m.name)}</b><small>Kotak ${(x.g.mo===ym?x.g.pos:0)+1} · 🔥 bonus +${x.g.bonus||0}</small></div>${ps?badge(ps.unlocked,22):''}<span class="chip ${x.p?'':'red'}">${x.p?'Sudah':'Belum'}</span></div>`}).join('')}</div></div>
+<div class="sec"><div class="sh"><span>Cara main</span></div><div class="box"><p class="mu">1. Lempar dadu sekali sehari. Karaktermu melangkah di papan.<br>2. Jika cukup teman ikut main di hari yang sama, semua yang main dapat +1 hari bonus streak.<br>3. Mendarat di kotak 🔥 memberi +1 hari bonus lagi.<br>4. Hari bonus ditambahkan ke streak untuk membuka lencana dan skin baru.<br>5. Papan diulang tiap bulan, bonus tetap tersimpan.</p></div></div></div>`}
+async function rollDice(){const day=todayK();if(S.rolling)return;
+ if(S.game.some(r=>r.user_id===S.user.id&&r.day===day))return toast('Kamu sudah main hari ini. Besok lagi ya!');
+ S.rolling=1;const box=$('#dieBox'),btn=document.querySelector('.gbtn');if(btn)btn.disabled=true;
+ const iv=setInterval(()=>{if(box){box.innerHTML=dieHtml(1+Math.floor(Math.random()*6));box.firstChild.classList.add('roll')}},90);
+ const[r]=await Promise.all([sb.rpc('play_game',{p_day:day}),new Promise(z=>setTimeout(z,950))]);
+ clearInterval(iv);S.rolling=0;if(r.error){toast(r.error.message);if(btn)btn.disabled=false;return}
+ if(box)box.innerHTML=dieHtml(r.data);S.gjust=Date.now();await new Promise(z=>setTimeout(z,500));await refresh();
+ const g=S.gmap[S.user.id],t=GT[g?g.pos:0];toast(`Dadu ${r.data}! ${GI[t]} ${GL[t]}`)}
+function gameCard(){
+ if(S.v5===false)return '<div class="wrap"><div class="box"><b>Game & jabatan baru belum aktif</b><p class="mu">Jalankan schema5.sql di Supabase SQL Editor, lalu muat ulang.</p></div></div>';
+ if(!S.v5)return '';
+ const d=new Date(),left=Math.max(1,Math.round((new Date(d.getFullYear(),d.getMonth()+1,1)-new Date(TK+'T00:00'))/864e5)),day=todayK(),mine=S.game.some(r=>r.user_id===S.user.id&&r.day===day),n=S.gday[day]||0;
+ const pool=S.members.filter(m=>m.pet_char!=null).map(m=>({c:m.pet_char,s:petState(m.user_id).skin,u:m.user_id}));
+ pool.sort((a,b)=>(a.u===S.user.id?-1:b.u===S.user.id?1:0));while(pool.length<5)pool.push({c:(pool.length*4+3)%CH.length,s:1+pool.length%3});
+ const P=[[50,4,116,0],[21,14,78,-7],[79,14,78,7],[8,108,54,-14],[92,112,54,14]];
+ return `<div class="sec"><div class="sh"><span>Petualangan kelas</span><a data-go="game">Main</a></div><div class="wrap" style="padding-top:0"><button class="evt" data-go="game"><div class="evt-top"><i class="ebl e1"></i><i class="ebl e2"></i>${P.map((p,i)=>`<span class="evc" style="left:${p[0]}%;bottom:${p[1]}px;--r:${p[3]}deg;animation-delay:${i*.35}s">${petSvg(pool[i].c,{stage:pool[i].s,mood:'happy',size:p[2]})}</span>`).join('')}</div><div class="evb"><h3>Petualangan Kelas</h3><span class="evx">⏱ Musim berakhir dalam ${left} hari</span><p>Lempar dadu tiap hari bareng teman. Makin banyak yang ikut, streak bonus makin banyak!</p><span class="evk">${mine?'Lihat papan ('+n+' teman main)':'Lempar dadu hari ini'}</span></div></button></div></div>`}
+G.game=gi('<rect x="10" y="10" width="44" height="44" rx="12" fill="url(#gP)"/><rect x="10" y="10" width="44" height="44" rx="12" fill="none" stroke="#fff" stroke-opacity=".7"/><g fill="#fff"><circle cx="23" cy="23" r="4.2"/><circle cx="41" cy="23" r="4.2"/><circle cx="32" cy="32" r="4.2"/><circle cx="23" cy="41" r="4.2"/><circle cx="41" cy="41" r="4.2"/></g>');
+SUB.push('game');LB.game='Petualangan';
+/* ---- peringkat (podium) dengan lencana ---- */
+function podium3(rank,mx){const has=rank.some(x=>x.n>0);
+ const col=(x,i,c)=>{if(!x)return `<div class="pc ${c} e"></div>`;const ps=petState(x.m.user_id);return `<button class="pc ${c}" data-pa="person" data-u="${x.m.user_id}"><span class="pcr">${avP(x.m,i===0?66:54)}<span class="pcb">${badge(ps.unlocked,22)}</span></span><b class="pn">${esc((x.m.name||'').split(' ')[0])}</b><small>${x.n} hadir</small><div class="pb"><i>${i+1}</i></div></button>`};
+ return `<div class="sec"><div class="sh"><span>Paling rajin</span><a>Top ${Math.min(5,rank.length)}</a></div><div class="gc gl pod" style="display:block"><div class="pcs">${col(rank[1],1,'c2')}${col(rank[0],0,'c1')}${col(rank[2],2,'c3')}</div>${rank.slice(3).map((x,j)=>{const ps=petState(x.m.user_id);return `<div class="lb"><span class="md1">${j+4}</span>${avP(x.m,30)}<span class="nm">${esc(x.m.name)}</span><span class="bt"><i style="width:${Math.max(4,Math.round(x.n/mx*100))}%"></i></span><b>${x.n}</b>${badge(ps.unlocked,20)}</div>`}).join('')}${has?'':'<p class="mu" style="text-align:center;padding:0 0 14px">Belum ada yang hadir. Ayo mulai!</p>'}</div></div>`}
+podium2=podium3;podium=podium3;
+/* ---- habitat hidup siang/malam ---- */
+const PHN={dawn:['Pagi','🌅'],day:['Siang','☀'],dusk:['Sore','🌇'],night:['Malam','🌙']},PHSAY={dawn:['Pagi! Ayo semangat hari ini ☀','Embun masih segar, yuk mulai!'],dusk:['Sore yang cantik ya 🌇','Sebentar lagi malam, sudah kerjain PR?'],night:['Selamat malam… jangan begadang ya 🌙','Bintangnya bagus malam ini ✨']};
+const phaseOf=h=>h>=5&&h<7?'dawn':h>=7&&h<16?'day':h>=16&&h<18.5?'dusk':'night';
+const curPh=()=>{if(S.hph)return S.hph;const d=new Date();return phaseOf(d.getHours()+d.getMinutes()/60)};
+function celPos(ph){const d=new Date(),h=d.getHours()+d.getMinutes()/60;let t=S.hph?{dawn:.1,day:.5,dusk:.9,night:.5}[ph]:ph==='night'?(h>=18?h-18:h+6)/12:(h-6)/12;t=Math.max(.05,Math.min(.95,t));return `left:${(6+88*t).toFixed(1)}%;top:${(170-130*Math.sin(Math.PI*t)).toFixed(0)}px`}
+const phTxt=ph=>{const d=new Date();return `${PHN[ph][1]} ${PHN[ph][0]} · ${pad(d.getHours())}:${pad(d.getMinutes())}${S.hph?' (coba)':''}`};
+const flw=(c,l,b,dl)=>`<svg class="flw" style="left:${l}%;bottom:${b}px;animation-delay:${dl}s" viewBox="0 0 20 26" width="20" height="26"><path d="M10 12v14" stroke="#3fa862" stroke-width="2"/>${[0,72,144,216,288].map(a=>`<ellipse cx="10" cy="5" rx="3.2" ry="4.6" fill="${c}" transform="rotate(${a} 10 9)"/>`).join('')}<circle cx="10" cy="9" r="2.6" fill="#ffe27a"/></svg>`;
+const STR=[[8,10],[20,26],[34,8],[46,22],[58,12],[70,28],[82,10],[92,24],[14,40],[64,38],[88,42],[40,36]];
+function habScene(ph,m,pet,nm,lv){
+ return `<div class="hab ph-${ph} m-${m}" id="hab"><i class="sk sk-day"></i><i class="sk sk-dawn"></i><i class="sk sk-dusk"></i><i class="sk sk-night"></i>
+<div class="hstars">${STR.map((s,i)=>`<i style="left:${s[0]}%;top:${s[1]}%;animation-delay:${(i*.37).toFixed(2)}s"></i>`).join('')}</div>
+<div class="cel" id="hcel" style="${celPos(ph)}">${ph==='night'?'<span class="moon"></span>':'<span class="sunb"></span>'}</div>
+<div class="cl cl1"></div><div class="cl cl2"></div><div class="cl cl3"></div>
+<svg class="birds" viewBox="0 0 60 20" width="46" height="16"><path d="M2 10Q8 2 14 10Q20 2 26 10M34 14Q38 8 42 14Q46 8 50 14" stroke="#41507a" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
+<svg class="hills" viewBox="0 0 400 140" preserveAspectRatio="none"><path class="hb" d="M0 70Q60 20 130 62T260 54T400 40V140H0z"/><path class="hm" d="M0 96Q80 54 170 90T400 76V140H0z"/></svg>
+<svg class="tree" viewBox="0 0 64 98"><defs><linearGradient id="tg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8be6a0"/><stop offset="1" stop-color="#37b564"/></linearGradient></defs><rect x="28" y="52" width="9" height="44" rx="4.5" fill="#b9825a"/><circle cx="32" cy="38" r="26" fill="url(#tg)" stroke="#fff" stroke-opacity=".6"/><circle cx="18" cy="52" r="15" fill="url(#tg)" stroke="#fff" stroke-opacity=".5"/><circle cx="47" cy="50" r="16" fill="url(#tg)" stroke="#fff" stroke-opacity=".5"/><ellipse cx="24" cy="28" rx="10" ry="6" fill="#fff" opacity=".35" transform="rotate(-25 24 28)"/></svg>
+<div class="ffs">${[[22,60,0],[34,48,1.2],[66,56,.6],[78,42,2],[48,66,1.6],[86,62,2.8]].map(f=>`<i style="left:${f[0]}%;top:${f[1]}%;animation-delay:${f[2]}s"></i>`).join('')}</div>
+<div class="gnd"></div>${flw('#ff8fb0',10,18,0)}${flw('#ffb86b',24,8,.6)}${flw('#b48cff',74,12,1.1)}${flw('#7fd6ff',88,22,1.7)}<div class="lamp"></div>
+<div class="hnm"><b>${esc(nm)}</b><small>Lv ${lv+1} · ${STN[lv]}</small></div><button class="hph" id="hph" data-pa="phase" aria-label="Ganti waktu">${phTxt(ph)}</button>
+<button class="hpet" data-pa="pet" aria-label="Sentuh ${esc(nm)}">${pet}</button><div class="hfx" id="hfx"></div></div>`}
+function phApply(){const ph=curPh();document.documentElement.dataset.ph=ph;const h=$('#hab');if(!h)return;h.className=h.className.replace(/ph-\w+/,'ph-'+ph);const c=$('#hcel');if(c){c.setAttribute('style',celPos(ph));const w=ph==='night'?'moon':'sunb';if(!c.querySelector('.'+w))c.innerHTML=`<span class="${w}"></span>`}const t=$('#hph');if(t)t.textContent=phTxt(ph)}
+phApply();setInterval(phApply,30000);
+/* ---- lemari skin + kartu streak ---- */
+function wardrobe(m,ps,c){const sel=S.wp==null?ps.skin:Math.min(5,S.wp),un=sel<=ps.unlocked,wb=sel===5?'linear-gradient(160deg,#ffc247,#ff4fa3,#8a5cff)':`linear-gradient(180deg,${TC[sel][0]},${TC[sel][1]})`;
+ return `<div class="sh" style="padding:14px 0 8px"><span>Lemari skin</span></div><div class="wr"><div class="wrs" style="--wb:${wb}"><span class="wrw">${STN[sel]}</span><span class="wrb">${badge(sel,40,!un)}</span><span class="wrl">${un?(sel===ps.skin?'Dipakai':'Terbuka'):'Terkunci'}</span><i class="wrr"></i>${petSvg(m.pet_char,{stage:sel,mood:ps.mood==='sleep'?'ok':'happy',size:196,anim:1})}</div>
+<div class="wrp">${STN.map((s,i)=>{const u=i<=ps.unlocked;return `<button class="wt${i===sel?' on':''}${u?'':' lock'}" data-pa="wprev" data-i="${i}" aria-label="${s}">${i===ps.skin?'<em class="wtag">Dipakai</em>':''}${petSvg(m.pet_char,{stage:i,mood:'happy',size:48})}${u?'':'<span class="lk">🔒</span>'}</button>`}).join('')}</div>
+<div class="wrn"><div><b>${SKN[sel]}</b><small>Lencana ${TN[sel]} · streak ${TH[sel]} hari</small></div>${un?`<button class="btn sm" data-pa="skin" data-i="${sel}" ${sel===ps.skin?'disabled':''}>${sel===ps.skin?'Dipakai':'Pakai'}</button>`:`<span class="chip red">Butuh ${TH[sel]} hari</span>`}</div></div>`}
+function streakCard(ps,st){const tot=ps.best+ps.gb,nx=ps.unlocked<5?TH[ps.unlocked+1]:null,pr=nx?Math.min(100,Math.round(tot/nx*100)):100;
+ return `<div class="box stc"><div class="stt"><div class="stb">${badge(ps.unlocked,78)}<b>${TN[ps.unlocked]}</b></div><div class="stg"><div><b>🔥 ${ps.cur}</b><small>Streak</small></div><div><b>${ps.best}</b><small>Terbaik</small></div><div><b>+${ps.gb}</b><small>Bonus game</small></div><div><b>${st.pct}%</b><small>Hadir</small></div></div></div>
+<div class="tiers">${TN.map((n,i)=>`<div class="tr${i<=ps.unlocked?'':' off'}${i===ps.unlocked?' cur':''}">${badge(i,42,i>ps.unlocked)}<small>${i?TH[i]+' hr':'Mulai'}</small></div>`).join('')}</div>
+${nx?`<p class="mu" style="margin-top:12px">Lencana ${TN[ps.unlocked+1]} di ${nx} hari (${tot}/${nx}). Main <a data-go="game" class="lnk">Petualangan Kelas</a> untuk tambah bonus.</p><div class="gbar"><i style="width:${pr}%"></i></div>`:'<p class="mu" style="margin-top:12px">Lencana tertinggi terbuka. Kamu legenda! 👑</p>'}</div>`}
+const _me=meTab2;
+meTab2=function(){let h=_me();const m=S.me;if(m.pet_char==null)return h;const ps=petState(S.user.id),c=CH[m.pet_char]||CH[0],st=stat(S.user.id),pet=petSvg(m.pet_char,{stage:ps.skin,mood:ps.mood,size:176,anim:1});
+ h=h.replace(/<div class="hab m-[\s\S]*?<div class="hfx" id="hfx"><\/div><\/div>/,()=>habScene(curPh(),ps.mood,pet,m.pet_name||c.n,ps.skin));
+ h=h.replace(/<div class="box" style="margin-top:14px"><div class="two"[\s\S]*?(?=<div class="sh" style="padding:6px 0 0"><span>Skin & evolusi)/,()=>streakCard(ps,st));
+ h=h.replace(/<div class="sh" style="padding:6px 0 0"><span>Skin & evolusi<\/span><\/div><div class="row skins"[\s\S]*?<\/button><\/div>/,()=>wardrobe(m,ps,c));
+ h=h.replace('<div class="box"><b>Anggota (',()=>strukturCard()+'<div class="box"><b>Anggota (');
+ return h};
+memRow=function(x){const p=x.pet_char!=null?petState(x.user_id):null,self=x.user_id===S.user.id;
+ return `<div class="mem"><button class="mlnk" data-pa="person" data-u="${x.user_id}">${avP(x,44)}<div>${esc(x.name)}${x.pet_name?` <span class="mu">· ${esc(x.pet_name)}</span>`:''}<br><span class="rlrow" style="margin:2px 0 0">${chipsOf(x.role,x.jabatan)||'<span class="rl">Anggota</span>'}${p?`<span class="mu"> 🔥 ${p.cur+p.gb}</span>`:''}</span></div>${p?`<span class="mb5">${badge(p.unlocked,24)}</span>`:''}</button>${admin()&&!self?`<button class="mu" data-pa="gift" data-u="${x.user_id}" aria-label="Hadiah">🎁</button>`:''}${admin()?`<button class="mu" data-pa="mgr" data-u="${x.user_id}" aria-label="Atur jabatan">⚙</button>`:''}</div>`};
+const _pp=personPg;personPg=function(){let h=_pp();const m=memb(S.pp);if(m&&m.pet_char!=null){const ps=petState(S.pp);h=h.replace('<div class="rlrow" style="justify-content:center">',()=>`<div class="ptier">${badge(ps.unlocked,56)}<small>Lencana ${TN[ps.unlocked]} · 🔥 ${ps.cur+ps.gb}</small></div><div class="rlrow" style="justify-content:center">`)}return h};
+const _h=home2;
+home2=function(){let h=_h();const ps=petState(S.user.id);
+ h=h.replace(/<span class="strk">[\s\S]*?<\/span>/,()=>`<button class="strk" data-go="me">${badge(ps.unlocked,20)}<b>🔥 ${ps.cur}</b>${ps.gb?`<small>+${ps.gb}</small>`:''}</button>`);
+ h=h.replace('<div class="sec"><div class="sh"><span>Paling rajin</span>',()=>gameCard()+'<div class="sec"><div class="sh"><span>Paling rajin</span>');return h};
+const _mn=menu2;
+menu2=function(){return _mn().replace('<div class="mgrid">',()=>`<div class="mgrid"><button class="mt" data-go="game"><span class="mti" style="--c:#dcd3ff">${G.game}</span><b>Petualangan</b><small>Main bareng, streak naik</small></button>`)};
+/* ---- animasi, buka tutup ---- */
+function enh(){const sc=$('#sc');if(!sc)return;
+ sc.querySelectorAll('.sec').forEach(s=>{if(s.dataset.cb)return;const h=s.firstElementChild;if(!h||!h.classList.contains('sh')||s.children.length<2)return;s.dataset.cb=1;
+  const k=(h.textContent||'').trim().slice(0,22);h.dataset.col=k;h.insertAdjacentHTML('beforeend','<i class="chev">⌃</i>');
+  const b=document.createElement('div'),i=document.createElement('div');b.className='cb';i.className='ci';[...s.children].slice(1).forEach(x=>i.append(x));b.append(i);s.append(b);
+  if(COLP[k]){b.classList.add('c');h.classList.add('colp')}else b.classList.add('done')})}
+const _rd=render;render=function(){_rd.apply(this,arguments);enh();phApply()};
+const _sm=showModal;
+showModal=function(){_sm();const md=$('.ov .md');if(!md)return;md.insertAdjacentHTML('afterbegin','<button class="mx" data-pa="mclose" aria-label="Tutup">✕</button>');
+ const ov=md.parentElement;let y0=null,dy=0;
+ md.addEventListener('touchstart',e=>{if(md.scrollTop<=0){y0=e.touches[0].clientY;dy=0;md.style.animation='none'}},{passive:true});
+ md.addEventListener('touchmove',e=>{if(y0==null)return;dy=Math.max(0,e.touches[0].clientY-y0);md.style.transition='none';md.style.transform=`translateY(${dy}px)`;ov.style.background=`rgba(10,25,22,${Math.max(0,.42-dy/600)})`},{passive:true});
+ md.addEventListener('touchend',()=>{if(y0==null)return;y0=null;if(dy>110)closeModal();else{md.style.transition='transform .28s cubic-bezier(.2,.8,.2,1)';md.style.transform='';ov.style.background=''}},{passive:true})};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal)closeModal()});
+document.addEventListener('click',async ev=>{
+ const h=ev.target.closest('.sh[data-col]');
+ if(h&&!ev.target.closest('a,button')){const b=h.nextElementSibling,k=h.dataset.col,c=!b.classList.contains('c');b.classList.toggle('c',c);h.classList.toggle('colp',c);b.classList.remove('done');
+  if(c)COLP[k]=1;else{delete COLP[k];setTimeout(()=>b.classList.add('done'),420)}try{localStorage.setItem('kcol',JSON.stringify(COLP))}catch(e){}return}
+ const t=ev.target.closest('[data-pa]');if(!t)return;const d=t.dataset,a=d.pa;
+ if(a==='mclose')closeModal();
+ else if(a==='phase'){const o=[null,'day','dusk','night','dawn'],i=o.indexOf(S.hph);S.hph=o[(i+1)%o.length];phApply();toast(S.hph?'Mencoba suasana '+PHN[S.hph][0].toLowerCase():'Kembali ke waktu asli')}
+ else if(a==='wprev'){S.wp=+d.i;render()}
+ else if(a==='roll')rollDice();
+});
 })();
 
 boot();
