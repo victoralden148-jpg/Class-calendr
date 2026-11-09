@@ -461,9 +461,7 @@ button.pc{cursor:pointer}.pcr{position:relative;display:inline-block}.pcb{positi
 .gdone{padding:8px 14px;border-radius:99px;background:rgba(255,255,255,.28);color:#fff;font-weight:700;font-size:12.5px}
 .gres{display:flex;gap:12px;align-items:center}.gri{font-size:30px}.gres p{margin:2px 0 0}
 .gl2{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--ln)}.gl2:last-child{border:0}.gl2>div{flex:1;min-width:0}.gl2 b{display:block}.gl2 small{font-size:12px;color:var(--mu)}
-/* animasi umum, buka tutup */
-.cb{display:block;animation:rise .35s cubic-bezier(.2,.8,.2,1) both}.cb.c{display:none}.cb.done{animation:none}
-.sec>.sh[data-col]{cursor:pointer}.chev{font-style:normal;margin-left:8px;color:var(--mu);transition:transform .35s cubic-bezier(.3,1.5,.5,1);display:inline-block}.sh.colp .chev{transform:rotate(180deg)}.sh[data-col]{gap:8px}.sh[data-col]>span:first-child{flex:1}
+/* animasi umum */
 .md{position:relative}.mx{float:right;position:sticky;top:0;z-index:3;width:34px;height:34px;margin:-4px -4px 0 8px;border-radius:50%;background:var(--chip);border:1px solid var(--ln);font-size:14px;transition:transform .2s}.mx:active{transform:rotate(90deg) scale(.9)}
 @keyframes su{from{transform:translateY(70px) scale(.97);opacity:0}}
 .fab{animation:fabp 2.4s ease-in-out infinite}@keyframes fabp{50%{transform:scale(1.06)}}
@@ -473,6 +471,10 @@ button.pc{cursor:pointer}.pcr{position:relative;display:inline-block}.pcb{positi
 .st2 u,.lb .bt i{transform-origin:left;animation:barg .8s cubic-bezier(.2,.8,.2,1) both}
 .pgin .mgrid .mt{animation:rise .4s cubic-bezier(.2,.8,.2,1) both}.pgin .mgrid .mt:nth-child(2){animation-delay:.05s}.pgin .mgrid .mt:nth-child(3){animation-delay:.1s}.pgin .mgrid .mt:nth-child(n+4){animation-delay:.15s}
 .evw{padding:0}.two .btn.s{white-space:nowrap;font-size:14px;padding:14px 6px;min-width:0}
+.htw{padding:20px 20px 0}.htabs{display:flex;gap:4px;padding:5px;border-radius:99px;background:var(--sf);border:1px solid var(--ln);box-shadow:var(--sh2)}
+.htb{flex:1;min-width:0;padding:10px 4px;border-radius:99px;font-weight:700;font-size:13px;color:var(--mu);transition:background .25s,color .25s}.htb.on{background:var(--btn);color:var(--btnt)}
+.hsw{display:flex;align-items:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:24px;box-sizing:content-box;transition:height .25s}.hsw::-webkit-scrollbar{display:none}
+.hpn{flex:0 0 100%;min-width:0;scroll-snap-align:start;scroll-snap-stop:always;padding-top:4px}
 </style>
 </head>
 <body>
@@ -1396,16 +1398,26 @@ const _pp=personPg;personPg=function(){let h=_pp();const m=memb(S.pp);if(m&&m.pe
 const _h=home2;
 home2=function(){let h=_h();const ps=petState(S.user.id);
  h=h.replace(/<span class="strk">[\s\S]*?<\/span>/,()=>`<button class="strk" data-go="me">${badge(ps.unlocked,20)}<b>🔥 ${ps.cur}</b>${ps.gb?`<small>+${ps.gb}</small>`:''}</button>`);
- h=h.replace('<div class="sec"><div class="sh"><span>Paling rajin</span>',()=>gameCard()+'<div class="sec"><div class="sh"><span>Paling rajin</span>');return h};
+ h=h.replace('<div class="sec"><div class="sh"><span>Paling rajin</span>',()=>gameCard()+'<div class="sec"><div class="sh"><span>Paling rajin</span>');return tabHome(h)};
 const _mn=menu2;
 menu2=function(){return _mn().replace('<div class="mgrid">',()=>`<div class="mgrid"><button class="mt" data-go="game"><span class="mti" style="--c:#dcd3ff">${G.game}</span><b>Petualangan</b><small>Main bareng, streak naik</small></button>`)};
-/* ---- animasi, buka tutup ---- */
-function enh(){const sc=$('#sc');if(!sc)return;
- sc.querySelectorAll('.sec').forEach(s=>{if(s.dataset.cb)return;const h=s.firstElementChild;if(!h||!h.classList.contains('sh')||s.children.length<2)return;s.dataset.cb=1;
-  const k=(h.textContent||'').trim().slice(0,22);h.dataset.col=k;h.insertAdjacentHTML('beforeend','<i class="chev">⌃</i>');
-  const b=document.createElement('div'),i=document.createElement('div');b.className='cb';i.className='ci';[...s.children].slice(1).forEach(x=>i.append(x));b.append(i);s.append(b);
-  if(COLP[k]){b.classList.add('c');h.classList.add('colp')}else b.classList.add('done')})}
-const _rd=render;render=function(){_rd.apply(this,arguments);enh();phApply()};
+/* ---- beranda: tab geser kiri-kanan ---- */
+function tabHome(h){const i=h.indexOf('<div class="sec"');if(i<0)return h;
+ const head=h.slice(0,i),parts=h.slice(i).split(/(?=<div class="sec")/),dt=S.sel===TK?'Hari ini':fmt(S.sel),P=[[],[],[],[]];
+ parts.forEach(p=>{const t=(p.match(/<span>([^<]*)<\/span>/)||[])[1]||'';
+  P[t==='Acara mendatang'||t===dt?1:(t==='Paling rajin'||t==='Petualangan kelas')?2:(t==='Kehadiranku'||t==='Kehadiran kelas')?3:0].push(p)});
+ const NM=['Kelas','Acara','Peringkat','Statistik'],L=NM.map((n,k)=>[n,P[k].join('')]).filter(x=>x[1]);
+ if(L.length<2)return h;const a=Math.min(S.htab||0,L.length-1);
+ return head+`<div class="htw"><div class="htabs" id="htabs">${L.map((x,k)=>`<button class="htb${k===a?' on':''}" data-pa="htab" data-i="${k}">${x[0]}</button>`).join('')}</div></div><div class="hsw" id="hsw">${L.map(x=>`<div class="hpn">${x[1]}</div>`).join('')}</div>`}
+function hsFit(){const w=$('#hsw');if(!w||!w.clientWidth)return;const k=Math.max(0,Math.min(w.children.length-1,Math.round(w.scrollLeft/w.clientWidth)));
+ w.style.height=w.children[k].offsetHeight+'px';S.htab=k;document.querySelectorAll('#htabs .htb').forEach((b,j)=>b.classList.toggle('on',j===k))}
+function hsGo(k){const w=$('#hsw');if(w)w.scrollTo({left:k*w.clientWidth,behavior:'smooth'})}
+let hsRO=null;
+function hsInit(){const w=$('#hsw');if(hsRO){hsRO.disconnect();hsRO=null}if(!w)return;
+ w.scrollLeft=(S.htab||0)*w.clientWidth;hsFit();
+ w.addEventListener('scroll',()=>requestAnimationFrame(hsFit),{passive:true});
+ if(window.ResizeObserver){hsRO=new ResizeObserver(hsFit);[...w.children].forEach(c=>hsRO.observe(c))}}
+const _rd=render;render=function(){_rd.apply(this,arguments);hsInit();phApply()};
 const _sm=showModal;
 showModal=function(){_sm();const md=$('.ov .md');if(!md)return;md.insertAdjacentHTML('afterbegin','<button class="mx" data-pa="mclose" aria-label="Tutup">✕</button>');
  const ov=md.parentElement;let y0=null,dy=0;
@@ -1414,14 +1426,12 @@ showModal=function(){_sm();const md=$('.ov .md');if(!md)return;md.insertAdjacent
  md.addEventListener('touchend',()=>{if(y0==null)return;y0=null;if(dy>110)closeModal();else{md.style.transition='transform .28s cubic-bezier(.2,.8,.2,1)';md.style.transform='';ov.style.background=''}},{passive:true})};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal)closeModal()});
 document.addEventListener('click',async ev=>{
- const h=ev.target.closest('.sh[data-col]');
- if(h&&!ev.target.closest('a,button')){const b=h.nextElementSibling,k=h.dataset.col,c=!b.classList.contains('c');b.classList.toggle('c',c);h.classList.toggle('colp',c);b.classList.remove('done');
-  if(c)COLP[k]=1;else{delete COLP[k];setTimeout(()=>b.classList.add('done'),420)}try{localStorage.setItem('kcol',JSON.stringify(COLP))}catch(e){}return}
  const t=ev.target.closest('[data-pa]');if(!t)return;const d=t.dataset,a=d.pa;
  if(a==='mclose')closeModal();
  else if(a==='phase'){const o=[null,'day','dusk','night','dawn'],i=o.indexOf(S.hph);S.hph=o[(i+1)%o.length];phApply();toast(S.hph?'Mencoba suasana '+PHN[S.hph][0].toLowerCase():'Kembali ke waktu asli')}
  else if(a==='wprev'){S.wp=+d.i;render()}
  else if(a==='roll')rollDice();
+ else if(a==='htab')hsGo(+d.i);
 });
 })();
 
