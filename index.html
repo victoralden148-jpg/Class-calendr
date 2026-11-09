@@ -228,21 +228,21 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;bac
 .mti{width:52px;height:52px;border-radius:18px;display:grid;place-items:center;background:var(--c,#eee);margin-bottom:8px}
 .mti .gi{width:36px;height:36px}
 .mt b{font-size:15px}.mt small{font-size:12px;color:var(--mu)}
-.ec{position:relative;flex:0 0 72%;scroll-snap-align:start;border-radius:26px;overflow:hidden;text-align:left;background:var(--sf);box-shadow:var(--sh);border:1px solid var(--ln);display:block;min-width:0}
+.ec{position:relative;flex:0 0 72%;scroll-snap-align:start;border-radius:28px;overflow:hidden;text-align:left;background:var(--sf);box-shadow:var(--sh);border:1px solid var(--ln);display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:0;padding:8px;min-width:0;height:100%}
 .ec.sm{flex:none;width:100%}
-.ecp{height:150px;display:grid;overflow:hidden;gap:2px}
+.ecp{height:150px;display:grid;overflow:hidden;gap:3px;border-radius:21px;flex:none}
 .ec.sm .ecp{height:110px}
 .ecp img{width:100%;height:100%;object-fit:cover;display:block}
 .ecp.m2{grid-template-columns:1fr 1fr}
 .ecp.m3{grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr}.ecp.m3 img:first-child{grid-row:1/3}
 .ecp.e{place-items:center}.ecp.e .gi{width:64px;height:64px}
 .ecp.t0{background:linear-gradient(135deg,#bfe9d8,#c9e4f6)}.ecp.t1{background:linear-gradient(135deg,#ffe3cf,#ffd6e2)}.ecp.t2{background:linear-gradient(135deg,#e2d9fc,#cfe5f8)}.ecp.t3{background:linear-gradient(135deg,#fdf1b8,#c7f0d8)}
-.ecd{position:absolute;left:12px;top:12px;display:flex;flex-direction:column;align-items:center;line-height:1.05;font-size:10px;font-weight:700;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,.88);color:var(--tx);box-shadow:var(--sh2)}.ecd b{font-size:18px}
-.ecc{position:absolute;right:12px;top:12px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:var(--sh2)}.ecc .gi{width:26px;height:26px}
-.ecb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:3px}
+.ecd{position:absolute;left:18px;top:18px;display:flex;flex-direction:column;align-items:center;line-height:1.05;font-size:10px;font-weight:700;padding:6px 10px;border-radius:14px;background:rgba(255,255,255,.88);color:var(--tx);box-shadow:var(--sh2)}.ecd b{font-size:18px}
+.ecc{position:absolute;right:18px;top:18px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.88);box-shadow:var(--sh2)}.ecc .gi{width:26px;height:26px}
+.ecb{padding:12px 8px 8px;display:flex;flex-direction:column;gap:3px;flex:1}
 .ect{font-size:16px;line-height:1.25;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .ecs{font-size:12.5px;color:var(--mu)}
-.eca{display:flex;margin-top:8px;padding-left:8px;min-height:30px;align-items:center}
+.eca{display:flex;margin-top:auto;padding-top:8px;padding-left:8px;min-height:30px;align-items:center}
 .fgrid .ec.sm{flex:none}
 .kb{padding:20px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#2f9e83,#4f7cff);box-shadow:var(--sh)}
 .kb small{opacity:.85}.kb .big{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:2px 0 14px}
@@ -294,6 +294,65 @@ body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;bac
 .sk.on{border-color:var(--btn)}.sk.lock svg{filter:grayscale(1) brightness(.9);opacity:.55}
 .sk b{font-size:13px}.sk small{font-size:11px;color:var(--mu)}.sk .lk{position:absolute;top:8px;right:8px;font-size:14px}
 .mem button.mu{padding:6px 8px;font-size:12px;flex:none}
+
+.ecp img{border-radius:0}.ecp.m2 img:first-child{border-radius:21px 0 0 21px}.ecp.m2 img:last-child{border-radius:0 21px 21px 0}.ecp.m3 img:first-child{border-radius:21px 0 0 21px}.ecp.m3 img:nth-child(2){border-radius:0 21px 0 0}.ecp.m3 img:nth-child(3){border-radius:0 0 21px 0}.ecp.m1 img{border-radius:21px}.ecp.m1{grid-template-columns:1fr}
+.row .ec{height:auto}
+
+/* ===== v4: teman, chat, memori, jabatan ===== */
+.ib .gi{width:28px;height:28px}
+.hbtns{display:flex;gap:8px;align-items:center}
+.ib{position:relative}
+.bdg2{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:#ff4d6d;color:#fff;font-size:11px;font-weight:800;font-style:normal}
+.ib .bdg2{position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;font-size:10px}
+.mgrid .mt:last-child:nth-child(odd){grid-column:1/-1}
+.mti{font-size:26px}
+.rlrow{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.rl{display:inline-block;font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:99px;background:var(--chip);border:1px solid var(--ln);color:var(--tx)}
+.rl.cn{color:var(--mu);font-weight:700}
+.rl.j-ketua{background:linear-gradient(135deg,#ffe58a,#ffb84d);color:#6b4300;border-color:transparent}
+.rl.j-wakil{background:linear-gradient(135deg,#d9ccff,#a9bfff);color:#33307a;border-color:transparent}
+.rl.j-bendahara{background:linear-gradient(135deg,#bff0d8,#7fd6b5);color:#0c4a37;border-color:transparent}
+.rl.j-admin{background:linear-gradient(135deg,#ffc2d4,#ff8fb0);color:#7a1136;border-color:transparent}
+.mlnk{display:flex;align-items:center;gap:12px;flex:1;min-width:0;text-align:left}
+.mlnk>div{flex:1;min-width:0}
+.ctr .pbig{display:flex;justify-content:center}
+.pbig .pav2,.pbig .av{margin:0}
+.frow{display:flex;align-items:center;gap:12px;width:100%;padding:10px 0;border-bottom:1px solid var(--ln);text-align:left}
+.frow:last-child{border-bottom:0}
+.frow>div{flex:1;min-width:0}.frow b{display:block}
+.frow small{display:block;font-size:12.5px;color:var(--mu);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fav2 .pav2,.fav2 .av{margin:0}
+.fmeta{display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex:none}
+.btn.sm{width:auto;padding:9px 14px;font-size:13px}
+.mgrid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mm2{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:var(--chip);border:1px solid var(--ln);text-align:left;min-height:120px}
+.mm2 img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.mm2 small{padding:8px 10px;font-size:12.5px;line-height:1.3;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.mm2 .mtx{padding:14px;font-size:13.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.mpv{border-radius:20px;overflow:hidden;background:var(--chip);border:1px dashed var(--ln);padding:14px;text-align:center;font-size:13px;margin-bottom:6px}
+.mpv img{display:block;width:100%;max-height:220px;object-fit:cover;border-radius:14px}
+img.zoom{display:block;width:100%;max-height:70vh;object-fit:contain;border-radius:18px;margin-top:8px;background:rgba(0,0,0,.04)}
+.room{display:flex;flex-direction:column;height:100%;position:relative;z-index:1}
+.rh{display:flex;align-items:center;gap:10px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;background:var(--sf);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--ln);flex:none}
+.rp{display:flex;align-items:center;gap:10px;flex:1;min-width:0;text-align:left}
+.rp .pav2,.rp .av{margin:0}.rp>div{min-width:0}.rp b{display:block}.rp small{color:var(--mu);font-size:12px}
+.msgs{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 14px;display:flex;flex-direction:column;gap:6px;overscroll-behavior:contain}
+.dsep{text-align:center;margin:8px 0 2px}.dsep span{font-size:11.5px;color:var(--mu);background:var(--chip);border:1px solid var(--ln);padding:3px 10px;border-radius:99px}
+.mb{display:flex}.mb.me{justify-content:flex-end}
+.bbl{max-width:80%;padding:8px 12px 6px;border-radius:20px;font-size:14.5px;line-height:1.35;word-break:break-word;box-shadow:var(--sh2)}
+.mb.me .bbl{background:linear-gradient(135deg,#2f9e83,#4f7cff);color:#fff;border-radius:20px 20px 6px 20px}
+.mb.th .bbl{background:var(--sf);border:1px solid var(--ln);border-radius:20px 20px 20px 6px}
+.mt2{white-space:pre-wrap}
+.mimg{display:block;width:100%;max-width:240px;max-height:300px;object-fit:cover;border-radius:14px;margin-bottom:4px;min-height:80px;background:rgba(0,0,0,.08);cursor:pointer}
+.maud{display:flex;flex-direction:column;gap:2px}.maud audio{width:210px;max-width:100%;height:38px}.maud small{opacity:.75;font-size:11px}
+.mm{display:flex;justify-content:flex-end;align-items:center;gap:6px;font-size:10.5px;opacity:.8;margin-top:2px}
+.mdl{font-size:11px;opacity:.65;padding:0 2px}
+.comp{display:flex;align-items:center;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--sf);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-top:1px solid var(--ln);flex:none}
+.comp input#cin{flex:1;margin:0;border-radius:99px;padding:12px 16px;min-width:0}
+.cb{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--chip);border:1px solid var(--ln);font-size:20px;cursor:pointer}
+.csend{flex:none;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--btn);color:var(--btnt);font-size:19px}
+.recdot{width:12px;height:12px;border-radius:50%;background:#ff3d55;animation:pls 1s ease-in-out infinite;flex:none}
+.comp #rect{font-variant-numeric:tabular-nums}.rechint{flex:1;color:var(--mu);font-size:13px}
 </style>
 </head>
 <body>
@@ -345,10 +404,11 @@ const ini=n=>String(n||'?').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('')
 const today=new Date(),TK=key(today);
 const dk=e=>key(new Date(e.starts_at)),tm=e=>{const d=new Date(e.starts_at);return pad(d.getHours())+':'+pad(d.getMinutes())};
 const fmt=k=>{const d=new Date(k+'T00:00');return `${HR[d.getDay()]}, ${d.getDate()} ${MON[d.getMonth()].slice(0,3)}`};
+try{const hm=location.hash.match(/[#&]k=([^&]+)/);if(hm){const o=JSON.parse(atob(decodeURIComponent(hm[1])));if(o.u&&o.k)localStorage.setItem('kelasku_cfg',JSON.stringify({url:o.u,key:o.k}));history.replaceState(null,'',location.pathname+location.search)}}catch(e){}
 let CF=window.CFG&&CFG.url&&CFG.key&&!/ISI_/.test(CFG.url+CFG.key)?CFG:null;
 if(!CF){try{CF=JSON.parse(localStorage.getItem('kelasku_cfg'))}catch(e){}}
 if(!CF||!CF.url||!CF.key){
- document.getElementById('app').innerHTML='<div class="join"><div class="logo">${G.cal}</div><h1>Hubungkan Supabase</h1><p>Tempel dua data dari Supabase (Project Settings). Hanya sekali.</p><div class="box"><label for="cu">Project URL</label><input id="cu" placeholder="https://xxxxxxxx.supabase.co" autocapitalize="none" autocorrect="off"><label for="ck">Publishable / anon key</label><input id="ck" placeholder="sb_publishable_... atau eyJ..." autocapitalize="none" autocorrect="off"><button class="btn" id="cs">Simpan dan tes koneksi</button><p class="mu" id="cm" style="margin-top:10px"></p></div></div>';
+ document.getElementById('app').innerHTML='<div class="join"><div class="logo">'+G.cal+'</div><h1>Hubungkan Supabase</h1><p>Tempel dua data dari Supabase (Project Settings). Hanya sekali. Atau buka tautan undangan dari ketua kelas, tanpa perlu mengisi apa pun.</p><div class="box"><label for="cu">Project URL</label><input id="cu" placeholder="https://xxxxxxxx.supabase.co" autocapitalize="none" autocorrect="off"><label for="ck">Publishable / anon key</label><input id="ck" placeholder="sb_publishable_... atau eyJ..." autocapitalize="none" autocorrect="off"><button class="btn" id="cs">Simpan dan tes koneksi</button><p class="mu" id="cm" style="margin-top:10px"></p></div></div>';
  document.getElementById('cs').onclick=async()=>{
   const m=document.getElementById('cm'),clean=v=>v.trim().replace(/^["']|["',;]+$/g,'').trim();
   let u=clean(document.getElementById('cu').value).replace(/\/+$/,'').replace(/\.+$/,''),k=clean(document.getElementById('ck').value);
@@ -364,6 +424,7 @@ if(!CF||!CF.url||!CF.key){
   localStorage.setItem('kelasku_cfg',JSON.stringify({url:u,key:k}));location.reload()};
  throw 0}
 const sb=supabase.createClient(CF.url,CF.key);
+const inviteLink=()=>location.origin+location.pathname+((window.CFG&&CF===window.CFG)?'':'#k='+encodeURIComponent(btoa(JSON.stringify({u:CF.url,k:CF.key}))));
 let S={announcements:[],tasks:[],task_done:[],polls:[],poll_votes:[],moods:[],kas_items:[],kas_paid:[],v2:true,user:null,cls:null,me:null,members:[],events:[],att:[],media:[],tab:'home',sel:TK,mon:TK.slice(0,7),scanEv:null,authMode:'in'},modal=null,toastT,stream=null,chan=null;
 const admin=()=>S.me&&S.me.role==='admin';
 const evs=()=>S.events.slice().sort((a,b)=>a.starts_at.localeCompare(b.starts_at));
@@ -648,7 +709,7 @@ document.addEventListener('click',async ev=>{
  else if(d.act==='swapcam')swapCam();
  else if(d.act==='all'){const r=$('#evs');r&&r.scrollIntoView({behavior:'smooth'})}
  else if(d.act==='notif'){if(!('Notification' in window))return toast('Browser belum mendukung notifikasi');const p=await Notification.requestPermission();toast(p==='granted'?'Pengingat 1 jam sebelum acara aktif':'Notifikasi tidak diizinkan');schedule()}
- else if(d.act==='share'){const txt=`Gabung kelas ${S.cls.name} di Kelasku. Buka ${location.origin+location.pathname} lalu masukkan kode: ${S.cls.code}`;if(navigator.share)navigator.share({text:txt}).catch(()=>{});else{try{await navigator.clipboard.writeText(txt);toast('Undangan disalin')}catch(e){toast(txt)}}}
+ else if(d.act==='share'){const txt=`Gabung kelas ${S.cls.name} di Kelasku. Buka ${inviteLink()} lalu masukkan kode: ${S.cls.code}`;if(navigator.share)navigator.share({text:txt}).catch(()=>{});else{try{await navigator.clipboard.writeText(txt);toast('Undangan disalin')}catch(e){toast(txt)}}}
  else if(d.act==='leave'){if(!confirm('Keluar dari kelas ini?'))return;const r=await sb.from('members').delete().eq('class_id',S.cls.id).eq('user_id',S.user.id);r.error?toast(r.error.message):refresh()}
  else if(d.act==='logout'){await sb.auth.signOut();S.cls=null;if(chan){sb.removeChannel(chan);chan=null}}
 });
@@ -660,7 +721,7 @@ try{const p=localStorage.getItem('klite');if(p==='1'||(p===null&&navigator.devic
 (function(){
 S.pet_log=[];S.kas_tx=[];S.v3=true;S.kasMon=TK.slice(0,7);
 LB.kas='Kas';G.kas=G.card;
-{const i=SUB.indexOf('kas');if(i>=0)SUB.splice(i,1);SUB.push('pick','qr')}
+{const i=SUB.indexOf('kas');if(i>=0)SUB.splice(i,1);SUB.push('pick','qr','chat','person','chatroom')}
 const CH=[
 {n:'Piyo',sp:'Anak ayam',c1:'#ffe680',c2:'#ffb92e',x:'chick',st:0,hy:0,t:'Ceria & penuh ide'},
 {n:'Mochi',sp:'Kelinci',c1:'#ffffff',c2:'#ffd6e8',x:'bunny',st:3,hy:2,t:'Lembut & penyayang'},
@@ -788,9 +849,12 @@ const xs=await Promise.all(T.map(t=>sb.from(t).select('*').eq('class_id',cid)));
 S.v2=!xs.some(x=>x.error);T.forEach((t,i)=>S[t]=xs[i].data||[]);
 const x3=await Promise.all(['pet_log','kas_tx'].map(t=>sb.from(t).select('*').eq('class_id',cid)));
 S.v3=!x3.some(x=>x.error);S.pet_log=x3[0].data||[];S.kas_tx=x3[1].data||[];
+const x4=await Promise.all([sb.from('profiles').select('*'),sb.from('friendships').select('*'),sb.from('messages').select('*').order('created_at',{ascending:false}).limit(500),sb.from('memories').select('*').order('created_at',{ascending:false}).limit(300)]);
+S.v4=!x4.some(x=>x.error);S.profiles=x4[0].data||[];S.fr=x4[1].data||[];S.msgs=(x4[2].data||[]).slice().reverse();S.memos=x4[3].data||[];
+{const un=S.msgs.filter(x=>x.to_id===S.user.id&&!x.read_at).length;if(S._un!=null&&un>S._un&&S.tab!=='chatroom')toast('Pesan baru 💬');S._un=un}
 const tk=todayK();
 if(S.v3&&!S._ci&&!S.pet_log.some(x=>x.user_id===S.user.id&&x.day===tk)){S._ci=1;const r=await sb.from('pet_log').insert({class_id:cid,user_id:S.user.id,day:tk});if(!r.error){S.pet_log.push({class_id:cid,user_id:S.user.id,day:tk});S._cele=1}}
-if(!(modal&&modal.form))render();
+if(S.tab==='chatroom'&&S.cw&&!modal)roomUpdate();else if(!(modal&&modal.form))render();
 schedule();
 if(S._cele&&S.me.pet_char!=null){S._cele=0;const ps=petState(S.user.id);toast(ps.cur>1?`Check-in harian! Streak ${ps.cur} hari 🔥`:'Check-in harian pertama! 🎉')}
 }
@@ -809,11 +873,12 @@ if(!S.cls){a.innerHTML=`<div class="join"><div class="logo">${G.cal}</div><h1>Ha
   <button class="btn s" data-act="logout">Keluar</button></div>`;return}
 stopCam();
 const has=!!S.me&&S.me.pet_char!=null;if(S.v3&&S.me&&!has&&S.tab!=='pick')S.tab='pick';
+if(S.tab==='chatroom'){if(!S.cw)S.tab='chat';else{a.innerHTML=roomHtml();const ms=$('#msgs');ms.scrollTop=ms.scrollHeight;hydrate(ms);markRead();S._lt='chatroom';if(modal)showModal();return}}
 const ps=has?petState(S.user.id):null,onb=S.tab==='pick'&&!has;
-const body=({home:home2,cal:calTab,mem:memTab2,qr:qrTab,me:meTab2,kas:kasPg2,pick:petPick,ann:annPg,task:taskPg,poll:pollPg,bday:bdayPg,mood:moodPg})[S.tab]();
+const body=({home:home2,cal:calTab,mem:memTab2,qr:qrTab,me:meTab2,kas:kasPg2,pick:petPick,ann:annPg,task:taskPg,poll:pollPg,bday:bdayPg,mood:moodPg,chat:chatPg,person:personPg})[S.tab]();
 const anim=S._lt!==S.tab;S._lt=S.tab;const sc=$('#sc'),y=sc?sc.scrollTop:0;
 const nb=t=>`<button data-tab="${t}" class="${(S.tab===t||(t==='home'&&SUB.includes(S.tab)))?'on':''}" aria-label="${LB[t]}">${t==='me'&&has?petSvg(S.me.pet_char,{stage:ps.skin,mood:ps.mood==='sleep'?'ok':ps.mood,size:36}):ic(t)}</button>`;
-a.innerHTML=`<div class="scroll" id="sc"><div class="${anim?'pgin':''}">${body}</div></div>${onb?'':`<nav><div class="bar">${['home','cal','kas','mem','me'].map(nb).join('')}</div>${admin()?'<button class="fab" data-act="new" aria-label="Tambah">+</button>':'<button class="fab" data-act="myqr" aria-label="Kode saya">'+ic('qr')+'</button>'}</nav>`}`;
+a.innerHTML=`<div class="scroll" id="sc"><div class="${anim?'pgin':''}">${body}</div></div>${onb?'':`<nav><div class="bar">${['home','cal','kas','mem','me'].map(nb).join('')}</div>${(admin()||(S.tab==='kas'&&canKas()))?'<button class="fab" data-act="new" aria-label="Tambah">+</button>':'<button class="fab" data-act="myqr" aria-label="Kode saya">'+ic('qr')+'</button>'}</nav>`}`;
 $('#sc').scrollTop=anim?0:y;
 if(S.tab==='qr'&&!admin()){const b=$('#qrbox');if(b)new QRCode(b,{text:`KELASKU:${S.cls.id}:${S.user.id}`,width:210,height:210})}
 if(modal)showModal();
@@ -826,8 +891,8 @@ const got=S.members.filter(m=>S.att.some(a=>a.event_id===e.id&&a.user_id===m.use
 const cover=ph.length?`<div class="ecp m${ph.length}">${ph.map(p=>`<img loading="lazy" decoding="async" src="${url(p.path)}" alt="">`).join('')}</div>`:`<div class="ecp e ${tone(e)}">${cic(e.category)}</div>`;
 return `<button class="ec${sm?' sm':''}" data-ev="${e.id}">${cover}<span class="ecd"><b>${d.getDate()}</b>${MON[d.getMonth()].slice(0,3).toUpperCase()}</span><span class="ecc">${cic(e.category)}</span><div class="ecb"><b class="ect">${esc(e.title)}</b><span class="ecs">${sm?`${fmt(dk(e))} · ${n} foto`:`${dd<=0?'Hari ini':dd+' hari lagi'} · ${tm(e)} · ${got.length} hadir`}</span>${sm?'':`<div class="eca">${got.slice(0,4).map(m=>avP(m,30)).join('')||'<span class="ecs">Belum ada yang hadir</span>'}</div>`}</div></button>`}
 function menu2(){const t=todayK(),me=S.user.id,open=S.tasks.filter(x=>!S.task_done.some(d=>d.task_id===x.id&&d.user_id===me)).length;
-const it=[['ann','Pengumuman',S.announcements.length+' pengumuman','#ffe3cf','chat'],['task','Tugas & PR',open+' belum selesai','#d9f1e6','doc'],['poll','Polling',S.polls.length+' polling','#e2d9fc','pie'],['bday','Ulang tahun',S.members.filter(m=>m.birthday).length+' tercatat','#ffd6e2','medal'],['mood','Mood kelas',S.moods.filter(x=>x.day===t).length+' mengisi','#d6e9f7','sun'],['qr','Absensi','Kode QR & scan','#e9f6d0','chk']];
-return `<div class="sec"><div class="sh"><span>Menu kelas</span></div><div class="mgrid">${it.map(x=>`<button class="mt" data-go="${x[0]}"><span class="mti" style="--c:${x[3]}">${G[x[4]]}</span><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')}</div></div>`}
+const it=[['ann','Pengumuman',S.announcements.length+' pengumuman','#ffe3cf','chat'],['task','Tugas & PR',open+' belum selesai','#d9f1e6','doc'],['poll','Polling',S.polls.length+' polling','#e2d9fc','pie'],['bday','Ulang tahun',S.members.filter(m=>m.birthday).length+' tercatat','#ffd6e2','medal'],['mood','Mood kelas',S.moods.filter(x=>x.day===t).length+' mengisi','#d6e9f7','sun'],['qr','Absensi','Kode QR & scan','#e9f6d0','chk'],['chat','Teman & chat',friendsList().length+' teman'+(totalUnread()?' · '+totalUnread()+' baru':''),'#d6f0ff','💬']];
+return `<div class="sec"><div class="sh"><span>Menu kelas</span></div><div class="mgrid">${it.map(x=>`<button class="mt" data-go="${x[0]}"><span class="mti" style="--c:${x[3]}">${G[x[4]]||x[4]}</span><b>${x[1]}</b><small>${x[2]}</small></button>`).join('')}</div></div>`}
 function hub2(){const now=Date.now(),dis=getDis(),t=todayK(),me=S.user.id;
 const bt=S.members.find(m=>m.birthday&&nextB(m.birthday)===0),open=S.tasks.filter(x=>!S.task_done.some(d=>d.task_id===x.id&&d.user_id===me));
 const tk=open.filter(x=>new Date(x.due_at)>now-864e5*3).sort((a,b)=>a.due_at.localeCompare(b.due_at))[0],an=S.announcements.slice().sort((a,b)=>(b.pinned-a.pinned)||b.created_at.localeCompare(a.created_at))[0],c=[];
@@ -847,7 +912,7 @@ const ms=nx?new Date(nx.starts_at)-now:0,p=nx?Math.round((1-Math.min(ms,6048e5)/
 const rank=S.members.map(m=>({m,n:S.att.filter(x=>x.user_id===m.user_id).length})).sort((a,b)=>b.n-a.n).slice(0,5),mx=Math.max(1,me.past);
 const mine=admin()?S.events.filter(e=>e.created_by===S.user.id).length:me.got,has=S.me.pet_char!=null,ps=petState(S.user.id);
 const last5=S.events.filter(isPast).sort((a,b)=>b.starts_at.localeCompare(a.starts_at)).slice(0,5).reverse();
-return `<div class="hero"><div class="hbar2"><span class="strk">🔥 ${ps.cur} hari</span><button class="ib" data-act="notif" aria-label="Aktifkan notifikasi">${ic('bell')}</button></div>
+return `<div class="hero"><div class="hbar2"><span class="strk">🔥 ${ps.cur} hari</span><span class="hbtns"><button class="ib" data-go="chat" aria-label="Teman dan chat">${G.chat}${totalUnread()?`<i class="bdg2">${totalUnread()}</i>`:''}</button><button class="ib" data-act="notif" aria-label="Aktifkan notifikasi">${ic('bell')}</button></span></div>
 ${has?`<button class="phero" data-go="me" aria-label="Buka profil karakter"><span class="bub">${esc(say(ps.mood))}</span>${petSvg(S.me.pet_char,{stage:ps.skin,mood:ps.mood,size:136,anim:1})}<span class="pname">${esc(S.me.pet_name||CH[S.me.pet_char].n)} · ${STN[ps.skin]}</span></button>`:`<div class="logo">${G.cal}</div>`}
 <div class="hh2">${g}, ${esc((S.me.name||'').split(' ')[0])}</div>
 <div class="wk">${wk.map(d=>{const k=key(d);return `<button class="wd ${k===S.sel?'on':''}" data-sel="${k}">${HR[d.getDay()]}<b>${d.getDate()}</b>${all.some(e=>dk(e)===k)?'<i></i>':'<i style="background:transparent"></i>'}</button>`}).join('')}</div></div>
@@ -876,8 +941,8 @@ return `<div class="pg"><h2>Kas Kelas</h2>${warn3}
 <div class="kb"><small>Total saldo</small><div class="big">${rp(tin-tout)}</div><div class="kk"><div><small>Pemasukan</small><b>+${rp(tin)}</b></div><div><small>Pengeluaran</small><b>-${rp(tout)}</b></div></div></div>
 ${td.length?`<div class="chip" style="margin:12px 0 0">Hari ini: +${rp(sum(td,'in'))} · -${rp(sum(td,'out'))}</div>`:''}
 <div class="kmon"><button class="ib" data-pa="kmon" data-d="-1" aria-label="Bulan lalu">‹</button><div><b>${MON[mo-1]} ${y}</b><small>Masuk +${rp(sum(mt,'in'))} · Keluar -${rp(sum(mt,'out'))}</small></div><button class="ib" data-pa="kmon" data-d="1" aria-label="Bulan depan">›</button></div>
-<div class="box"><b>Iuran bulan ini</b><div class="kpay">${S.members.map(m=>{const p=paid[m.user_id];return `<button class="kp ${p?'':'no'}" ${admin()?`data-pa="kq" data-u="${m.user_id}"`:''}>${avP(m,44)}<span>${esc((m.name||'').split(' ')[0])}</span><small>${p?rp(p):'Belum'}</small>${p?'<i class="ck">✓</i>':''}</button>`}).join('')}</div>${admin()?'<p class="mu">Ketuk nama untuk mencatat iuran.</p>':''}</div>
-${Object.keys(grp).sort().reverse().map(d=>{const a=grp[d],n=sum(a,'in')-sum(a,'out');return `<div class="kg"><span>${fmt(d)}</span><span class="chip ${n<0?'red':''}">${n<0?'-':'+'}${rp(Math.abs(n))}</span></div>${a.map(x=>{const t=new Date(x.created_at);return `<div class="kr"><span class="kri">${G[CI2[x.category]||'doc']}</span><div><b>${esc(x.category)}${x.title?' · '+esc(x.title):''}</b><small>${x.member_id?'oleh '+esc(nm(x.member_id))+' · ':''}${pad(t.getHours())}:${pad(t.getMinutes())}</small></div><b class="${x.kind==='in'?'pos':'neg'}">${x.kind==='in'?'+':'-'}${rp(x.amount)}</b>${admin()?`<button class="x" data-pa="kdel" data-id="${x.id}" aria-label="Hapus">✕</button>`:''}</div>`}).join('')}`}).join('')||'<div class="empty">Belum ada transaksi bulan ini.</div>'}</div>`}
+<div class="box"><b>Iuran bulan ini</b><div class="kpay">${S.members.map(m=>{const p=paid[m.user_id];return `<button class="kp ${p?'':'no'}" ${canKas()?`data-pa="kq" data-u="${m.user_id}"`:''}>${avP(m,44)}<span>${esc((m.name||'').split(' ')[0])}</span><small>${p?rp(p):'Belum'}</small>${p?'<i class="ck">✓</i>':''}</button>`}).join('')}</div>${canKas()?'<p class="mu">Ketuk nama untuk mencatat iuran.</p>':''}</div>
+${Object.keys(grp).sort().reverse().map(d=>{const a=grp[d],n=sum(a,'in')-sum(a,'out');return `<div class="kg"><span>${fmt(d)}</span><span class="chip ${n<0?'red':''}">${n<0?'-':'+'}${rp(Math.abs(n))}</span></div>${a.map(x=>{const t=new Date(x.created_at);return `<div class="kr"><span class="kri">${G[CI2[x.category]||'doc']}</span><div><b>${esc(x.category)}${x.title?' · '+esc(x.title):''}</b><small>${x.member_id?'oleh '+esc(nm(x.member_id))+' · ':''}${pad(t.getHours())}:${pad(t.getMinutes())}</small></div><b class="${x.kind==='in'?'pos':'neg'}">${x.kind==='in'?'+':'-'}${rp(x.amount)}</b>${canKas()?`<button class="x" data-pa="kdel" data-id="${x.id}" aria-label="Hapus">✕</button>`:''}</div>`}).join('')}`}).join('')||'<div class="empty">Belum ada transaksi bulan ini.</div>'}</div>`}
 kasPg=kasPg2;
 function txForm(pre){pre=pre||{};
 fm2('Catat kas',[{id:'kind',label:'Jenis',type:'select',opts:[['in','Pemasukan'],['out','Pengeluaran']],val:pre.kind||'in'},{id:'cat',label:'Kategori',type:'select',opts:[['Iuran','Iuran kas'],['Lomba','Hadiah lomba'],['Donasi','Donasi / sumbangan'],['Jualan','Hasil jualan'],['Konsumsi','Konsumsi'],['Perlengkapan','Perlengkapan'],['Transport','Transport'],['Lainnya','Lainnya']],val:pre.cat||'Iuran'},{id:'mem',label:'Dibayar oleh (untuk iuran)',type:'select',opts:[['','—']].concat(S.members.map(m=>[m.user_id,m.name])),val:pre.mem||''},{id:'amt',label:'Nominal (Rp)',type:'number',val:pre.amt||''},{id:'dt',label:'Tanggal',type:'date',val:pre.dt||todayK()},{id:'ttl',label:'Catatan (opsional)',val:''}],
@@ -897,21 +962,24 @@ const B=[['🔥','Beruntun 3','Hadir 3 acara berturut-turut',st.streak>=3],['�
 const nxT=ps.unlocked<5?TH[ps.unlocked+1]:null,pr=nxT?Math.min(100,Math.round(ps.best/nxT*100)):100;
 const bar=(l,v,cl)=>`<div><span>${l}</span><i><u style="width:${v}%;background:${cl}"></u></i><b>${v}%</b></div>`;
 return `<div class="pg"><h2>Profil</h2>
+<div class="rlrow">${chipsOf(m.role,m.jabatan)||'<span class="rl">Anggota</span>'}<span class="rl cn">${esc(S.cls.name)}</span></div>
 ${!S.v3?'<div class="box"><b>Karakter belum aktif</b><p class="mu">Jalankan schema3.sql di Supabase SQL Editor, lalu muat ulang.</p></div>':!has?'':`<div class="hab m-${ps.mood}"><div class="cl cl1"></div><div class="cl cl2"></div><div class="sun"></div><div class="gnd"></div><span class="flw fl1">🌸</span><span class="flw fl2">🌼</span><span class="flw fl3">🌷</span><div class="hnm"><b>${esc(m.pet_name||c.n)}</b><small>Lv ${ps.skin+1} · ${STN[ps.skin]}</small></div><button class="hpet" data-pa="pet" aria-label="Sentuh ${esc(c.n)}">${petSvg(m.pet_char,{stage:ps.skin,mood:ps.mood,size:176,anim:1})}</button><div class="hfx" id="hfx"></div></div>
 <div class="st2">${bar('Energi',ps.vit,'linear-gradient(90deg,#8fe0c3,#4fc3a1)')}${bar('Cinta',ps.love,'linear-gradient(90deg,#ffb3d0,#ff6fa5)')}${bar('Kenyang',Math.round(fd.n/3*100),'linear-gradient(90deg,#ffe27a,#ffb020)')}</div>
 <div class="two"><button class="btn s" data-pa="feed">🍙 Beri makan (${3-fd.n} sisa)</button><button class="btn s" data-pa="play">🎈 Ajak main</button></div>
 <div class="box" style="margin-top:14px"><div class="two" style="justify-content:space-around;text-align:center"><div><b style="font-size:22px">🔥 ${ps.cur}</b><div class="mu">Streak</div></div><div><b style="font-size:22px">${ps.best}</b><div class="mu">Terbaik</div></div><div><b style="font-size:22px">${st.pct}%</b><div class="mu">Hadir</div></div></div>${nxT?`<p class="mu" style="margin-top:10px">Skin berikutnya di streak ${nxT} hari (${ps.best}/${nxT})</p><div class="st2" style="margin:6px 0 0"><div><i><u style="width:${pr}%;background:linear-gradient(90deg,#b99bff,#6ec0ea)"></u></i></div></div>`:'<p class="mu" style="margin-top:10px">Skin maksimal terbuka. Kamu legenda! 👑</p>'}</div>
 <div class="sh" style="padding:6px 0 0"><span>Skin & evolusi</span></div><div class="row skins" style="margin:0 -20px">${STN.map((s,i)=>{const un=i<=ps.unlocked;return `<button class="sk ${un?'':'lock'} ${i===ps.skin?'on':''}" data-pa="skin" data-i="${i}">${petSvg(m.pet_char,{stage:i,mood:'happy',size:84})}<b>${s}</b><small>${un?(i===ps.skin?'Dipakai':'Terbuka'):'Streak '+TH[i]+' hari'}</small>${un?'':'<span class="lk">🔒</span>'}</button>`}).join('')}</div>`}
 ${has?`<div class="box"><label for="un">Nama kamu</label><input id="un" value="${esc(m.name)}" maxlength="30"><label for="pn">Nama karakter</label><input id="pn" value="${esc(m.pet_name||c.n)}" maxlength="14"><button class="btn" data-pa="savenames">Simpan nama</button><button class="btn s" style="margin-top:8px" data-pa="chchar">Ganti karakter</button></div>`:''}
+${memSection(S.user.id)}
 <div class="box"><div class="bdg" style="margin:0">${B.map(x=>`<div class="${x[3]?'':'off'}"><em>${x[0]}</em><b>${x[1]}</b>${x[2]}</div>`).join('')}</div></div>
 <div class="box"><b>${esc(S.cls.name)}</b><p class="mu">Kode undangan</p><div class="code">${esc(S.cls.code)}</div><button class="btn" style="margin-top:12px" data-act="share">Ajak teman sekelas</button></div>
-<div class="box"><b>Anggota (${S.members.length})</b>${S.members.map(x=>{const p=x.pet_char!=null?petState(x.user_id):null;return `<div class="mem">${avP(x,40)}<div>${esc(x.name)}${x.pet_name?` <span class="mu">· ${esc(x.pet_name)}</span>`:''}<br><span class="mu">${x.role==='admin'?'Ketua':'Anggota'}${p?` · 🔥 ${p.cur}`:''}</span></div>${admin()&&x.user_id!==S.user.id?`<button class="mu" data-pa="gift" data-u="${x.user_id}" aria-label="Hadiah">🎁</button><button class="mu" data-promote="${x.user_id}" data-r="${x.role}">${x.role==='admin'?'Jadikan anggota':'Jadikan admin'}</button>`:''}</div>`}).join('')}</div>
+${admin()?`<div class="box"><b>Agar teman tidak perlu isi Supabase</b><p class="mu" style="margin:6px 0 10px">Salin lalu tempel ke file config.js di GitHub (ganti seluruh isinya). Setelah itu semua orang langsung bisa masuk.</p><button class="btn s" data-pa="cfgcopy">Salin isi config.js</button></div>`:''}
+<div class="box"><b>Anggota (${S.members.length})</b>${S.members.map(memRow).join('')}</div>
 <button class="btn s" data-pa="fs" style="margin-bottom:10px">Layar penuh</button>
 <button class="btn s" data-act="lite" style="margin-bottom:10px">${document.documentElement.classList.contains('lite')?'Efek kaca: mati (mode ringan)':'Efek kaca: aktif'}</button><button class="btn s" data-act="leave" style="margin-bottom:10px">Keluar dari kelas</button><button class="btn d" data-act="logout">Keluar akun</button></div>`}
 meTab=meTab2;
 function giftModal(uid){const m=S.members.find(x=>x.user_id===uid);if(!m)return;
 modal={form:true,html:()=>`<h2>Hadiah untuk ${esc(m.name)}</h2><p class="mu">Pilih karakter dan skin. Skin langsung terbuka untuknya.</p><label for="gc">Karakter</label><select id="gc">${CH.map((c,i)=>`<option value="${i}" ${i===m.pet_char?'selected':''}>${c.n} (${c.sp})</option>`).join('')}</select><label for="gk">Skin</label><select id="gk">${STN.map((s,i)=>`<option value="${i}">${i+1}. ${s}</option>`).join('')}</select><button class="btn" id="gb">Berikan</button>`,
-bind:o=>{o.querySelector('#gb').onclick=async()=>{const c=+o.querySelector('#gc').value,s=+o.querySelector('#gk').value;if(await db(sb.from('members').update({pet_char:c,pet_skin:s,pet_gift:s}).eq('class_id',S.cls.id).eq('user_id',uid),'Hadiah terkirim 🎁'))closeModal()}}};render()}
+bind:o=>{o.querySelector('#gb').onclick=async()=>{const c=+o.querySelector('#gc').value,s=+o.querySelector('#gk').value;if(await db(sb.rpc('gift_pet',{p_user:uid,p_char:c,p_skin:s}),'Hadiah terkirim 🎁'))closeModal()}}};render()}
 /* ---------- events ---------- */
 function hearts(n,em){const f=$('#hfx');if(!f)return;for(let i=0;i<n;i++){const h=document.createElement('span');h.className='heart';h.textContent=em||'💖';h.style.left=(30+Math.random()*40)+'%';h.style.animationDelay=(i*.12)+'s';f.append(h);setTimeout(()=>h.remove(),1600)}}
 function petAnim(cls,ms){const s=document.querySelector('.hpet svg');if(!s)return;s.classList.add(cls);setTimeout(()=>s.classList.remove(cls),ms)}
@@ -931,9 +999,166 @@ else if(a==='feed'){const f=getFeed();if(f.n>=3)return toast('Dia sudah kenyang.
 else if(a==='gift')giftModal(d.u);
 else if(a==='fs'){try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){toast('Layar penuh tidak didukung. Pasang aplikasi lewat Instal aplikasi.')}}
 else if(a==='kmon'){const[y,mo]=S.kasMon.split('-').map(Number),n=new Date(y,mo-1+ +d.d,1);S.kasMon=n.getFullYear()+'-'+pad(n.getMonth()+1);render()}
-else if(a==='kq'&&admin())txForm({mem:d.u,cat:'Iuran'});
+else if(a==='kq'&&canKas())txForm({mem:d.u,cat:'Iuran'});
 else if(a==='kdel'){if(confirm('Hapus transaksi ini?'))db(sb.from('kas_tx').delete().eq('id',d.id),'Dihapus')}
 });
+/* ===== v4: teman, chat, memori profil, jabatan ===== */
+S.profiles=[];S.fr=[];S.msgs=[];S.memos=[];S.v4=true;S.cw=null;S.pp=null;S.draft='';S.fcode='';
+const JB={ketua:'Ketua kelas',wakil:'Wakil ketua',bendahara:'Bendahara'};
+const myId=()=>S.user.id;
+const prof=uid=>S.profiles.find(p=>p.user_id===uid)||null;
+const memb=uid=>S.members.find(m=>m.user_id===uid)||null;
+const dname=uid=>(memb(uid)||prof(uid)||{}).name||'Teman';
+const frOf=uid=>S.fr.find(f=>(f.a===myId()&&f.b===uid)||(f.b===myId()&&f.a===uid))||null;
+const isFriend=uid=>{const f=frOf(uid);return !!f&&f.status==='accepted'};
+const friendsList=()=>S.fr.filter(f=>f.status==='accepted').map(f=>f.a===myId()?f.b:f.a);
+const thread=uid=>S.msgs.filter(x=>(x.from_id===myId()&&x.to_id===uid)||(x.from_id===uid&&x.to_id===myId()));
+const unreadOf=uid=>S.msgs.filter(x=>x.from_id===uid&&x.to_id===myId()&&!x.read_at).length;
+const totalUnread=()=>S.msgs.filter(x=>x.to_id===myId()&&!x.read_at).length;
+const hm=t=>{const d=new Date(t);return pad(d.getHours())+':'+pad(d.getMinutes())};
+const fmtDur=s=>Math.floor((s||0)/60)+':'+pad(Math.round(s||0)%60);
+const dayLbl=k=>k===TK?'Hari ini':k===key(new Date(Date.now()-864e5))?'Kemarin':fmt(k);
+const memUrl=p=>sb.storage.from('memories').getPublicUrl(p).data.publicUrl;
+function canKas(){return !!S.me&&(S.me.role==='admin'||S.me.jabatan==='bendahara')}
+function chipsOf(role,jab){return (jab&&JB[jab]?`<span class="rl j-${jab}">${JB[jab]}</span>`:'')+(role==='admin'?'<span class="rl j-admin">Admin</span>':'')}
+function avU(uid,sz){const m=memb(uid);if(m)return avP(m,sz);const p=prof(uid);
+ if(p&&p.pet_char!=null)return `<span class="pav2" style="width:${sz}px;height:${sz}px">${petSvg(p.pet_char,{stage:p.pet_skin==null?2:p.pet_skin,mood:'happy',size:sz-2})}</span>`;
+ return `<span class="av" style="width:${sz}px;height:${sz}px;font-size:${Math.round(sz/3)}px;background:${COL[dname(uid).length%5]}">${esc(ini(dname(uid)))}</span>`}
+async function copyTxt(t,ok){try{await navigator.clipboard.writeText(t);toast(ok||'Disalin')}catch(e){const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();let r=false;try{r=document.execCommand('copy')}catch(x){}a.remove();toast(r?(ok||'Disalin'):'Tidak bisa menyalin')}}
+/* ---------- signed URL untuk chat (bucket privat) ---------- */
+const SU={};
+async function hydrate(root){const els=[...(root||document).querySelectorAll('[data-sp]')].filter(e=>!e.getAttribute('src'));
+ const need=[...new Set(els.map(e=>e.dataset.sp).filter(p=>!SU[p]))];
+ if(need.length){try{const r=await sb.storage.from('chat').createSignedUrls(need,3600);if(r.data)r.data.forEach(x=>{if(x.signedUrl)SU[x.path]=x.signedUrl})}catch(e){}}
+ els.forEach(e=>{const u=SU[e.dataset.sp];if(u)e.setAttribute('src',u)})}
+/* ---------- daftar teman ---------- */
+function chatPg(){
+ const warn4=S.v4?'':'<div class="box"><b>Fitur teman & chat belum aktif</b><p class="mu">Jalankan schema4.sql di Supabase SQL Editor, lalu muat ulang.</p></div>';
+ const mine=prof(myId()),code=(mine&&mine.code)||'······';
+ const inc=S.fr.filter(f=>f.status==='pending'&&f.b===myId()),out=S.fr.filter(f=>f.status==='pending'&&f.a===myId());
+ const fl=friendsList().map(u=>{const t=thread(u);return{u,l:t[t.length-1],n:unreadOf(u)}}).sort((a,b)=>(b.l?b.l.created_at:'').localeCompare(a.l?a.l.created_at:''));
+ const prev=l=>!l?'Belum ada pesan':(l.from_id===myId()?'Kamu: ':'')+(l.kind==='image'?'📷 Foto':l.kind==='audio'?'🎤 Pesan suara':esc(l.body));
+ const when=l=>{if(!l)return'';const d=new Date(l.created_at);return key(d)===TK?hm(l.created_at):fmt(key(d))};
+ const cn=u=>{const m=memb(u);return m?S.cls.name:((prof(u)||{}).class_name||'')};
+ return `<div class="pg">${hd('Teman & Chat','')}${warn4}
+<div class="box"><b>Kode temanku</b><div class="code" style="margin:6px 0 10px">${esc(code)}</div><div class="two"><button class="btn s" data-pa="fcopy">Salin kode</button><button class="btn s" data-pa="fshare">Bagikan</button></div></div>
+<div class="box"><label for="fcode">Tambah teman dengan kode</label><input id="fcode" value="${esc(S.fcode)}" placeholder="Contoh: A1B2C3" autocapitalize="characters" autocomplete="off"><button class="btn" data-pa="fadd">Kirim permintaan</button><p class="mu" style="margin-top:8px">Teman bisa dari kelas lain. Teman sekelas bisa ditambah lewat Profil &gt; Anggota.</p></div>
+${inc.length?`<div class="box"><b>Permintaan masuk</b>${inc.map(f=>`<div class="frow"><span class="fav2">${avU(f.a,44)}</span><div><b>${esc(dname(f.a))}</b><small>${esc(cn(f.a))}</small></div><button class="btn s sm" data-pa="facc" data-id="${f.id}">Terima</button><button class="btn s sm" data-pa="fdel" data-id="${f.id}" aria-label="Tolak">✕</button></div>`).join('')}</div>`:''}
+<div class="box"><b>Teman (${fl.length})</b>${fl.length?fl.map(x=>`<button class="frow" data-pa="room" data-u="${x.u}"><span class="fav2">${avU(x.u,48)}</span><div><b>${esc(dname(x.u))}</b><small>${prev(x.l)}</small></div><span class="fmeta"><small>${when(x.l)}</small>${x.n?`<i class="bdg2">${x.n}</i>`:''}</span></button>`).join(''):'<p class="mu" style="margin-top:8px">Belum ada teman. Bagikan kodemu atau masukkan kode temanmu.</p>'}</div>
+${out.length?`<div class="box"><b>Menunggu jawaban</b>${out.map(f=>`<div class="frow"><span class="fav2">${avU(f.b,40)}</span><div><b>${esc(dname(f.b))}</b><small>${esc(cn(f.b))}</small></div><button class="btn s sm" data-pa="fdel" data-id="${f.id}">Batal</button></div>`).join('')}</div>`:''}</div>`}
+/* ---------- ruang chat ---------- */
+let REC=null;
+function bubble(x){const me=x.from_id===myId();let c='';
+ if(x.kind==='image')c=`<img class="mimg" data-sp="${esc(x.path)}" data-pa="zoom" data-p="${esc(x.path)}" alt="Foto" loading="lazy">`+(x.body?`<div class="mt2">${esc(x.body)}</div>`:'');
+ else if(x.kind==='audio')c=`<div class="maud"><audio controls preload="none" data-sp="${esc(x.path)}"></audio><small>${fmtDur(x.dur)}</small></div>`;
+ else c=`<div class="mt2">${esc(x.body)}</div>`;
+ return `<div class="mb ${me?'me':'th'}"><div class="bbl">${c}<span class="mm">${hm(x.created_at)}${me?(x.read_at?' ✓✓':' ✓'):''}${me?`<button class="mdl" data-pa="mdel" data-id="${x.id}" aria-label="Hapus pesan">🗑</button>`:''}</span></div></div>`}
+function msgsHtml(){const th=thread(S.cw);if(!th.length)return '<div class="empty">Belum ada pesan. Sapa dulu yuk 👋</div>';let last='',o='';
+ th.forEach(x=>{const d=key(new Date(x.created_at));if(d!==last){last=d;o+=`<div class="dsep"><span>${dayLbl(d)}</span></div>`}o+=bubble(x)});return o}
+function compHtml(){
+ if(REC)return `<button class="cb" data-pa="reccancel" aria-label="Batal">🗑</button><span class="recdot"></span><b id="rect">0:00</b><span class="rechint">Merekam…</span><button class="csend" data-pa="recsend" aria-label="Kirim suara">➤</button>`;
+ const has=!!(S.draft||'').trim();
+ return `<label class="cb" aria-label="Kirim foto">📷<input type="file" id="cimg" accept="image/*" hidden></label><input id="cin" placeholder="Tulis pesan" autocomplete="off" enterkeyhint="send" maxlength="1000" value="${esc(S.draft||'')}"><button class="csend" id="cbtn" data-pa="${has?'csend':'rec'}" aria-label="${has?'Kirim':'Rekam suara'}">${has?'➤':'🎤'}</button>`}
+function roomHtml(){const u=S.cw,m=memb(u),p=prof(u)||{},cn=m?S.cls.name:(p.class_name||'');
+ return `<div class="room"><div class="rh"><button class="ib" data-pa="rback" aria-label="Kembali">‹</button><button class="rp" data-pa="person" data-u="${u}">${avU(u,42)}<div><b>${esc(dname(u))}</b><small>${esc(cn)}</small></div></button></div><div class="msgs" id="msgs">${msgsHtml()}</div><div class="comp" id="comp">${compHtml()}</div></div>`}
+function paintComp(){const c=$('#comp');if(c)c.innerHTML=compHtml()}
+function markRead(){if(S.tab!=='chatroom'||!S.cw)return;const ids=S.msgs.filter(x=>x.from_id===S.cw&&x.to_id===myId()&&!x.read_at).map(x=>x.id);if(!ids.length)return;
+ const t=new Date().toISOString();S.msgs.forEach(x=>{if(ids.includes(x.id))x.read_at=t});sb.from('messages').update({read_at:t}).in('id',ids).then(()=>{})}
+function roomUpdate(){if(S.tab!=='chatroom')return;const el=$('#msgs');if(!el){render();return}
+ const near=el.scrollHeight-el.scrollTop-el.clientHeight<140;el.innerHTML=msgsHtml();hydrate(el);if(near)el.scrollTop=el.scrollHeight;markRead()}
+async function sendMsg(row){const r=await sb.from('messages').insert(Object.assign({to_id:S.cw},row)).select().single();
+ if(r.error){toast(r.error.message);return false}S.msgs.push(r.data);const el=$('#msgs');if(el)el.scrollTop=el.scrollHeight;roomUpdate();if(el)el.scrollTop=el.scrollHeight;return true}
+async function upChat(file,ext,type){const p=`${myId()}/${Date.now()}-${Math.random().toString(36).slice(2,7)}.${ext}`;
+ const r=await sb.storage.from('chat').upload(p,file,{contentType:type});if(r.error){toast('Gagal mengunggah: '+r.error.message);return null}return p}
+async function sendText(){const i=$('#cin');if(!i)return;const t=i.value.trim();if(!t)return;i.value='';S.draft='';paintComp();const f=$('#cin');f&&f.focus();await sendMsg({kind:'text',body:t})}
+async function recStart(){
+ if(!navigator.mediaDevices||!window.MediaRecorder)return toast('Perekam suara belum didukung di browser ini');
+ try{const st=await navigator.mediaDevices.getUserMedia({audio:true});
+  const mt=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'].find(t=>MediaRecorder.isTypeSupported(t))||'';
+  const mr=mt?new MediaRecorder(st,{mimeType:mt}):new MediaRecorder(st);
+  const r={mr,st,ch:[],t0:Date.now()};REC=r;
+  mr.ondataavailable=e=>{if(e.data&&e.data.size)r.ch.push(e.data)};mr.start(250);
+  r.tm=setInterval(()=>{if(REC!==r)return;const s=Math.floor((Date.now()-r.t0)/1000),el=$('#rect');if(el)el.textContent=fmtDur(s);if(s>=180)recEnd(true)},300);
+  paintComp()}catch(e){toast('Mikrofon tidak bisa diakses. Izinkan akses mikrofon di browser.')}}
+function recEnd(send){const r=REC;if(!r)return;clearInterval(r.tm);
+ const done=()=>{r.st.getTracks().forEach(t=>t.stop());if(REC===r)REC=null;paintComp()};
+ r.mr.onstop=async()=>{done();if(!send)return;
+  const dur=Math.max(1,Math.round((Date.now()-r.t0)/1000)),type=(r.mr.mimeType||'audio/webm').split(';')[0],blob=new Blob(r.ch,{type});
+  if(blob.size<800)return toast('Rekaman terlalu pendek');
+  const ext=type.includes('mp4')?'m4a':type.includes('ogg')?'ogg':'webm';toast('Mengirim suara…');
+  const p=await upChat(blob,ext,type);if(p)await sendMsg({kind:'audio',path:p,dur})};
+ try{r.mr.stop()}catch(e){done()}}
+/* ---------- profil orang + memori ---------- */
+function memSection(u){const me=u===myId(),can=me||memb(u)||isFriend(u),l=S.memos.filter(x=>x.user_id===u);
+ return `<div class="box"><div class="sh" style="padding:0 0 10px"><span>${me?'Memoriku':'Memori'}</span>${me?'<button class="chip" data-pa="madd">+ Tambah</button>':''}</div>${!can?'<p class="mu">Memori hanya terlihat oleh teman dan teman sekelas.</p>':l.length?`<div class="mgrid2">${l.map(x=>`<button class="mm2" data-pa="mview" data-id="${x.id}">${x.path?`<img loading="lazy" src="${memUrl(x.path)}" alt="">`:`<span class="mtx">${esc(x.caption)}</span>`}${x.path&&x.caption?`<small>${esc(x.caption)}</small>`:''}</button>`).join('')}</div>`:`<p class="mu">${me?'Belum ada memori. Ketuk + Tambah untuk menyimpan foto atau ceritamu.':'Belum ada memori.'}</p>`}</div>`}
+function personPg(){const u=S.pp;if(!u)return '<div class="pg"><div class="empty">Profil tidak ditemukan.</div></div>';
+ const m=memb(u),p=prof(u)||{},me=u===myId(),name=m?m.name:(p.name||'Teman'),role=m?m.role:p.role,jab=m?m.jabatan:p.jabatan,cn=m?S.cls.name:(p.class_name||''),fr=frOf(u);
+ let act='';
+ if(!me){if(fr&&fr.status==='accepted')act=`<button class="btn" data-pa="room" data-u="${u}">💬 Kirim pesan</button><button class="btn s" data-pa="unfriend" data-u="${u}" style="margin-top:8px">Hapus dari teman</button>`;
+  else if(fr)act=fr.b===myId()?`<button class="btn" data-pa="facc" data-id="${fr.id}">Terima permintaan teman</button>`:'<button class="btn s" disabled>Permintaan terkirim</button>';
+  else act=`<button class="btn" data-pa="freq" data-u="${u}">➕ Tambah teman</button>`}
+ const ps=m&&m.pet_char!=null?petState(u):null;
+ return `<div class="pg"><div class="ph"><button class="ib" data-pa="pback" aria-label="Kembali">‹</button><div><h2>Profil</h2></div></div>
+<div class="box ctr"><div class="pbig">${avU(u,96)}</div><h3 style="font-size:20px;margin-top:8px">${esc(name)}</h3><p class="mu" style="margin:2px 0 8px">${esc(cn)}</p><div class="rlrow" style="justify-content:center">${chipsOf(role,jab)||'<span class="rl">Anggota</span>'}${ps?`<span class="rl">🔥 ${ps.cur} hari</span>`:''}</div>${act?`<div style="margin-top:14px">${act}</div>`:''}</div>
+${memSection(u)}</div>`}
+function memForm(){let file=null;
+ modal={form:true,html:()=>`<h2>Tambah memori</h2><div class="two" style="margin:10px 0"><label class="btn s cam1">${G.cam} Ambil foto<input type="file" id="mfc" accept="image/*" capture="environment" hidden></label><label class="btn s cam1">${G.img} Dari galeri<input type="file" id="mfg" accept="image/*" hidden></label></div><div id="mpv" class="mpv mu">Foto belum dipilih (boleh tanpa foto)</div><label for="mcap">Cerita atau catatan</label><textarea id="mcap" rows="4" maxlength="500" placeholder="Tulis kenangan ini…"></textarea><button class="btn" id="mset">Simpan memori</button>`,
+ bind:o=>{const pv=o.querySelector('#mpv'),pick=e=>{file=e.target.files[0]||null;pv.innerHTML=file?`<img src="${URL.createObjectURL(file)}" alt="">`:'Foto belum dipilih (boleh tanpa foto)'};
+  o.querySelector('#mfc').onchange=pick;o.querySelector('#mfg').onchange=pick;
+  o.querySelector('#mset').onclick=async()=>{const cap=o.querySelector('#mcap').value.trim();if(!file&&!cap)return toast('Pilih foto atau tulis cerita');
+   const b=o.querySelector('#mset');b.disabled=true;let path=null;
+   if(file){const f=await shrink(file),ext=(f.name.split('.').pop()||'jpg').toLowerCase();path=`${myId()}/${Date.now()}-${Math.random().toString(36).slice(2,7)}.${ext}`;
+    const u=await sb.storage.from('memories').upload(path,f,{contentType:f.type||'image/jpeg'});if(u.error){b.disabled=false;return toast('Gagal mengunggah: '+u.error.message)}}
+   const r=await sb.from('memories').insert({caption:cap,path});if(r.error){b.disabled=false;return toast(r.error.message)}
+   closeModal();toast('Memori disimpan');refresh()}}};render()}
+function memView(id){const x=S.memos.find(m=>m.id===id);if(!x)return;const mine=x.user_id===myId();
+ modal={form:false,html:()=>`${x.path?`<img class="zoom" src="${memUrl(x.path)}" alt="">`:''}${x.caption?`<p style="margin:12px 0;white-space:pre-wrap">${esc(x.caption)}</p>`:''}<p class="mu">${esc(dname(x.user_id))} · ${fmt(key(new Date(x.created_at)))}</p>${mine?'<button class="btn d" id="mdx" style="margin-top:12px">Hapus memori</button>':''}`,
+ bind:o=>{const b=o.querySelector('#mdx');if(b)b.onclick=async()=>{if(!confirm('Hapus memori ini?'))return;const r=await sb.from('memories').delete().eq('id',id);if(r.error)return toast(r.error.message);if(x.path)sb.storage.from('memories').remove([x.path]);closeModal();toast('Dihapus');refresh()}}};render()}
+function memRow(x){const p=x.pet_char!=null?petState(x.user_id):null,self=x.user_id===S.user.id;
+ return `<div class="mem"><button class="mlnk" data-pa="person" data-u="${x.user_id}">${avP(x,40)}<div>${esc(x.name)}${x.pet_name?` <span class="mu">· ${esc(x.pet_name)}</span>`:''}<br><span class="rlrow" style="margin:2px 0 0">${chipsOf(x.role,x.jabatan)||'<span class="rl">Anggota</span>'}${p?`<span class="mu"> 🔥 ${p.cur}</span>`:''}</span></div></button>${admin()&&!self?`<button class="mu" data-pa="gift" data-u="${x.user_id}" aria-label="Hadiah">🎁</button>`:''}${admin()?`<button class="mu" data-pa="mgr" data-u="${x.user_id}" aria-label="Atur jabatan">⚙️</button>`:''}</div>`}
+function mgrModal(u){const m=memb(u);if(!m)return;const self=u===myId();
+ const fields=[{id:'jab',label:'Jabatan',type:'select',opts:[['','Tidak ada'],['ketua','Ketua kelas'],['wakil','Wakil ketua'],['bendahara','Bendahara']],val:m.jabatan||''}];
+ if(!self)fields.push({id:'role',label:'Hak akses',type:'select',opts:[['member','Anggota'],['admin','Admin (kelola kelas)']],val:m.role||'member'});
+ fm2('Atur '+m.name,fields,async v=>{
+  if(!self&&v.role!==m.role){const r=await sb.from('members').update({role:v.role}).eq('class_id',S.cls.id).eq('user_id',u);if(r.error)return toast(r.error.message)||false}
+  const r2=await sb.rpc('set_jabatan',{p_user:u,p_jab:v.jab||null});if(r2.error)return toast(r2.error.message)||false;
+  await refresh();toast('Tersimpan');return true})}
+const cfgText=()=>`window.CFG={url:${JSON.stringify(CF.url)},key:${JSON.stringify(CF.key)}};`;
+/* ---------- aksi ---------- */
+document.addEventListener('input',e=>{
+ if(e.target.id==='fcode')S.fcode=e.target.value;
+ if(e.target.id==='cin'){S.draft=e.target.value;const b=$('#cbtn'),has=!!S.draft.trim();if(b){b.dataset.pa=has?'csend':'rec';b.textContent=has?'➤':'🎤'}}});
+document.addEventListener('keydown',e=>{if(e.target.id==='cin'&&e.key==='Enter'){e.preventDefault();sendText()}});
+document.addEventListener('change',async e=>{
+ if(e.target.id==='cimg'){const f0=e.target.files[0];e.target.value='';if(!f0)return;if(f0.size>25*1048576)return toast('Foto lebih dari 25 MB');
+  toast('Mengirim foto…');const f=await shrink(f0),ext=(f.name.split('.').pop()||'jpg').toLowerCase(),p=await upChat(f,ext,f.type||'image/jpeg');if(p)await sendMsg({kind:'image',path:p})}});
+document.addEventListener('click',async ev=>{
+ const t=ev.target.closest('[data-pa]');if(!t)return;const d=t.dataset,a=d.pa;
+ if(a==='room'){S.cw=d.u;S.tab='chatroom';S.draft='';render()}
+ else if(a==='rback'){if(REC)recEnd(false);S.tab='chat';S.cw=null;render()}
+ else if(a==='person'){if(S.tab!=='person')S.prev=S.tab;S.pp=d.u;S.tab='person';render()}
+ else if(a==='pback'){S.tab=(S.prev&&S.prev!=='person')?S.prev:'home';render()}
+ else if(a==='csend')sendText();
+ else if(a==='rec')recStart();
+ else if(a==='reccancel')recEnd(false);
+ else if(a==='recsend')recEnd(true);
+ else if(a==='zoom'){const u=SU[d.p];if(!u)return;modal={form:false,html:()=>`<img class="zoom" src="${u}" alt="Foto">`};render()}
+ else if(a==='mdel'){if(!confirm('Hapus pesan ini untuk semua?'))return;const x=S.msgs.find(m=>m.id===d.id);const r=await sb.from('messages').delete().eq('id',d.id);if(r.error)return toast(r.error.message);
+  if(x&&x.path)sb.storage.from('chat').remove([x.path]);S.msgs=S.msgs.filter(m=>m.id!==d.id);roomUpdate()}
+ else if(a==='fadd'){const c=(($('#fcode')||{}).value||'').trim().toUpperCase();if(!c)return toast('Isi kode teman');const r=await sb.rpc('add_friend',{p_code:c});if(r.error)return toast(r.error.message);S.fcode='';toast(r.data||'Terkirim');refresh()}
+ else if(a==='freq'){const r=await sb.rpc('add_friend_uid',{p_user:d.u});if(r.error)return toast(r.error.message);toast(r.data||'Terkirim');refresh()}
+ else if(a==='facc'){const r=await sb.rpc('accept_friend',{p_id:d.id});if(r.error)return toast(r.error.message);toast('Teman ditambahkan 🎉');refresh()}
+ else if(a==='fdel'){const r=await sb.from('friendships').delete().eq('id',d.id);if(r.error)return toast(r.error.message);refresh()}
+ else if(a==='unfriend'){const f=frOf(d.u);if(!f||!confirm('Hapus dari daftar teman?'))return;const r=await sb.from('friendships').delete().eq('id',f.id);if(r.error)return toast(r.error.message);toast('Dihapus dari teman');refresh()}
+ else if(a==='fcopy'){const p=prof(myId());if(p&&p.code)copyTxt(p.code,'Kode disalin')}
+ else if(a==='fshare'){const p=prof(myId());if(!p||!p.code)return;const txt=`Tambahkan aku di Kelasku! Kode temanku: ${p.code}\n${inviteLink()}`;if(navigator.share)navigator.share({text:txt}).catch(()=>{});else copyTxt(txt,'Undangan disalin')}
+ else if(a==='madd')memForm();
+ else if(a==='mview')memView(d.id);
+ else if(a==='mgr')mgrModal(d.u);
+ else if(a==='cfgcopy')copyTxt(cfgText(),'Isi config.js disalin. Tempel di config.js di GitHub.');
+});
+setInterval(()=>{if(S.tab==='chatroom'&&!document.hidden&&S.user&&!REC)refresh()},9000);
+
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&S.user){S._ci=0;refresh()}});
 })();
 
