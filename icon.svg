@@ -1,87 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 736 736" width="512" height="512">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
   <defs>
-    <!-- Clip Path untuk membatasi area icon -->
-    <clipPath id="squircle">
-      <rect x="120" y="118" width="498" height="498" rx="150" />
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EAE8E3" />
+      <stop offset="100%" stop-color="#E2DFD8" />
+    </linearGradient>
+
+    <!-- Blue Frame Gradient -->
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2B88FF" />
+      <stop offset="100%" stop-color="#1665E8" />
+    </linearGradient>
+
+    <!-- Inner Folder Gradient (White to Light Blue) -->
+    <linearGradient id="folderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#F4F8FF" />
+      <stop offset="100%" stop-color="#C4DCFC" />
+    </linearGradient>
+
+    <!-- Slider Track Gradient -->
+    <linearGradient id="trackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1873EE" />
+      <stop offset="100%" stop-color="#105BCC" />
+    </linearGradient>
+
+    <!-- Filters for 3D Shadows -->
+    <filter id="mainShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="25" stdDeviation="35" flood-color="#000000" flood-opacity="0.12" />
+    </filter>
+
+    <filter id="thumbShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F4CA6" flood-opacity="0.3" />
+    </filter>
+    
+    <filter id="innerGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" />
+      <feOffset dx="0" dy="10" result="offsetBlur" />
+      <feComposite in="SourceGraphic" in2="offsetBlur" operator="over" />
+    </filter>
+
+    <!-- Clip Path to keep inner shadow inside the folder -->
+    <clipPath id="folderClip">
+      <path d="M 310 710 
+               L 310 360 
+               C 310 310, 350 280, 400 280 
+               L 480 280 
+               C 520 280, 540 320, 580 320 
+               L 710 320 
+               C 740 320, 740 350, 740 380 
+               L 740 710 
+               C 740 740, 720 750, 690 750 
+               L 360 750 
+               C 320 750, 310 740, 310 710 Z" />
     </clipPath>
-
-    <!-- Gradien Latar Belakang Biru -->
-    <linearGradient id="bgBlue" x1="0" y1="0" x2="0.25" y2="1">
-      <stop offset="0" stop-color="#1c6fe8" />
-      <stop offset="0.55" stop-color="#2b86f0" />
-      <stop offset="1" stop-color="#4aa6f9" />
-    </linearGradient>
-
-    <!-- Gradien Folder Kuning Depan -->
-    <linearGradient id="folderYellow" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffe064" />
-      <stop offset="0.55" stop-color="#ffc83e" />
-      <stop offset="1" stop-color="#ffab2c" />
-    </linearGradient>
-
-    <!-- Gradien Tab Folder Kuning -->
-    <linearGradient id="tabYellow" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffe780" />
-      <stop offset="1" stop-color="#ffcf45" />
-    </linearGradient>
-
-    <!-- Gradien Folder Tengah (Putih) -->
-    <linearGradient id="folderWhite" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#fffdf8" />
-      <stop offset="1" stop-color="#f1e6d2" />
-    </linearGradient>
-
-    <!-- Gradien Folder Belakang (Biru Muda) -->
-    <linearGradient id="folderLightBlue" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#9cc8ff" />
-      <stop offset="1" stop-color="#cfe3ff" />
-    </linearGradient>
-
-    <!-- Gradien Mata/Mulut -->
-    <linearGradient id="brownFace" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#94461c" />
-      <stop offset="1" stop-color="#6e3010" />
-    </linearGradient>
-
-    <!-- Filter Bayangan Latar -->
-    <filter id="shadowBg" x="-10%" y="-10%" width="120%" height="125%">
-      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#0b3a8a" flood-opacity="0.22" />
-    </filter>
-
-    <!-- Filter Bayangan Folder -->
-    <filter id="shadowFolder" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="-6" stdDeviation="7" flood-color="#7a4a00" flood-opacity="0.22" />
-    </filter>
   </defs>
 
-  <!-- ==================== LATAR BELAKANG ICON (BIRU) ==================== -->
-  <g filter="url(#shadowBg)">
-    <rect x="120" y="118" width="498" height="498" rx="150" fill="url(#bgBlue)" />
-  </g>
-  
-    <!-- Lapisan Folder Belakang (Biru Muda) -->
-    <path d="M352 262 L612 292 L630 294 L530 310 V392 L410 322 L340 288 L330 270 C352 262 352 262 352 262 Z" fill="url(#folderLightBlue)" opacity="0.85" />
-    <path d="M408 312 L630 348 V398 L424 332 Z" fill="#eef5ff" opacity="0.9" />
+  <!-- Canvas Background -->
+  <rect width="1000" height="1000" fill="url(#bgGrad)" />
 
-    <!-- Lapisan Folder Tengah (Putih) -->
-    <path d="M242 274 L230 282 L226 302 L220 352 L424 352 L410 322 L404 312 L392 308 L272 272 L254 266 L242 274 Z" fill="url(#tabYellow)" />
-    <path d="M266 324 L250 330 L258 348 L268 362 L606 418 L614 396 L606 388 L280 322 L272 321 L266 324 Z" fill="url(#folderWhite)" />
+  <!-- Main Icon Group with Drop Shadow -->
+  <g filter="url(#mainShadow)">
+    
+    <!-- Outer Blue Frame -->
+    <rect x="230" y="230" width="540" height="540" rx="160" fill="url(#frameGrad)" />
+    
+    <!-- Inner Frame Highlight (Subtle 3D edge) -->
+    <rect x="238" y="238" width="524" height="524" rx="152" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.15" />
 
-    <!-- Lapisan Folder Depan (Kuning) -->
-    <g filter="url(#shadowFolder)">
-      <path d="M206 350 L190 352 L182 372 L140 566 L136 598 L68 606 L196 618 L262 618 H640 V430 L640 424 L630 422 L216 348 L210 347 L206 350 Z" fill="url(#folderYellow)" />
+    <!-- Inner White/Light Blue Folder Shape -->
+    <path d="M 310 710 
+             L 310 360 
+             C 310 310, 350 280, 400 280 
+             L 480 280 
+             C 520 280, 540 320, 580 320 
+             L 710 320 
+             C 740 320, 740 350, 740 380 
+             L 740 710 
+             C 740 740, 720 750, 690 750 
+             L 360 750 
+             C 320 750, 310 740, 310 710 Z" 
+          fill="url(#folderGrad)" />
+          
+    <!-- Inner Folder Edge Glow (Subtle white border for glass effect) -->
+    <path d="M 310 710 
+             L 310 360 
+             C 310 310, 350 280, 400 280 
+             L 480 280 
+             C 520 280, 540 320, 580 320 
+             L 710 320 
+             C 740 320, 740 350, 740 380 
+             L 740 710 
+             C 740 740, 720 750, 690 750 
+             L 360 750 
+             C 320 750, 310 740, 310 710 Z" 
+          fill="none" stroke="#FFFFFF" stroke-width="8" opacity="0.8" />
+          
+    <!-- Soft Inner Shadow at the bottom of the folder -->
+    <g clip-path="url(#folderClip)">
+      <rect x="310" y="550" width="440" height="220" fill="#9CBCFA" opacity="0.3" filter="blur(30px)" />
     </g>
-    
-    <!-- Highlight Atas Folder Kuning -->
-    <path d="M208 352 L624 426" stroke="#fff3a8" stroke-width="5" stroke-linecap="round" opacity="0.7" />
-    
-    <!-- Bayangan Dalam Folder Kuning -->
-    <path d="M150 560 L140 600 L176 510 L262 618 H640 V600 L420 612 L190 590 L150 584 L150 560 Z" fill="#ff9f1c" opacity="0.35" />
 
-    <!-- Wajah Folder (Mata Kiri, Mata Kanan, Mulut) -->
-    <ellipse cx="275" cy="476" rx="29" ry="39" transform="rotate(-6 275 476)" fill="url(#brownFace)" />
-    <ellipse cx="461" cy="509" rx="29" ry="39" transform="rotate(-6 461 509)" fill="url(#brownFace)" />
-    <path d="M326 543 Q362 566 398 549" stroke="url(#brownFace)" stroke-width="24" stroke-linecap="round" fill="none" />
+    <!-- ================= SLIDER SECTION ================= -->
+    
+    <!-- Slider Track Background (Darker blue) -->
+    <rect x="380" y="550" width="220" height="22" rx="11" fill="url(#trackGrad)" />
+    
+    <!-- Slider Track Inner Shadow/Highlight -->
+    <rect x="380" y="550" width="220" height="10" rx="5" fill="#FFFFFF" opacity="0.15" />
+
+    <!-- Slider Thumb (White Knob) -->
+    <circle cx="560" cy="561" r="34" fill="#FFFFFF" filter="url(#thumbShadow)" />
+    
+    <!-- Slider Thumb Inner Highlight -->
+    <circle cx="560" cy="555" r="30" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
+
+    <!-- Slider Thumb Inner Dot (Blue) -->
+    <circle cx="560" cy="561" r="10" fill="#1873EE" />
 
   </g>
 </svg>
