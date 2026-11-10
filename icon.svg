@@ -58,10 +58,7 @@
   <g filter="url(#shadowBg)">
     <rect x="120" y="118" width="498" height="498" rx="150" fill="url(#bgBlue)" />
   </g>
-
-  <!-- ==================== AREA GAMBAR FOLDER ==================== -->
-  <g clip-path="url(#squircle)">
-    
+  
     <!-- Lapisan Folder Belakang (Biru Muda) -->
     <path d="M352 262 L612 292 L630 294 L530 310 V392 L410 322 L340 288 L330 270 C352 262 352 262 352 262 Z" fill="url(#folderLightBlue)" opacity="0.85" />
     <path d="M408 312 L630 348 V398 L424 332 Z" fill="#eef5ff" opacity="0.9" />
