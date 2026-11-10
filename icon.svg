@@ -1,122 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="100%" height="100%">
-  <defs>
-    <!-- Background Gradient -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#EAE8E3" />
-      <stop offset="100%" stop-color="#E2DFD8" />
-    </linearGradient>
-
-    <!-- Blue Frame Gradient -->
-    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2B88FF" />
-      <stop offset="100%" stop-color="#1665E8" />
-    </linearGradient>
-
-    <!-- Inner Folder Gradient (White to Light Blue) -->
-    <linearGradient id="folderGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="40%" stop-color="#F4F8FF" />
-      <stop offset="100%" stop-color="#C4DCFC" />
-    </linearGradient>
-
-    <!-- Slider Track Gradient -->
-    <linearGradient id="trackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#1873EE" />
-      <stop offset="100%" stop-color="#105BCC" />
-    </linearGradient>
-
-    <!-- Filters for 3D Shadows -->
-    <filter id="mainShadow" x="-15%" y="-15%" width="130%" height="130%">
-      <feDropShadow dx="0" dy="25" stdDeviation="35" flood-color="#000000" flood-opacity="0.12" />
-    </filter>
-
-    <filter id="thumbShadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0F4CA6" flood-opacity="0.3" />
-    </filter>
-    
-    <filter id="innerGlow" x="-10%" y="-10%" width="120%" height="120%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" />
-      <feOffset dx="0" dy="10" result="offsetBlur" />
-      <feComposite in="SourceGraphic" in2="offsetBlur" operator="over" />
-    </filter>
-
-    <!-- Clip Path to keep inner shadow inside the folder -->
-    <clipPath id="folderClip">
-      <path d="M 310 710 
-               L 310 360 
-               C 310 310, 350 280, 400 280 
-               L 480 280 
-               C 520 280, 540 320, 580 320 
-               L 710 320 
-               C 740 320, 740 350, 740 380 
-               L 740 710 
-               C 740 740, 720 750, 690 750 
-               L 360 750 
-               C 320 750, 310 740, 310 710 Z" />
-    </clipPath>
-  </defs>
-
-  <!-- Canvas Background -->
-  <rect width="1000" height="1000" fill="url(#bgGrad)" />
-
-  <!-- Main Icon Group with Drop Shadow -->
-  <g filter="url(#mainShadow)">
-    
-    <!-- Outer Blue Frame -->
-    <rect x="230" y="230" width="540" height="540" rx="160" fill="url(#frameGrad)" />
-    
-    <!-- Inner Frame Highlight (Subtle 3D edge) -->
-    <rect x="238" y="238" width="524" height="524" rx="152" fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.15" />
-
-    <!-- Inner White/Light Blue Folder Shape -->
-    <path d="M 310 710 
-             L 310 360 
-             C 310 310, 350 280, 400 280 
-             L 480 280 
-             C 520 280, 540 320, 580 320 
-             L 710 320 
-             C 740 320, 740 350, 740 380 
-             L 740 710 
-             C 740 740, 720 750, 690 750 
-             L 360 750 
-             C 320 750, 310 740, 310 710 Z" 
-          fill="url(#folderGrad)" />
-          
-    <!-- Inner Folder Edge Glow (Subtle white border for glass effect) -->
-    <path d="M 310 710 
-             L 310 360 
-             C 310 310, 350 280, 400 280 
-             L 480 280 
-             C 520 280, 540 320, 580 320 
-             L 710 320 
-             C 740 320, 740 350, 740 380 
-             L 740 710 
-             C 740 740, 720 750, 690 750 
-             L 360 750 
-             C 320 750, 310 740, 310 710 Z" 
-          fill="none" stroke="#FFFFFF" stroke-width="8" opacity="0.8" />
-          
-    <!-- Soft Inner Shadow at the bottom of the folder -->
-    <g clip-path="url(#folderClip)">
-      <rect x="310" y="550" width="440" height="220" fill="#9CBCFA" opacity="0.3" filter="blur(30px)" />
-    </g>
-
-    <!-- ================= SLIDER SECTION ================= -->
-    
-    <!-- Slider Track Background (Darker blue) -->
-    <rect x="380" y="550" width="220" height="22" rx="11" fill="url(#trackGrad)" />
-    
-    <!-- Slider Track Inner Shadow/Highlight -->
-    <rect x="380" y="550" width="220" height="10" rx="5" fill="#FFFFFF" opacity="0.15" />
-
-    <!-- Slider Thumb (White Knob) -->
-    <circle cx="560" cy="561" r="34" fill="#FFFFFF" filter="url(#thumbShadow)" />
-    
-    <!-- Slider Thumb Inner Highlight -->
-    <circle cx="560" cy="555" r="30" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.6" />
-
-    <!-- Slider Thumb Inner Dot (Blue) -->
-    <circle cx="560" cy="561" r="10" fill="#1873EE" />
-
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<defs>
+<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#46d8a8"/><stop offset="1" stop-color="#4f7cff"/></linearGradient>
+<linearGradient id="r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe27a"/><stop offset="1" stop-color="#ffb21e"/></linearGradient>
+</defs>
+<rect width="512" height="512" fill="#fff"/>
+<rect x="100" y="132" width="312" height="288" rx="88" fill="url(#g)"/>
+<rect x="100" y="132" width="312" height="288" rx="88" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="4"/>
+<rect x="166" y="86" width="30" height="86" rx="15" fill="url(#r)" stroke="#fff" stroke-width="6"/>
+<rect x="316" y="86" width="30" height="86" rx="15" fill="url(#r)" stroke="#fff" stroke-width="6"/>
+<ellipse cx="190" cy="196" rx="60" ry="22" fill="#fff" opacity=".28" transform="rotate(-18 190 196)"/>
+<ellipse cx="206" cy="282" rx="30" ry="36" fill="#fff"/><ellipse cx="306" cy="282" rx="30" ry="36" fill="#fff"/>
+<ellipse cx="212" cy="290" rx="16" ry="22" fill="#20253f"/><ellipse cx="300" cy="290" rx="16" ry="22" fill="#20253f"/>
+<circle cx="218" cy="280" r="6" fill="#fff"/><circle cx="306" cy="280" r="6" fill="#fff"/>
+<path d="M222 346Q256 378 290 346" stroke="#20253f" stroke-width="14" fill="none" stroke-linecap="round"/>
+<ellipse cx="158" cy="336" rx="20" ry="12" fill="#ff8fb0" opacity=".7"/><ellipse cx="354" cy="336" rx="20" ry="12" fill="#ff8fb0" opacity=".7"/>
+<path d="M410 118l9 22 22 9-22 9-9 22-9-22-22-9 22-9z" fill="#ffc83a"/>
 </svg>
