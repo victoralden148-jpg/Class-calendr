@@ -54,9 +54,6 @@
     </filter>
   </defs>
 
-  <!-- Latar Belakang Putih Canvas -->
-  <rect width="736" height="736" fill="#ffffff" />
-
   <!-- ==================== LATAR BELAKANG ICON (BIRU) ==================== -->
   <g filter="url(#shadowBg)">
     <rect x="120" y="118" width="498" height="498" rx="150" fill="url(#bgBlue)" />
