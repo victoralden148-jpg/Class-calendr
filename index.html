@@ -1481,6 +1481,51 @@ function critter(i,sz){
 </defs>${T}<ellipse cx="70" cy="130" rx="34" ry="5" fill="#2b2540" opacity=".18"/><ellipse cx="70" cy="98" rx="34" ry="30" fill="${rb?'url(#'+id+'rb)':'url(#'+id+'b)'}"/>${side}<ellipse cx="70" cy="94" rx="22" ry="18" fill="${bel}"/>${fcs(70,86,1.2,ey)}</svg>`}
 window.K6={kdefs,kid,KR,RK,RKR,gmShape,gmFacets,rankSvg,SEC,critter,MO,sp4,stp,polyP,fcs,shn};
 })();
+ /* ===== v6b: halaman Koleksi (pakai seni vektor v6) ===== */
+(function(){
+  if(!window.K6)return;
+  const K=window.K6;
+  const STREAK=[3,7,10,14,21,30,45,60];
+  const _menu2=menu2;
+  menu2=function(){
+    return _menu2().replace('<div class="mgrid">',()=>'<div class="mgrid"><button class="mt" data-go="koleksi"><span class="mti" style="--c:#ffe0f0"><svg class="gi" viewBox="0 0 64 64"><circle cx="20" cy="24" r="12" fill="url(#gP)"/><circle cx="44" cy="24" r="12" fill="url(#gY)"/><circle cx="20" cy="44" r="12" fill="url(#gG)"/><circle cx="44" cy="44" r="12" fill="url(#gB)"/></svg></span><b>Koleksi</b><small>Lencana &amp; makhluk</small></button>');
+  };
+  if(!SUB.includes('koleksi'))SUB.push('koleksi');
+  LB.koleksi='Koleksi';
+  const _render=render;
+  render=function(){
+    if(S.tab==='koleksi' && S.user && S.cls && !(modal&&modal.form)){
+      stopCam();
+      const ps=petState(S.user.id),tot=ps.best+ps.gb;
+      const ranks=K.RK.map((r,i)=>{const u=i<=ps.unlocked;return `<button class="sk ${u?'':'lock'}" style="flex:0 0 96px" data-pa="kinfo" data-t="r" data-i="${i}"><div>${K.rankSvg(i,72,!u)}</div><b style="font-size:11px">${r.n}</b><small>${u?'Terbuka':'Terkunci'}</small></button>`}).join('');
+      const crits=K.SEC.map((c,i)=>{const u=tot>=STREAK[i];return `<button class="sk ${u?'':'lock'}" style="flex:0 0 104px" data-pa="kinfo" data-t="c" data-i="${i}"><div>${K.critter(i,84)}</div><b style="font-size:11px">${u?c.n:'???'}</b><small>${u?c.el:'Streak '+STREAK[i]}</small></button>`}).join('');
+      const na=K.SEC.filter((c,i)=>tot>=STREAK[i]).length;
+      $('#app').innerHTML=`<div class="scroll" id="sc"><div class="pgin">${hd('Koleksi 🎨','Lencana &amp; makhluk rahasia')}
+<div class="box"><b>Lencana peringkat (${ps.unlocked+1}/${K.RK.length})</b><p class="mu" style="margin:4px 0 10px">Terbuka seiring streak harian.</p><div class="row" style="margin:0 -20px;padding:8px 20px">${ranks}</div></div>
+<div class="box"><b>Makhluk rahasia (${na}/${K.SEC.length})</b><p class="mu" style="margin:4px 0 10px">Kumpulkan dengan streak konsisten.</p><div class="row" style="margin:0 -20px;padding:8px 20px">${crits}</div></div>
+<div class="box"><b>Progresmu</b><p class="mu" style="margin-top:4px">Streak terbaik: ${ps.best} hari · Bonus game: +${ps.gb} · Total: ${tot} hari. Terus hadir dan main untuk membuka semua!</p></div>
+</div></div>
+<nav><div class="bar">${['home','cal','kas','mem','me'].map(t=>`<button data-tab="${t}" class="${(S.tab===t||(t==='home'&&SUB.includes(S.tab)))?'on':''}" aria-label="${LB[t]}">${ic(t)}</button>`).join('')}</div><button class="fab" data-go="home" aria-label="Home">${ic('home')}</button></nav>`;
+      $('#sc').scrollTop=0;
+      if(modal)showModal();
+      return;
+    }
+    return _render.apply(this,arguments);
+  };
+  document.addEventListener('click',ev=>{
+    const t=ev.target.closest('[data-pa="kinfo"]');if(!t)return;
+    const i=+t.dataset.i,type=t.dataset.t,ps=petState(S.user.id),tot=ps.best+ps.gb;
+    if(type==='r'){
+      const r=K.RK[i],u=i<=ps.unlocked;
+      modal={form:false,html:()=>`<div style="text-align:center">${K.rankSvg(i,150,!u)}</div><h2 style="text-align:center;margin-top:6px">${r.n}</h2><p class="mu" style="text-align:center">Peringkat ${i+1} dari ${K.RK.length}</p><p style="text-align:center;margin-top:10px">${u?'Lencana ini sudah terbuka dari streak harianmu.':'Capai streak '+[0,0,3,3,3,7,7,7,14,14][i]+' hari untuk membuka lencana ini.'}</p>`};
+      render();
+    } else {
+      const c=K.SEC[i],u=tot>=STREAK[i];
+      modal={form:false,html:()=>`<div style="text-align:center">${K.critter(i,180)}</div><h2 style="text-align:center;margin-top:6px">${u?c.n:'???'}</h2><p class="mu" style="text-align:center">Elemen ${c.el} · ${u?'Sudah ditemukan':'Belum ditemukan'}</p><p style="text-align:center;margin-top:10px">${u?'Makhluk ini sudah kamu temukan!':'Capai streak '+STREAK[i]+' hari untuk menemukannya.'}</p>`};
+      render();
+    }
+  });
+})();
 
 boot();
 </script>
