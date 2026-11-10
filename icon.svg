@@ -1,91 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 736 736" width="512" height="512">
   <defs>
-    <!-- Gradien Latar Belakang (Biru) -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#247BFF" />
-      <stop offset="100%" stop-color="#4BA6FF" />
+    <!-- Clip Path untuk membatasi area icon -->
+    <clipPath id="squircle">
+      <rect x="120" y="118" width="498" height="498" rx="150" />
+    </clipPath>
+
+    <!-- Gradien Latar Belakang Biru -->
+    <linearGradient id="bgBlue" x1="0" y1="0" x2="0.25" y2="1">
+      <stop offset="0" stop-color="#1c6fe8" />
+      <stop offset="0.55" stop-color="#2b86f0" />
+      <stop offset="1" stop-color="#4aa6f9" />
     </linearGradient>
 
-    <!-- Gradien Folder Belakang (Biru Muda) -->
-    <linearGradient id="folderBackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#8BC2FF" />
-      <stop offset="100%" stop-color="#D3E7FF" />
+    <!-- Gradien Folder Kuning Depan -->
+    <linearGradient id="folderYellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe064" />
+      <stop offset="0.55" stop-color="#ffc83e" />
+      <stop offset="1" stop-color="#ffab2c" />
+    </linearGradient>
+
+    <!-- Gradien Tab Folder Kuning -->
+    <linearGradient id="tabYellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe780" />
+      <stop offset="1" stop-color="#ffcf45" />
     </linearGradient>
 
     <!-- Gradien Folder Tengah (Putih) -->
-    <linearGradient id="folderMidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#F2F5F9" />
+    <linearGradient id="folderWhite" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf8" />
+      <stop offset="1" stop-color="#f1e6d2" />
     </linearGradient>
 
-    <!-- Gradien Folder Depan (Kuning) -->
-    <linearGradient id="folderFrontGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFE13B" />
-      <stop offset="100%" stop-color="#FFA800" />
+    <!-- Gradien Folder Belakang (Biru Muda) -->
+    <linearGradient id="folderLightBlue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#9cc8ff" />
+      <stop offset="1" stop-color="#cfe3ff" />
     </linearGradient>
 
-    <!-- Gradien untuk Bagian Tab Folder Depan -->
-    <linearGradient id="folderTabGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFEB66" />
-      <stop offset="100%" stop-color="#FFD129" />
+    <!-- Gradien Mata/Mulut -->
+    <linearGradient id="brownFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#94461c" />
+      <stop offset="1" stop-color="#6e3010" />
     </linearGradient>
 
-    <!-- Filter Bayangan untuk efek 3D -->
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#002266" flood-opacity="0.25" />
+    <!-- Filter Bayangan Latar -->
+    <filter id="shadowBg" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="9" flood-color="#0b3a8a" flood-opacity="0.22" />
     </filter>
-    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
-      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.15" />
+
+    <!-- Filter Bayangan Folder -->
+    <filter id="shadowFolder" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="-6" stdDeviation="7" flood-color="#7a4a00" flood-opacity="0.22" />
     </filter>
   </defs>
 
-  <!-- Latar Belakang Persegi Membulat -->
-  <rect x="0" y="0" width="512" height="512" rx="115" fill="url(#bgGrad)" />
+  <!-- Latar Belakang Putih Canvas -->
+  <rect width="736" height="736" fill="#ffffff" />
 
-  <!-- Highlight Latar Belakang (Efek Kaca) -->
-  <path d="M 0 115 Q 0 0 115 0 L 397 0 Q 512 0 512 115 L 512 200 Q 256 100 0 250 Z" fill="#FFFFFF" opacity="0.1" />
-
-  <!-- ================= LAPISAN FOLDER BELAKANG (BIRU MUDA) ================= -->
-  <g filter="url(#shadow)">
-    <!-- Tab Belakang -->
-    <path d="M 200 230 L 200 200 Q 200 180 220 180 L 300 180 Q 320 180 320 200 L 320 230 Z" fill="#8BC2FF" />
-    <!-- Badan Folder Belakang -->
-    <rect x="150" y="220" width="280" height="200" rx="30" fill="url(#folderBackGrad)" />
+  <!-- ==================== LATAR BELAKANG ICON (BIRU) ==================== -->
+  <g filter="url(#shadowBg)">
+    <rect x="120" y="118" width="498" height="498" rx="150" fill="url(#bgBlue)" />
   </g>
 
-  <!-- ================= LAPISAN FOLDER TENGAH (PUTIH) ================= -->
-  <g filter="url(#softShadow)">
-    <!-- Tab Tengah -->
-    <path d="M 180 260 L 180 230 Q 180 210 200 210 L 280 210 Q 300 210 300 230 L 300 260 Z" fill="#F2F5F9" />
-    <!-- Badan Folder Tengah -->
-    <rect x="130" y="250" width="280" height="200" rx="30" fill="url(#folderMidGrad)" />
-  </g>
-
-  <!-- ================= LAPISAN FOLDER DEPAN (KUNING) ================= -->
-  <g filter="url(#shadow)">
-    <!-- Tab Folder Depan -->
-    <path d="M 160 300 L 160 250 Q 160 230 180 230 L 260 230 Q 280 230 280 250 L 280 300 Z" fill="url(#folderTabGrad)" />
+  <!-- ==================== AREA GAMBAR FOLDER ==================== -->
+  <g clip-path="url(#squircle)">
     
-    <!-- Badan Folder Depan -->
-    <rect x="100" y="280" width="312" height="220" rx="45" fill="url(#folderFrontGrad)" />
-    
-    <!-- Highlight Atas Folder Depan -->
-    <path d="M 105 325 Q 100 280 145 280 L 367 280 Q 412 280 407 325 L 105 325 Z" fill="#FFFFFF" opacity="0.3" />
-    <!-- Highlight Kiri Folder Depan -->
-    <path d="M 100 320 L 100 455 Q 100 500 145 500 L 150 500 Q 105 450 105 320 Z" fill="#FFFFFF" opacity="0.15" />
-  </g>
+    <!-- Lapisan Folder Belakang (Biru Muda) -->
+    <path d="M352 262 L612 292 L630 294 L530 310 V392 L410 322 L340 288 L330 270 C352 262 352 262 352 262 Z" fill="url(#folderLightBlue)" opacity="0.85" />
+    <path d="M408 312 L630 348 V398 L424 332 Z" fill="#eef5ff" opacity="0.9" />
 
-  <!-- ================= WAJAH (MATA DAN SENYUMAN) ================= -->
-  <g>
-    <!-- Mata Kiri -->
-    <rect x="185" y="340" width="45" height="65" rx="22.5" fill="#57361A" />
-    <!-- Mata Kanan -->
-    <rect x="305" y="340" width="45" height="65" rx="22.5" fill="#57361A" />
-    
-    <!-- Senyuman -->
-    <path d="M 215 435 Q 256 465 295 435" fill="none" stroke="#57361A" stroke-width="18" stroke-linecap="round" />
-  </g>
+    <!-- Lapisan Folder Tengah (Putih) -->
+    <path d="M242 274 L230 282 L226 302 L220 352 L424 352 L410 322 L404 312 L392 308 L272 272 L254 266 L242 274 Z" fill="url(#tabYellow)" />
+    <path d="M266 324 L250 330 L258 348 L268 362 L606 418 L614 396 L606 388 L280 322 L272 321 L266 324 Z" fill="url(#folderWhite)" />
 
-  <!-- Sentuhan Akhir: Highlight Kecil di Ujung Folder -->
-  <circle cx="130" cy="310" r="8" fill="#FFFFFF" opacity="0.4" />
+    <!-- Lapisan Folder Depan (Kuning) -->
+    <g filter="url(#shadowFolder)">
+      <path d="M206 350 L190 352 L182 372 L140 566 L136 598 L68 606 L196 618 L262 618 H640 V430 L640 424 L630 422 L216 348 L210 347 L206 350 Z" fill="url(#folderYellow)" />
+    </g>
+    
+    <!-- Highlight Atas Folder Kuning -->
+    <path d="M208 352 L624 426" stroke="#fff3a8" stroke-width="5" stroke-linecap="round" opacity="0.7" />
+    
+    <!-- Bayangan Dalam Folder Kuning -->
+    <path d="M150 560 L140 600 L176 510 L262 618 H640 V600 L420 612 L190 590 L150 584 L150 560 Z" fill="#ff9f1c" opacity="0.35" />
+
+    <!-- Wajah Folder (Mata Kiri, Mata Kanan, Mulut) -->
+    <ellipse cx="275" cy="476" rx="29" ry="39" transform="rotate(-6 275 476)" fill="url(#brownFace)" />
+    <ellipse cx="461" cy="509" rx="29" ry="39" transform="rotate(-6 461 509)" fill="url(#brownFace)" />
+    <path d="M326 543 Q362 566 398 549" stroke="url(#brownFace)" stroke-width="24" stroke-linecap="round" fill="none" />
+
+  </g>
 </svg>
