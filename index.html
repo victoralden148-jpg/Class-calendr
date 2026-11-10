@@ -1390,140 +1390,180 @@ document.addEventListener('click',async ev=>{
  else if(a==='roll')rollDice();
  else if(a==='htab')hsGo(+d.i);
 });
-})();
-/* ===== Kelasku v6: fondasi seni vektor (koleksi, kapsul, aula juara) ===== */
-(function(){
-let K6ID=0;const kid=()=>'k'+(++K6ID);
-const KR=[
-{k:'biasa',n:'Biasa',a:'#e3e9f4',b:'#8b99b6',g:'#a9b7d3'},
-{k:'langka',n:'Langka',a:'#93f2c0',b:'#13a368',g:'#3de0a0'},
-{k:'epik',n:'Epik',a:'#d3adff',b:'#6a3dff',g:'#a678ff'},
-{k:'legend',n:'Legendaris',a:'#ffec8f',b:'#ff9410',g:'#ffc43a'},
-{k:'rahasia',n:'Rahasia',a:'#ff9be0',b:'#6d4bff',g:'#ff68d0'}];
-function kdefs(){const g=(i,a,b)=>`<linearGradient id="${i}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`;
-return `<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-<filter id="k6o" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="3.4" result="d"/><feFlood flood-color="#fff"/><feComposite in2="d" operator="in" result="w"/><feGaussianBlur in="d" stdDeviation="1.8" result="sh"/><feOffset in="sh" dy="2.6" result="so"/><feFlood flood-color="#2a2150" flood-opacity=".3"/><feComposite in2="so" operator="in" result="s2"/><feMerge><feMergeNode in="s2"/><feMergeNode in="w"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<filter id="k6g" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="3.4" result="d"/><feFlood flood-color="#ffe27a"/><feComposite in2="d" operator="in" result="w"/><feMorphology in="SourceAlpha" operator="dilate" radius="5.2" result="d2"/><feFlood flood-color="#fff"/><feComposite in2="d2" operator="in" result="w2"/><feGaussianBlur in="d2" stdDeviation="1.8" result="sh"/><feOffset in="sh" dy="2.6" result="so"/><feFlood flood-color="#5a3200" flood-opacity=".35"/><feComposite in2="so" operator="in" result="s2"/><feMerge><feMergeNode in="s2"/><feMergeNode in="w2"/><feMergeNode in="w"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-<linearGradient id="k6sh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-${g('k6gold','#fff1a8','#e8960c')}${g('k6silv','#ffffff','#9aa7c2')}${g('k6bron','#ffd5a1','#b8651f')}${g('k6dia','#e6fbff','#7fd0ff')}
-<linearGradient id="k6rb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7aa8"/><stop offset=".25" stop-color="#ffd25a"/><stop offset=".5" stop-color="#6ff0a8"/><stop offset=".75" stop-color="#6ab6ff"/><stop offset="1" stop-color="#b384ff"/></linearGradient>
-</defs></svg>`}
-const sp4=(x,y,r,c)=>`<path d="M${x} ${y-r}Q${x+r*.18} ${y-r*.18} ${x+r} ${y}Q${x+r*.18} ${y+r*.18} ${x} ${y+r}Q${x-r*.18} ${y+r*.18} ${x-r} ${y}Q${x-r*.18} ${y-r*.18} ${x} ${y-r}Z" fill="${c||'#fff'}"/>`;
-const stp=(cx,cy,R,r,n)=>{let p='';for(let i=0;i<n*2;i++){const a=-Math.PI/2+i*Math.PI/n,q=i%2?r:R;p+=(i?'L':'M')+(cx+q*Math.cos(a)).toFixed(1)+' '+(cy+q*Math.sin(a)).toFixed(1)}return p+'Z'};
-const polyP=(cx,cy,R,n,rot)=>{let p='';for(let i=0;i<n;i++){const a=(rot||-90)*Math.PI/180+i*2*Math.PI/n;p+=(i?'L':'M')+(cx+R*Math.cos(a)).toFixed(1)+' '+(cy+R*Math.sin(a)).toFixed(1)}return p+'Z'};
-const fcs=(x,y,s,c)=>{s=s||1;c=c||'#2b2540';return `<g><ellipse cx="${x-9*s}" cy="${y}" rx="${3.2*s}" ry="${3.8*s}" fill="${c}"/><ellipse cx="${x+9*s}" cy="${y}" rx="${3.2*s}" ry="${3.8*s}" fill="${c}"/><circle cx="${x-8*s}" cy="${y-1.6*s}" r="${1.2*s}" fill="#fff"/><circle cx="${x+10*s}" cy="${y-1.6*s}" r="${1.2*s}" fill="#fff"/><ellipse cx="${x-15*s}" cy="${y+5*s}" rx="${4*s}" ry="${2.6*s}" fill="#ff8fb3" opacity=".55"/><ellipse cx="${x+15*s}" cy="${y+5*s}" rx="${4*s}" ry="${2.6*s}" fill="#ff8fb3" opacity=".55"/><path d="M${x-4*s} ${y+4*s}Q${x} ${y+9*s} ${x+4*s} ${y+4*s}" stroke="${c}" stroke-width="${2*s}" fill="none" stroke-linecap="round"/></g>`};
-const shn=(x,y,rx,ry,rot,o)=>`<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#fff" opacity="${o||.55}" transform="rotate(${rot||-30} ${x} ${y})"/>`;
-const MO={
-book:(G,p)=>`<path d="M6 30Q28 20 50 32Q72 20 94 30V80Q72 70 50 82Q28 70 6 80Z" fill="${G(p[0],p[1])}"/><path d="M12 33Q30 27 48 36V77Q30 69 12 75Z" fill="#fff"/><path d="M88 33Q70 27 52 36V77Q70 69 88 75Z" fill="#f1f4ff"/><path d="M18 44Q30 41 42 46M18 53Q30 50 42 55M18 62Q30 59 42 64M58 46Q70 41 82 44M58 55Q70 50 82 53" stroke="#b9c3e0" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M62 10l3.6 8 8.4 1-6.2 5.8 1.8 8.6-7.6-4.4-7.6 4.4 1.8-8.6-6.2-5.8 8.4-1z" fill="${p[2]}" transform="translate(-4 2)"/>`};
-const RK=[
-{n:'Besi',s:6,gm:'tri',w:1,r:['#f6f8fc','#8d98b0'],f:['#b9c3d7','#56637d'],g:['#ffffff','#cfd9ec','#8693ae'],wc:['#eef1f8','#9aa5bd']},
-{n:'Perunggu',s:6,gm:'dia',w:2,r:['#ffe6b8','#c9772a'],f:['#e89d4c','#85441a'],g:['#ffe0ec','#ff9ac0','#d9607f'],wc:['#ffd690','#d98a2e']},
-{n:'Zamrud',s:5,gm:'pen',w:2,r:['#c0ffdc','#2fa971'],f:['#52d198','#1a7455'],g:['#e0ffee','#6df0a8','#1fa86b'],wc:['#aaf4cc','#38b783']},
-{n:'Safir',s:6,gm:'hex',w:2,r:['#d0f0ff','#3f86d8'],f:['#72bcff','#2a5cae'],g:['#dcfff6','#5de8d0','#16a8c0'],wc:['#c2e8ff','#5aa6e6']},
-{n:'Ametis',s:8,gm:'oct',w:3,r:['#e2d9ff','#6a5bd6'],f:['#9d90f2','#46399f'],g:['#e6eeff','#7aa8ff','#4468e8'],wc:['#dbd1ff','#8f7fe6']},
-{n:'Kuarsa',s:8,gm:'sta',w:3,r:['#ebd0ff','#8a4be0'],f:['#b582f6','#5c2cad'],g:['#e6ffff','#6ae0ff','#2a8be0'],wc:['#ecd4ff','#a67bf0']},
-{n:'Mawar',s:6,gm:'hex',w:3,r:['#ffd8f0','#e0529a'],f:['#ff90c8','#ad2c75'],g:['#ffffff','#ffc6ea','#e86fb8'],wc:['#ffdcf0','#f27ab8']},
-{n:'Rubi',s:5,gm:'pen',w:4,r:['#ffc8cc','#d8344e'],f:['#ff7484','#951c38'],g:['#ffe4e8','#ff6a86','#c4223f'],wc:['#ffc6ca','#ee5368']},
-{n:'Magma',s:6,gm:'dia',w:4,r:['#ffd6a8','#e5542e'],f:['#ff9e5e','#ad2c12'],g:['#ffdcf2','#ff6fc0','#c83aa0'],wc:['#ffbd90','#f0643a']},
-{n:'Berlian',s:6,gm:'dia',w:5,r:['#fff6b8','#f0a010'],f:['#ffcc40','#be6e00'],g:['#fff4c8','#ffb040','#e06a10'],wc:['#fff4a8','#f2b020']}];
-const RKR=[0,0,1,1,1,2,2,2,3,3];
-function gmShape(t,cx,cy){return t==='tri'?polyP(cx,cy,19,3):t==='dia'?`M${cx} ${cy-21}L${cx+16} ${cy}L${cx} ${cy+21}L${cx-16} ${cy}Z`:t==='pen'?polyP(cx,cy,19,5):t==='hex'?polyP(cx,cy,18,6,0):t==='oct'?polyP(cx,cy,19,8,-22.5):stp(cx,cy,22,8,4)}
-function gmFacets(t,cx,cy,g){if(t==='sta')return `<path d="${stp(cx,cy,22,8,4)}" fill="${g[1]}"/><path d="${stp(cx,cy,14,5,4)}" fill="${g[0]}" opacity=".8"/>`;
- const n=t==='tri'?3:t==='dia'?4:t==='pen'?5:t==='hex'?6:8;let v=[];
- if(t==='dia')v=[[cx,cy-21],[cx+16,cy],[cx,cy+21],[cx-16,cy]];else{const R=t==='tri'?19:t==='pen'?19:t==='hex'?18:19,rot=t==='hex'?0:t==='oct'?-22.5:-90;for(let i=0;i<n;i++){const a=(rot)*Math.PI/180+i*2*Math.PI/n;v.push([cx+R*Math.cos(a),cy+R*Math.sin(a)])}}
- let o='';v.forEach((p,i)=>{const q=v[(i+1)%v.length];o+=`<path d="M${cx} ${cy}L${p[0].toFixed(1)} ${p[1].toFixed(1)}L${q[0].toFixed(1)} ${q[1].toFixed(1)}Z" fill="${g[i%3]}"/>`});
- const k=.45;o+=`<path d="${v.map((p,i)=>(i?'L':'M')+(cx+(p[0]-cx)*k).toFixed(1)+' '+(cy+(p[1]-cy)*k).toFixed(1)).join('')}Z" fill="#fff" opacity=".42"/>`;return o}
-function rankSvg(i,sz,lock){const c=RK[i]||RK[0],id=kid(),W=c.w||1,n=W+2,cx=70,cy=68;
- let wing='';
- for(let k=n-1;k>=0;k--){const th=-72+k*(88/(n-1)),L=34+W*3.4-k*(W>3?1.2:2.2),w=6.5+W*.55;
-  wing+=`<path d="M0 0Q${L*.5} ${-w} ${L} ${-w*.1}Q${L*.5} ${w*1.1} 0 0Z" transform="translate(92 ${cy+2}) rotate(${th})" fill="url(#${id}w)" stroke="${c.wc[1]}" stroke-opacity=".55" stroke-width="1.2"/>`}
- const wings=`<g>${wing}</g><g transform="translate(140 0) scale(-1 1)">${wing}</g>`;
- const crest=i>=7?`<path d="M56 36L59 20L65 31L70 15L75 31L81 20L84 36Z" fill="url(#${id}r)" stroke="#fff" stroke-opacity=".6" stroke-width="1.2" stroke-linejoin="round"/><circle cx="70" cy="22" r="3" fill="#fff" opacity=".9"/>`:i>=4?`<path d="M62 34L70 22L78 34Z" fill="url(#${id}r)" stroke="#fff" stroke-opacity=".6" stroke-width="1.2" stroke-linejoin="round"/>`:'';
- const tail=i>=3?`<path d="M60 100L70 118L80 100Z" fill="url(#${id}r)" stroke="#fff" stroke-opacity=".6" stroke-width="1.2" stroke-linejoin="round"/>`:'';
- const gem=`<path d="${gmShape(c.gm,cx,cy)}" fill="url(#${id}f)" stroke="#fff" stroke-width="2" stroke-opacity=".7"/>${gmFacets(c.gm,cx,cy,c.g)}`;
- return `<svg viewBox="0 0 140 140" width="${sz}" height="${sz}" ${lock?'style="filter:grayscale(1);opacity:.45"':''} aria-hidden="true"><defs>
-<linearGradient id="${id}r" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.r[0]}"/><stop offset="1" stop-color="${c.r[1]}"/></linearGradient>
-<linearGradient id="${id}f" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.f[0]}"/><stop offset="1" stop-color="${c.f[1]}"/></linearGradient>
-<linearGradient id="${id}w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c.wc[0]}"/><stop offset="1" stop-color="${c.wc[1]}"/></linearGradient>
-</defs>${wings}${tail}${gem}${crest}</svg>`}
-const SEC=[
-{n:'Embera',el:'Api',c:['#ffb072','#f0622a'],bel:'#fff0d6',a:['#ffd84a','#ff5a1f'],ear:'fox',tail:'flame',eye:'#5a2410',gl:'#ff9a4a'},
-{n:'Aquari',el:'Air',c:['#8fe3ff','#2f8cf0'],bel:'#eafcff',a:['#b8f0ff','#3aa6ff'],ear:'fin',tail:'fin',eye:'#103a6a',gl:'#5ac8ff'},
-{n:'Verdi',el:'Daun',c:['#c6f58a','#3fbf5e'],bel:'#f6ffe0',a:['#9cf27a','#1fa850'],ear:'leaf',tail:'leaf',eye:'#1d4a24',gl:'#7ae08a'},
-{n:'Zappi',el:'Petir',c:['#fff08a','#ffb21a'],bel:'#fffbe0',a:['#fff6a8','#ff9d00'],ear:'round',tail:'bolt',eye:'#4a3200',gl:'#ffe14a'},
-{n:'Noxi',el:'Bulan',c:['#6b6fc8','#2a2468'],bel:'#c9c8ff',a:['#ffe27a','#ffb21a'],ear:'cat',tail:'moon',eye:'#fff',gl:'#8a8aff'},
-{n:'Kristal',el:'Es',c:['#dff8ff','#8fd0ff'],bel:'#ffffff',a:['#ffffff','#7ac8ff'],ear:'horn',tail:'crystal',eye:'#1d3f6a',gl:'#aee6ff'},
-{n:'Astra',el:'Bintang',c:['#c79bff','#4b2fb0'],bel:'#f0d8ff',a:['#ffe27a','#ff7ac8'],ear:'cat',tail:'comet',eye:'#fff',gl:'#b07aff'},
-{n:'Pelangi',el:'Semesta',c:['#ffffff','#ffd6f4'],bel:'#fff',a:['#ff7aa8','#6ab6ff'],ear:'bunny',tail:'rainbow',eye:'#5a3a8a',gl:'#ffb0f0',rb:1}];
-function critter(i,sz){
- const s=SEC[i];if(!s)return '';
- const id=kid(),rb=s.rb,c1=s.c[0],c2=s.c[1],A=s.a[0],B=s.a[1],bel=s.bel,ey=s.eye;
- const E={fox:`<path d="M44 52L30 6L72 36Z" fill="${c2}" stroke="${c2}" stroke-width="4" stroke-linejoin="round"/><path d="M45 44L37 16L62 35Z" fill="${A}"/>`,
-  bunny:`<path d="M50 48C32 16 36 -2 48 2C60 6 64 30 66 46Z" fill="${rb?'#fff':c1}" stroke="${rb?'#ffd0ee':c2}" stroke-width="2"/><path d="M51 38C42 18 44 8 49 9C55 11 58 26 59 38Z" fill="${A}"/>`,
-  fin:`<path d="M48 54C26 56 8 44 6 18C18 26 26 22 34 12C36 26 44 32 54 36C46 40 42 46 48 54Z" fill="url(#${id}a)" stroke="${B}" stroke-width="2" stroke-linejoin="round"/>`,
-  leaf:`<path d="M52 50C30 46 18 26 26 4C48 8 64 26 64 48Z" fill="url(#${id}a)" stroke="${B}" stroke-width="2" stroke-linejoin="round"/>`,
-  horn:`<path d="M52 46L40 4L68 34Z" fill="url(#${id}a)" stroke="${B}" stroke-width="2.4" stroke-linejoin="round"/><path d="M47 36L42 12L58 32Z" fill="#fff" opacity=".7"/>`,
-  cat:`<path d="M44 52L34 8L74 34Z" fill="${c2}" stroke="${c2}" stroke-width="4" stroke-linejoin="round"/><path d="M46 44L41 18L62 34Z" fill="${A}"/>`,
-  round:`<circle cx="42" cy="32" r="17" fill="${c2}"/><circle cx="42" cy="32" r="10" fill="${A}"/>`}[s.ear]||'';
- const side=E+`<g transform="translate(140 0) scale(-1 1)">${E}</g>`;
- const T={flame:`<path d="M92 112C118 110 134 88 124 52C122 68 112 72 106 70C110 58 106 44 98 34C100 58 86 70 84 94Z" fill="url(#${id}a)"/>`,
-  fin:`<path d="M90 110C108 116 130 110 136 84C120 94 114 88 122 72C106 76 98 90 88 98Z" fill="url(#${id}a)" stroke="${B}" stroke-width="2" stroke-linejoin="round"/>`,
-  leaf:`<path d="M90 112C100 92 116 86 130 66C134 92 114 118 88 114Z" fill="url(#${id}a)" stroke="${B}" stroke-width="2" stroke-linejoin="round"/>`,
-  bolt:`<path d="M88 112L106 104L98 94L122 82L112 74L136 52L110 64L116 72L94 82L102 90L84 98Z" fill="url(#${id}a)" stroke="${B}" stroke-width="2" stroke-linejoin="round"/>`,
-  moon:`<path d="M96 108C112 106 124 90 118 72C116 90 106 102 90 104Z" fill="url(#${id}a)" stroke="${B}" stroke-width="1.8" stroke-linejoin="round"/>`,
-  crystal:`<path d="M96 108L110 82L124 108L110 122Z" fill="url(#${id}a)" stroke="${B}" stroke-width="1.6" stroke-linejoin="round"/><path d="M104 100L110 88L116 100L110 108Z" fill="#fff" opacity=".6"/>`,
-  comet:`<path d="M90 104C108 100 122 86 130 66C118 82 104 94 88 96Z" fill="url(#${id}a)"/><circle cx="128" cy="68" r="4" fill="${A}"/>`,
-  rainbow:`<path d="M90 110C100 88 116 84 130 64C134 92 114 120 88 114Z" fill="url(#${id}rb)" stroke="${B}" stroke-width="2" stroke-linejoin="round"/>`}[s.tail]||'';
- return `<svg viewBox="0 0 140 140" width="${sz}" height="${sz}" aria-hidden="true"><defs>
-<linearGradient id="${id}b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient>
-<linearGradient id="${id}a" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${A}"/><stop offset="1" stop-color="${B}"/></linearGradient>
-<linearGradient id="${id}rb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff7aa8"/><stop offset=".5" stop-color="#6ff0a8"/><stop offset="1" stop-color="#b384ff"/></linearGradient>
-</defs>${T}<ellipse cx="70" cy="130" rx="34" ry="5" fill="#2b2540" opacity=".18"/><ellipse cx="70" cy="98" rx="34" ry="30" fill="${rb?'url(#'+id+'rb)':'url(#'+id+'b)'}"/>${side}<ellipse cx="70" cy="94" rx="22" ry="18" fill="${bel}"/>${fcs(70,86,1.2,ey)}</svg>`}
-window.K6={kdefs,kid,KR,RK,RKR,gmShape,gmFacets,rankSvg,SEC,critter,MO,sp4,stp,polyP,fcs,shn};
-})();
- /* ===== v6b: halaman Koleksi (pakai seni vektor v6) ===== */
+/* ===== v6b lengkap: Stiker, Koleksi, Kapsul, Aula Juara, Dev Mode ===== */
 (function(){
   if(!window.K6)return;
   const K=window.K6;
-  const STREAK=[3,7,10,14,21,30,45,60];
+
+  /* ---------- DEV MODE ---------- */
+  try{S.dev=localStorage.getItem('kdev')==='1'}catch(e){S.dev=false}
+  const DEV_CODE='KELASKU-DEV';
+  const _ps0=petState;
+  petState=function(uid){
+    const ps=_ps0(uid);
+    if(S.dev&&uid===S.user.id){ps.unlocked=5;ps.gb=Math.max(ps.gb||0,999);ps.vit=100;ps.love=100;}
+    return ps;
+  };
+
+  /* ---------- MOTIF STIKER TAMBAHAN ---------- */
+  const starP=(cx,cy,R,r,n)=>{let p='';for(let i=0;i<n*2;i++){const a=-Math.PI/2+i*Math.PI/n,q=i%2?r:R;p+=(i?'L':'M')+(cx+q*Math.cos(a)).toFixed(1)+' '+(cy+q*Math.sin(a)).toFixed(1)}return p+'Z'};
+  Object.assign(K.MO,{
+    star:(G,p)=>`<path d="${starP(50,50,36,15,5)}" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>`,
+    heart:(G,p)=>`<path d="M50 78C20 58 18 38 32 30C42 25 50 34 50 38C50 34 58 25 68 30C82 38 80 58 50 78Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2.5"/>`,
+    orb:(G,p)=>`<circle cx="50" cy="50" r="32" fill="${G(p[0],p[1])}"/><ellipse cx="38" cy="38" rx="10" ry="6" fill="#fff" opacity=".5"/>`,
+    crystal:(G,p)=>`<path d="M50 15L72 42L50 82L28 42Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/><path d="M50 15L62 42L50 82" stroke="#fff" stroke-width="1.5" fill="none" opacity=".7"/>`,
+    leaf:(G,p)=>`<path d="M22 66C22 40 42 22 76 22C76 56 58 78 30 78C26 74 22 72 22 66Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/><path d="M30 70Q48 50 70 30" stroke="#fff" stroke-width="1.8" fill="none" opacity=".8"/>`,
+    moon:(G,p)=>`<path d="M62 22C42 22 26 38 26 56C26 74 42 88 62 88C52 82 44 70 44 56C44 42 52 30 62 22Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/><circle cx="68" cy="40" r="3" fill="#fff"/><circle cx="74" cy="56" r="2" fill="#fff"/>`,
+    ball:(G,p)=>`<circle cx="50" cy="50" r="32" fill="${G(p[0],p[1])}"/><path d="M20 50Q50 30 80 50M20 50Q50 70 80 50" stroke="#fff" stroke-width="3" fill="none"/>`,
+    gem:(G,p)=>`<path d="M50 20L72 40L50 82L28 40Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/><path d="M28 40L72 40" stroke="#fff" stroke-width="1.5" opacity=".6"/>`,
+    flame:(G,p)=>`<path d="M50 18C64 34 74 44 74 58C74 72 62 82 50 82C38 82 26 72 26 58C26 46 38 38 50 18Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/><path d="M50 44C56 52 60 56 60 62C60 68 55 72 50 72C45 72 40 68 40 62C40 56 46 50 50 44Z" fill="#fff" opacity=".55"/>`,
+    bolt:(G,p)=>`<path d="M54 16L30 52H46L42 84L70 44H54Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>`,
+    crown:(G,p)=>`<path d="M20 74L14 36L34 54L50 22L66 54L86 36L80 74Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><circle cx="50" cy="42" r="4" fill="#fff"/>`,
+    shell:(G,p)=>`<path d="M22 72Q30 30 50 24Q70 30 78 72Z" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/><path d="M50 24L42 72M50 24L58 72M50 24L32 72M50 24L68 72" stroke="#fff" stroke-width="1.2" opacity=".7"/>`,
+    sun:(G,p)=>`<circle cx="50" cy="50" r="22" fill="${G(p[0],p[1])}" stroke="#fff" stroke-width="2"/>${[0,45,90,135,180,225,270,315].map(a=>{const r=a*Math.PI/180;return `<line x1="${(50+24*Math.cos(r)).toFixed(1)}" y1="${(50+24*Math.sin(r)).toFixed(1)}" x2="${(50+32*Math.cos(r)).toFixed(1)}" y2="${(50+32*Math.sin(r)).toFixed(1)}" stroke="${p[1]}" stroke-width="3" stroke-linecap="round"/>`}).join('')}`,
+    snow:(G,p)=>`${[0,60,120].map(a=>`<line x1="${(50-24*Math.cos(a*Math.PI/180)).toFixed(1)}" y1="${(50-24*Math.sin(a*Math.PI/180)).toFixed(1)}" x2="${(50+24*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(50+24*Math.sin(a*Math.PI/180)).toFixed(1)}" stroke="${G(p[0],p[1])}" stroke-width="5" stroke-linecap="round"/>`).join('')}<circle cx="50" cy="50" r="8" fill="${G(p[0],p[1])}"/>`,
+    rainbow:()=>['#ff7aa8','#ffb86b','#ffe27a','#6ff0a8','#6ab6ff','#b384ff'].map((c,i)=>`<path d="M${20+i*2} ${70-i*3}Q50 ${10+i*4} ${80-i*2} ${70-i*3}" stroke="${c}" stroke-width="4" fill="none" stroke-linecap="round"/>`).join('')
+  });
+
+  function stikerSvg(key,r,size){
+    const R=K.KR[r]||K.KR[0];const defs=[];const gid=()=>'g'+Math.random().toString(36).slice(2,8);
+    const G=(a,b)=>{const id=gid();defs.push(`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient>`);return `url(#${id})`};
+    const motif=K.MO[key]?K.MO[key](G,[R.a,R.b,R.g]):'';
+    const id=gid();
+    return `<svg viewBox="0 0 100 100" width="${size}" height="${size}"><defs>${defs.join('')}<linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${R.a}"/><stop offset="1" stop-color="${R.b}"/></linearGradient></defs><rect x="3" y="3" width="94" height="94" rx="22" fill="url(#${id})" stroke="#fff" stroke-width="3"/><rect x="6" y="6" width="88" height="40" rx="18" fill="#fff" opacity=".18"/>${motif}</svg>`;
+  }
+  K.stikerSvg=stikerSvg;
+
+  const STIKERS=[
+    {k:'book',r:0,n:'Buku'},{k:'star',r:1,n:'Bintang'},{k:'heart',r:1,n:'Hati'},
+    {k:'orb',r:0,n:'Bola'},{k:'crystal',r:2,n:'Kristal'},{k:'leaf',r:1,n:'Daun'},
+    {k:'moon',r:2,n:'Bulan'},{k:'ball',r:0,n:'Kelereng'},{k:'gem',r:3,n:'Permata'},
+    {k:'flame',r:3,n:'Api'},{k:'bolt',r:2,n:'Petir'},{k:'crown',r:4,n:'Mahkota'},
+    {k:'shell',r:1,n:'Kerang'},{k:'sun',r:2,n:'Matahari'},{k:'snow',r:1,n:'Salju'},
+    {k:'rainbow',r:4,n:'Pelangi'}
+  ];
+  const CRI_NEED=[3,7,10,14,21,30,45,60];
+
+  function getStik(){try{return JSON.parse(localStorage.getItem('kstik')||'[]')}catch(e){return[]}}
+  function addStik(k){const a=getStik();if(!a.includes(k)){a.push(k);try{localStorage.setItem('kstik',JSON.stringify(a))}catch(e){}}}
+  function hasStik(k){return S.dev||getStik().includes(k)}
+  function getKapsul(){try{return JSON.parse(localStorage.getItem('kkapsul')||'[]')}catch(e){return[]}}
+  function setKapsul(a){try{localStorage.setItem('kkapsul',JSON.stringify(a))}catch(e){}}
+  function addKapsul(k){const a=getKapsul();a.push(k);setKapsul(a)}
+
+  /* ---------- MENU ---------- */
   const _menu2=menu2;
   menu2=function(){
-    return _menu2().replace('<div class="mgrid">',()=>'<div class="mgrid"><button class="mt" data-go="koleksi"><span class="mti" style="--c:#ffe0f0"><svg class="gi" viewBox="0 0 64 64"><circle cx="20" cy="24" r="12" fill="url(#gP)"/><circle cx="44" cy="24" r="12" fill="url(#gY)"/><circle cx="20" cy="44" r="12" fill="url(#gG)"/><circle cx="44" cy="44" r="12" fill="url(#gB)"/></svg></span><b>Koleksi</b><small>Lencana &amp; makhluk</small></button>');
+    return _menu2().replace('<div class="mgrid">',()=>`<div class="mgrid">
+<button class="mt" data-go="koleksi"><span class="mti" style="--c:#ffe0f0">${stikerSvg('star',1,46)}</span><b>Koleksi</b><small>Stiker, lencana, makhluk</small></button>
+<button class="mt" data-go="kapsul"><span class="mti" style="--c:#e0f0ff">${stikerSvg('moon',2,46)}</span><b>Kapsul Waktu</b><small>${getKapsul().length} kapsul</small></button>
+<button class="mt" data-go="aula"><span class="mti" style="--c:#fff0c0">${K.rankSvg(9,46)}</span><b>Aula Juara</b><small>Top kelas</small></button>`);
   };
-  if(!SUB.includes('koleksi'))SUB.push('koleksi');
-  LB.koleksi='Koleksi';
+  ['koleksi','kapsul','aula'].forEach(t=>{if(!SUB.includes(t))SUB.push(t)});
+  LB.koleksi='Koleksi';LB.kapsul='Kapsul';LB.aula='Aula';
+
+  /* ---------- RENDER HOOK ---------- */
   const _render=render;
   render=function(){
-    if(S.tab==='koleksi' && S.user && S.cls && !(modal&&modal.form)){
-      stopCam();
-      const ps=petState(S.user.id),tot=ps.best+ps.gb;
-      const ranks=K.RK.map((r,i)=>{const u=i<=ps.unlocked;return `<button class="sk ${u?'':'lock'}" style="flex:0 0 96px" data-pa="kinfo" data-t="r" data-i="${i}"><div>${K.rankSvg(i,72,!u)}</div><b style="font-size:11px">${r.n}</b><small>${u?'Terbuka':'Terkunci'}</small></button>`}).join('');
-      const crits=K.SEC.map((c,i)=>{const u=tot>=STREAK[i];return `<button class="sk ${u?'':'lock'}" style="flex:0 0 104px" data-pa="kinfo" data-t="c" data-i="${i}"><div>${K.critter(i,84)}</div><b style="font-size:11px">${u?c.n:'???'}</b><small>${u?c.el:'Streak '+STREAK[i]}</small></button>`}).join('');
-      const na=K.SEC.filter((c,i)=>tot>=STREAK[i]).length;
-      $('#app').innerHTML=`<div class="scroll" id="sc"><div class="pgin">${hd('Koleksi 🎨','Lencana &amp; makhluk rahasia')}
-<div class="box"><b>Lencana peringkat (${ps.unlocked+1}/${K.RK.length})</b><p class="mu" style="margin:4px 0 10px">Terbuka seiring streak harian.</p><div class="row" style="margin:0 -20px;padding:8px 20px">${ranks}</div></div>
-<div class="box"><b>Makhluk rahasia (${na}/${K.SEC.length})</b><p class="mu" style="margin:4px 0 10px">Kumpulkan dengan streak konsisten.</p><div class="row" style="margin:0 -20px;padding:8px 20px">${crits}</div></div>
-<div class="box"><b>Progresmu</b><p class="mu" style="margin-top:4px">Streak terbaik: ${ps.best} hari · Bonus game: +${ps.gb} · Total: ${tot} hari. Terus hadir dan main untuk membuka semua!</p></div>
-</div></div>
-<nav><div class="bar">${['home','cal','kas','mem','me'].map(t=>`<button data-tab="${t}" class="${(S.tab===t||(t==='home'&&SUB.includes(S.tab)))?'on':''}" aria-label="${LB[t]}">${ic(t)}</button>`).join('')}</div><button class="fab" data-go="home" aria-label="Home">${ic('home')}</button></nav>`;
-      $('#sc').scrollTop=0;
-      if(modal)showModal();
-      return;
+    if(S.user&&S.cls&&!(modal&&modal.form)){
+      if(S.tab==='koleksi')return koleksiPg();
+      if(S.tab==='kapsul')return kapsulPg();
+      if(S.tab==='aula')return aulaPg();
     }
     return _render.apply(this,arguments);
   };
+
+  function navBar(){
+    return `<nav><div class="bar">${['home','cal','kas','mem','me'].map(t=>`<button data-tab="${t}" class="${(S.tab===t||(t==='home'&&SUB.includes(S.tab)))?'on':''}" aria-label="${LB[t]}">${t==='me'&&S.me&&S.me.pet_char!=null?petSvg(S.me.pet_char,{stage:petState(S.user.id).skin,mood:petState(S.user.id).mood==='sleep'?'ok':petState(S.user.id).mood,size:36}):ic(t)}</button>`).join('')}</div><button class="fab" data-go="home" aria-label="Home">${ic('home')}</button></nav>`;
+  }
+
+  function koleksiPg(){
+    const ps=petState(S.user.id),tot=ps.best+ps.gb;
+    const stik=STIKERS.map(s=>{const u=hasStik(s.k);const R=K.KR[s.r];
+      const img=u?stikerSvg(s.k,s.r,72):`<svg viewBox="0 0 100 100" width="72" height="72"><rect x="3" y="3" width="94" height="94" rx="22" fill="#c8d0dd" stroke="#fff" stroke-width="3"/><text x="50" y="62" text-anchor="middle" font-size="42" fill="#fff" font-weight="800">?</text></svg>`;
+      return `<button class="sk ${u?'':'lock'}" data-pa="kstik" data-k="${s.k}"><div>${img}</div><b style="font-size:11px">${u?s.n:'???'}</b><small>${R.n}</small></button>`}).join('');
+    const ranks=K.RK.map((r,i)=>{const u=i<=ps.unlocked;return `<button class="sk ${u?'':'lock'}" data-pa="krank" data-i="${i}"><div>${K.rankSvg(i,80,!u)}</div><b style="font-size:11px">${r.n}</b></button>`}).join('');
+    const crits=K.SEC.map((c,i)=>{const need=CRI_NEED[i],u=tot>=need;return `<button class="sk ${u?'':'lock'}" data-pa="kcrit" data-i="${i}"><div>${K.critter(i,84)}</div><b style="font-size:11px">${u?c.n:'???'}</b><small>${u?c.el:'Streak '+need}</small></button>`}).join('');
+    const ns=getStik().length,nc=K.SEC.filter((c,i)=>tot>=CRI_NEED[i]).length;
+    $('#app').innerHTML=`<div class="scroll" id="sc"><div class="pgin">
+      ${hd('Koleksi 🎨',`${ns}/${STIKERS.length} stiker · ${nc}/${K.SEC.length} makhluk`)}
+      ${S.dev?`<div class="box" style="background:linear-gradient(135deg,#ffe0f0,#e0f0ff);border:1px solid #ff8fb3"><b>🔧 Mode Developer Aktif</b><p class="mu" style="margin:4px 0">Semua skin, lencana, dan makhluk terbuka. <button class="chip" data-pa="devoff">Matikan</button></p></div>`:''}
+      <div class="box"><b>Stiker (${ns}/${STIKERS.length})</b><p class="mu" style="margin:4px 0 10px">Klaim 1 stiker acak per hari lewat tombol di bawah.</p>
+      <button class="btn" data-pa="klaim" style="margin-bottom:10px">🎁 Klaim stiker harian</button>
+      <div class="row" style="margin:0 -20px;padding:8px 20px">${stik}</div></div>
+      <div class="box"><b>Lencana peringkat (${ps.unlocked+1}/${K.RK.length})</b><div class="row" style="margin:0 -20px;padding:8px 20px">${ranks}</div></div>
+      <div class="box"><b>Makhluk rahasia (${nc}/${K.SEC.length})</b><p class="mu" style="margin:4px 0 10px">Buka dengan streak konsisten.</p><div class="row" style="margin:0 -20px;padding:8px 20px">${crits}</div></div>
+      ${!S.dev?`<div class="box"><b>Developer mode</b><p class="mu" style="margin:4px 0 10px">Masukkan kode untuk membuka semua koleksi.</p><input id="devcode" placeholder="Kode developer" autocomplete="off" autocapitalize="characters"><button class="btn s" data-pa="devon">Aktifkan</button></div>`:''}
+      </div></div>${navBar()}`;
+    $('#sc').scrollTop=0;
+    if(modal)showModal();
+  }
+
+  function kapsulPg(){
+    const ks=getKapsul().sort((a,b)=>a.open.localeCompare(b.open)),tk=todayK();
+    $('#app').innerHTML=`<div class="scroll" id="sc"><div class="pgin">
+      ${hd('Kapsul Waktu 🕰','Simpan pesan untuk dibuka nanti')}
+      <div class="box"><b>Buat kapsul baru</b>
+        <label for="kstitle">Judul</label><input id="kstitle" placeholder="Untuk diriku 1 tahun lagi" maxlength="60">
+        <label for="ksisi">Pesan</label><textarea id="ksisi" rows="4" placeholder="Tulis pesan…" maxlength="500"></textarea>
+        <label for="ksopen">Buka tanggal</label><input id="ksopen" type="date" min="${tk}" value="${tk}">
+        <button class="btn" data-pa="knew" style="margin-top:10px">Simpan kapsul</button></div>
+      <div class="box"><b>Kapsul tersimpan (${ks.length})</b>${ks.length?ks.map(k=>{const can=k.open<=tk;return `<div class="kr"><span class="kri">${stikerSvg('moon',2,40)}</span><div><b>${esc(k.title)}</b><small>Buka: ${fmt(k.open)} · ${can?'Siap dibuka':'Terkunci'}</small></div>${can?`<button class="btn s sm" data-pa="kop" data-id="${k.id}">Buka</button>`:'<span class="chip">🔒</span>'}${can?`<button class="x" data-pa="kdel" data-id="${k.id}" aria-label="Hapus">✕</button>`:''}</div>`}).join(''):'<p class="mu">Belum ada kapsul. Buat yang pertama!</p>'}</div>
+      </div></div>${navBar()}`;
+    $('#sc').scrollTop=0;
+    if(modal)showModal();
+  }
+
+  function aulaPg(){
+    const data=S.members.map(m=>{const ps=petState(m.user_id),at=stat(m.user_id),g=S.gmap[m.user_id]||{};
+      return {m,ps,at,g,tot:(ps.best||0)+(ps.gb||0),score:(g.sum||0)}});
+    const byStreak=data.slice().sort((a,b)=>b.tot-a.tot).slice(0,5);
+    const byAtt=data.slice().sort((a,b)=>(b.at.pct||0)-(a.at.pct||0)).slice(0,5);
+    const byGame=data.slice().sort((a,b)=>b.score-a.score).slice(0,5);
+    const pod=(arr,vf)=>arr.length?`<div class="pcs">${[arr[1],arr[0],arr[2]].map((x,i)=>{if(!x)return `<div class="pc c${i===1?'1':i===0?'2':'3'} e"></div>`;const cls=i===1?'c1':i===0?'c2':'c3';return `<button class="pc ${cls}" data-pa="person" data-u="${x.m.user_id}"><span class="pcr">${avP(x.m,i===1?64:52)}<span class="pcb">${K.rankSvg(x.ps.unlocked,22)}</span></span><b class="pn">${esc((x.m.name||'').split(' ')[0])}</b><small>${vf(x)}</small><div class="pb"><i>${i===1?1:i===0?2:3}</i></div></button>`}).join('')}</div>`:'';
+    const list=(arr,vf)=>arr.slice(3).map((x,j)=>`<div class="lb"><span class="md1">${j+4}</span>${avP(x.m,30)}<span class="nm">${esc(x.m.name)}</span><b>${vf(x)}</b></div>`).join('');
+    $('#app').innerHTML=`<div class="scroll" id="sc"><div class="pgin">
+      ${hd('Aula Juara 🏆','Pahlawan kelas')}
+      <div class="box"><b>🔥 Streak tertinggi</b><div class="gc gl pod" style="display:block;padding:0">${pod(byStreak,x=>x.tot+' hr')}${list(byStreak,x=>x.tot+' hr')}</div></div>
+      <div class="box"><b>🎯 Kehadiran terbaik</b><div class="gc gl pod" style="display:block;padding:0">${pod(byAtt,x=>(x.at.pct||0)+'%')}${list(byAtt,x=>(x.at.pct||0)+'%')}</div></div>
+      <div class="box"><b>🎲 Skor game tertinggi</b><div class="gc gl pod" style="display:block;padding:0">${pod(byGame,x=>x.score+' kotak')}${list(byGame,x=>x.score+' kotak')}</div></div>
+      </div></div>${navBar()}`;
+    $('#sc').scrollTop=0;
+    if(modal)showModal();
+  }
+
+  /* ---------- EVENT ---------- */
   document.addEventListener('click',ev=>{
-    const t=ev.target.closest('[data-pa="kinfo"]');if(!t)return;
-    const i=+t.dataset.i,type=t.dataset.t,ps=petState(S.user.id),tot=ps.best+ps.gb;
-    if(type==='r'){
-      const r=K.RK[i],u=i<=ps.unlocked;
-      modal={form:false,html:()=>`<div style="text-align:center">${K.rankSvg(i,150,!u)}</div><h2 style="text-align:center;margin-top:6px">${r.n}</h2><p class="mu" style="text-align:center">Peringkat ${i+1} dari ${K.RK.length}</p><p style="text-align:center;margin-top:10px">${u?'Lencana ini sudah terbuka dari streak harianmu.':'Capai streak '+[0,0,3,3,3,7,7,7,14,14][i]+' hari untuk membuka lencana ini.'}</p>`};
-      render();
-    } else {
-      const c=K.SEC[i],u=tot>=STREAK[i];
-      modal={form:false,html:()=>`<div style="text-align:center">${K.critter(i,180)}</div><h2 style="text-align:center;margin-top:6px">${u?c.n:'???'}</h2><p class="mu" style="text-align:center">Elemen ${c.el} · ${u?'Sudah ditemukan':'Belum ditemukan'}</p><p style="text-align:center;margin-top:10px">${u?'Makhluk ini sudah kamu temukan!':'Capai streak '+STREAK[i]+' hari untuk menemukannya.'}</p>`};
-      render();
+    const t=ev.target.closest('[data-pa]');if(!t)return;const d=t.dataset,a=d.pa;
+    if(a==='klaim'){
+      const tk=todayK();let last='';try{last=localStorage.getItem('kstik_day')||''}catch(e){}
+      if(!S.dev && last===tk)return toast('Sudah klaim hari ini. Besok lagi!');
+      const owned=getStik(),pool=STIKERS.filter(s=>!owned.includes(s.k));
+      const pick=pool.length?pool[Math.floor(Math.random()*pool.length)]:STIKERS[Math.floor(Math.random()*STIKERS.length)];
+      addStik(pick.k);try{localStorage.setItem('kstik_day',tk)}catch(e){}
+      toast('Stiker baru: '+pick.n+' ✨');render();
     }
+    else if(a==='devon'){
+      const v=(($('#devcode')||{}).value||'').trim().toUpperCase();
+      if(v===DEV_CODE){S.dev=true;try{localStorage.setItem('kdev','1')}catch(e){}toast('🔧 Developer mode aktif!');render()}
+      else toast('Kode salah');
+    }
+    else if(a==='devoff'){S.dev=false;try{localStorage.removeItem('kdev')}catch(e){}toast('Developer mode dimatikan');render()}
+    else if(a==='kstik'){const s=STIKERS.find(x=>x.k===d.k);if(!s)return;const u=hasStik(s.k),R=K.KR[s.r];
+      modal={form:false,html:()=>`<div style="text-align:center">${u?stikerSvg(s.k,s.r,180):'🔒'}</div><h2 style="text-align:center;margin-top:6px">${u?s.n:'???'}</h2><p class="mu" style="text-align:center">Rarity: ${R.n}</p><p style="text-align:center;margin-top:10px">${u?'Kamu punya stiker ini!':'Belum didapat. Klaim stiker harian untuk mengumpulkan.'}</p>`};render()}
+    else if(a==='krank'){const i=+d.i,r=K.RK[i],u=i<=petState(S.user.id).unlocked;
+      modal={form:false,html:()=>`<div style="text-align:center">${K.rankSvg(i,180,!u)}</div><h2 style="text-align:center">${r.n}</h2><p style="text-align:center;margin-top:10px">${u?'Sudah terbuka!':'Capai streak '+[0,0,3,3,3,7,7,7,14,14][i]+' hari untuk membuka.'}</p>`};render()}
+    else if(a==='kcrit'){const i=+d.i,c=K.SEC[i],need=CRI_NEED[i],ps=petState(S.user.id),tot=ps.best+ps.gb,u=tot>=need;
+      modal={form:false,html:()=>`<div style="text-align:center">${K.critter(i,180)}</div><h2 style="text-align:center">${u?c.n:'???'}</h2><p class="mu" style="text-align:center">Elemen ${c.el}</p><p style="text-align:center;margin-top:10px">${u?'Makhluk ini sudah kamu temukan!':'Butuh streak '+need+' hari. Kamu: '+tot+'.'}</p>`};render()}
+    else if(a==='knew'){
+      const ti=(($('#kstitle')||{}).value||'').trim(),isi=(($('#ksisi')||{}).value||'').trim(),op=(($('#ksopen')||{}).value||'').trim();
+      if(!ti||!isi||!op)return toast('Isi semua kolom');
+      addKapsul({id:'k'+Date.now(),title:ti,body:isi,open:op,created:new Date().toISOString()});
+      toast('Kapsul tersimpan 🕰');render();
+    }
+    else if(a==='kop'){const k=getKapsul().find(x=>x.id===d.id);if(!k)return;
+      modal={form:false,html:()=>`<h2>${esc(k.title)}</h2><p class="mu">Dibuat ${fmt(key(new Date(k.created)))}</p><div style="background:var(--chip);padding:14px;border-radius:16px;margin-top:10px;white-space:pre-wrap">${esc(k.body)}</div>`};render()}
+    else if(a==='kdel'){setKapsul(getKapsul().filter(x=>x.id!==d.id));render()}
   });
 })();
 
