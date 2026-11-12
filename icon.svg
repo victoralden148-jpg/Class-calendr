@@ -1,83 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="100%" height="100%">
   <defs>
-    <!-- Shadow untuk base icon putih -->
-    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#000000" flood-opacity="0.05" />
+    <!-- Blur untuk efek cahaya luar (Pink) -->
+    <filter id="glowPink" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="55" />
     </filter>
 
-    <!-- Blur sangat tebal untuk efek glow luar (Pink) -->
-    <filter id="heavyGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="18" />
+    <!-- Blur untuk sorotan atas (Cyan) -->
+    <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="30" />
     </filter>
 
-    <!-- Blur untuk body utama (Soft focus) -->
+    <!-- Blur utama untuk badan karakter (Soft Airbrush) -->
     <filter id="bodyBlur" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="6" />
+      <feGaussianBlur stdDeviation="18" />
     </filter>
 
     <!-- Blur untuk mata -->
     <filter id="eyeBlur" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="4" />
+      <feGaussianBlur stdDeviation="10" />
     </filter>
 
-    <!-- Gradient Warna Body -->
-    <linearGradient id="bodyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#00ccff" />
-      <stop offset="40%" stop-color="#0077ff" />
-      <stop offset="100%" stop-color="#0044ff" />
+    <!-- Gradient Warna Badan (Biru) -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff" />
+      <stop offset="45%" stop-color="#0077ff" />
+      <stop offset="100%" stop-color="#0033ff" />
     </linearGradient>
 
-    <!-- Gradient Warna Mata -->
-    <linearGradient id="eyeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+    <!-- Gradient Warna Glow Pink di Belakang -->
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff88ff" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#ff00ff" stop-opacity="0.4" />
+    </linearGradient>
+
+    <!-- Gradient Warna Mata (Putih kebiruan) -->
+    <linearGradient id="eyeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#ffffff" />
       <stop offset="100%" stop-color="#b3e6ff" />
     </linearGradient>
-
-    <!-- Gradient Warna Glow Pink -->
-    <linearGradient id="pinkGlowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#ff66ff" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#ff00ff" stop-opacity="0.2" />
-    </linearGradient>
   </defs>
 
-  <!-- Background Kanvas (Warna abu-abu terang seperti di gambar) -->
-  <rect width="100%" height="100%" fill="#f4f4f6" />
+  <!-- BASE ICON APP (Kotak Melengkung Putih) - Background tetap transparan -->
+  <!-- Bentuk Squircle standar icon aplikasi -->
+  <rect x="0" y="0" width="1024" height="1024" rx="230" fill="#ffffff" />
 
-  <!-- BASE ICON PUTIH -->
-  <rect x="100" y="100" width="300" height="300" rx="70" fill="#ffffff" filter="url(#softShadow)" />
-
-  <g transform="translate(250, 250)">
+  <!-- KARAKTER DI DALAM ICON (Posisi di tengah) -->
+  <g transform="translate(512, 512)">
     
-    <!-- 1. LAPISAN GLOW PINK DI BELAKANG -->
-    <path d="M -110 10 
-             A 110 100 0 0 1 110 10 
-             L 110 50 
-             Q 110 110 50 110 
-             L -50 110 
-             Q -110 110 -110 50 Z" 
-          fill="url(#pinkGlowGradient)" filter="url(#heavyGlow)" />
+    <!-- 1. Efek Pendaran / Glow Pink (Di belakang) -->
+    <path d="M -320 20 
+             A 320 280 0 0 1 320 20 
+             L 320 180 
+             Q 320 320 180 320 
+             L -180 320 
+             Q -320 320 -320 180 Z" 
+          fill="url(#pinkGrad)" filter="url(#glowPink)" />
 
-    <!-- 2. SOROTAN CAHAYA CYAN DI ATAS -->
-    <path d="M -95 0 
-             A 95 85 0 0 1 95 0" 
-          fill="none" stroke="#00ffff" stroke-width="25" 
-          filter="url(#bodyBlur)" opacity="0.9" />
+    <!-- 2. Sorotan Cahaya Cyan di Bagian Atas -->
+    <path d="M -280 10 
+             A 280 250 0 0 1 280 10" 
+          fill="none" stroke="#00ffff" stroke-width="60" 
+          filter="url(#glowCyan)" opacity="0.9" />
 
-    <!-- 3. BODY UTAMA (Biru) -->
-    <path d="M -105 15 
-             A 105 95 0 0 1 105 15 
-             L 105 55 
-             Q 105 105 55 105 
-             L -55 105 
-             Q -105 105 -105 55 Z" 
-          fill="url(#bodyGradient)" filter="url(#bodyBlur)" />
+    <!-- 3. Badan Utama Karakter (Biru) -->
+    <path d="M -310 20 
+             A 310 270 0 0 1 310 20 
+             L 310 180 
+             Q 310 300 180 300 
+             L -180 300 
+             Q -310 300 -310 180 Z" 
+          fill="url(#bodyGrad)" filter="url(#bodyBlur)" />
 
-    <!-- 4. MATA KIRI -->
-    <ellipse cx="-35" cy="20" rx="22" ry="38" fill="url(#eyeGradient)" filter="url(#eyeBlur)" />
+    <!-- 4. Mata Kiri -->
+    <ellipse cx="-105" cy="70" rx="60" ry="100" fill="url(#eyeGrad)" filter="url(#eyeBlur)" />
     
-    <!-- 5. MATA KANAN -->
-    <ellipse cx="40" cy="25" rx="22" ry="38" fill="url(#eyeGradient)" filter="url(#eyeBlur)" 
-             transform="rotate(5 40 25)" />
+    <!-- 5. Mata Kanan (Sedikit lebih rendah dan miring) -->
+    <ellipse cx="115" cy="85" rx="60" ry="100" fill="url(#eyeGrad)" filter="url(#eyeBlur)" 
+             transform="rotate(8 115 85)" />
 
   </g>
 </svg>
