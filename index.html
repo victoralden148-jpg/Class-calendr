@@ -1,1154 +1,550 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="light">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <title>AI OS • Kelasku</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    /* ===== RESET & BASE ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { -webkit-tap-highlight-color: transparent; }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100dvh;
-      overflow-x: hidden;
-      transition: background 0.6s ease, color 0.6s ease;
-      -webkit-font-smoothing: antialiased;
-    }
-    :root {
-      --radius-card: 28px;
-      --radius-pill: 999px;
-      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
-      --card-blur: 25px;
-      --transition-theme: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      --font-display: 'Inter', sans-serif;
-    }
-    /* ===== LIGHT THEME ===== */
-    [data-theme="light"] {
-      --bg: #F2F2F7;
-      --text: #111111;
-      --text-secondary: #6C6C70;
-      --card-bg: rgba(255, 255, 255, 0.28);
-      --card-border: rgba(255, 255, 255, 0.45);
-      --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-      --accent: #007AFF;
-      --accent-gradient: linear-gradient(135deg, #007AFF, #5E5CE6);
-      --aurora-1: #A0E7E5;
-      --aurora-2: #FFB6C1;
-      --aurora-3: #C9A0FF;
-      --aurora-4: #FFD6A0;
-      --aurora-5: #A0D2FF;
-      --aurora-6: #B8FFD0;
-      --glass-highlight: rgba(255, 255, 255, 0.6);
-      --nav-bg: rgba(255, 255, 255, 0.65);
-      --nav-border: rgba(255, 255, 255, 0.5);
-      --input-bg: rgba(255, 255, 255, 0.35);
-      --input-border: rgba(255, 255, 255, 0.6);
-      --splash-bg: linear-gradient(160deg, #e0f2fe, #fce7f3, #f3e8ff, #fef3c7);
-    }
-    /* ===== DARK THEME ===== */
-    [data-theme="dark"] {
-      --bg: #000000;
-      --text: #FFFFFF;
-      --text-secondary: #8E8E93;
-      --card-bg: rgba(0, 0, 0, 0.25);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-      --accent: #0A84FF;
-      --accent-gradient: linear-gradient(135deg, #0A84FF, #5E5CE6);
-      --aurora-1: #00FFAA;
-      --aurora-2: #FF00FF;
-      --aurora-3: #8A2BE2;
-      --aurora-4: #FFA500;
-      --aurora-5: #00BFFF;
-      --aurora-6: #00FF7F;
-      --glass-highlight: rgba(255, 255, 255, 0.08);
-      --nav-bg: rgba(20, 20, 25, 0.7);
-      --nav-border: rgba(255, 255, 255, 0.1);
-      --input-bg: rgba(255, 255, 255, 0.08);
-      --input-border: rgba(255, 255, 255, 0.12);
-      --splash-bg: linear-gradient(160deg, #0a0a1a, #1a0a2e, #0a1a2e);
-    }
-    /* ===== AURORA BACKGROUND ===== */
-    .aurora-wrap {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-      pointer-events: none;
-      transition: opacity var(--transition-theme);
-    }
-    .aurora {
-      position: absolute;
-      inset: -50%;
-      width: 200%;
-      height: 200%;
-      filter: blur(80px);
-      opacity: 0;
-      transition: opacity var(--transition-theme);
-    }
-    .aurora.light {
-      background:
-        radial-gradient(circle at 20% 30%, var(--aurora-1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, var(--aurora-2) 0%, transparent 45%),
-        radial-gradient(circle at 70% 70%, var(--aurora-3) 0%, transparent 50%),
-        radial-gradient(circle at 30% 80%, var(--aurora-4) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, var(--aurora-5) 0%, transparent 60%),
-        radial-gradient(circle at 90% 90%, var(--aurora-6) 0%, transparent 50%);
-      animation: auroraMove 20s ease-in-out infinite alternate;
-      opacity: 0.9;
-    }
-    .aurora.dark {
-      background:
-        radial-gradient(circle at 20% 30%, var(--aurora-1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, var(--aurora-2) 0%, transparent 45%),
-        radial-gradient(circle at 70% 70%, var(--aurora-3) 0%, transparent 50%),
-        radial-gradient(circle at 30% 80%, var(--aurora-4) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, var(--aurora-5) 0%, transparent 60%),
-        radial-gradient(circle at 90% 90%, var(--aurora-6) 0%, transparent 50%);
-      animation: auroraMove 25s ease-in-out infinite alternate-reverse;
-      opacity: 0;
-    }
-    [data-theme="dark"] .aurora.dark { opacity: 0.7; }
-    [data-theme="dark"] .aurora.light { opacity: 0; }
-    [data-theme="light"] .aurora.light { opacity: 0.9; }
-    [data-theme="light"] .aurora.dark { opacity: 0; }
-    @keyframes auroraMove {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-      50% { transform: translate(-5%, 5%) rotate(5deg) scale(1.1); }
-      100% { transform: translate(5%, -5%) rotate(-5deg) scale(0.9); }
-    }
-    /* ===== SPLASH ===== */
-    #splash {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: var(--splash-bg);
-      transition: opacity 0.6s ease, visibility 0.6s;
-    }
-    #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-    .splash-logo {
-      width: 100px;
-      height: 100px;
-      border-radius: 28px;
-      background: var(--accent-gradient);
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 60px rgba(0, 122, 255, 0.4);
-      animation: logoPulse 2s ease-in-out infinite;
-    }
-    .splash-logo svg { width: 60px; height: 60px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.8)); }
-    @keyframes logoPulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 60px rgba(0, 122, 255, 0.4); }
-      50% { transform: scale(1.08); box-shadow: 0 0 90px rgba(0, 122, 255, 0.7); }
-    }
-    .splash-progress {
-      margin-top: 40px;
-      width: 200px;
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.2);
-      overflow: hidden;
-      position: relative;
-    }
-    .splash-progress-fill {
-      height: 100%;
-      width: 0%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff);
-      background-size: 300% 100%;
-      animation: progressFlow 2s linear infinite;
-      transition: width 0.3s ease;
-    }
-    @keyframes progressFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 300% 50%; }
-    }
-    .splash-status {
-      margin-top: 20px;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      animation: dotBlink 1s infinite;
-    }
-    @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-    /* ===== ONBOARDING ===== */
-    #onboarding, #login, #app {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    #onboarding.active, #login.active, #app.active {
-      display: flex;
-      opacity: 1;
-    }
-    #onboarding {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .glass-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(var(--card-blur));
-      -webkit-backdrop-filter: blur(var(--card-blur));
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-card);
-      box-shadow: var(--card-shadow), inset 0 1px 0 var(--glass-highlight);
-      padding: 28px;
-      width: 100%;
-      max-width: 400px;
-    }
-    .radar-container {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 24px;
-      position: relative;
-      display: grid;
-      place-items: center;
-    }
-    .radar-circle {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 2px solid rgba(0, 122, 255, 0.2);
-      animation: radarPulse 2s ease-out infinite;
-    }
-    .radar-circle:nth-child(2) { animation-delay: 0.5s; }
-    .radar-circle:nth-child(3) { animation-delay: 1s; }
-    @keyframes radarPulse {
-      0% { transform: scale(0.5); opacity: 0.8; }
-      100% { transform: scale(1.5); opacity: 0; }
-    }
-    .radar-sweep {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: conic-gradient(from 0deg, transparent 0%, rgba(0, 122, 255, 0.3) 20%, transparent 40%);
-      animation: sweep 2s linear infinite;
-    }
-    @keyframes sweep { to { transform: rotate(360deg); } }
-    .radar-device {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: var(--accent-gradient);
-      display: grid;
-      place-items: center;
-      z-index: 1;
-      box-shadow: 0 0 30px rgba(0, 122, 255, 0.5);
-    }
-    .radar-device svg { width: 40px; height: 40px; fill: white; }
-    .onboarding-title {
-      font-size: 24px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 8px;
-    }
-    .onboarding-desc {
-      font-size: 15px;
-      color: var(--text-secondary);
-      text-align: center;
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-    .btn-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 28px;
-      border-radius: var(--radius-pill);
-      border: none;
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 16px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%;
-    }
-    .btn-pill:active { transform: scale(0.97); }
-    .btn-primary {
-      background: var(--accent-gradient);
-      color: white;
-      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
-    }
-    .btn-primary:hover { box-shadow: 0 12px 32px rgba(0, 122, 255, 0.4); }
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--card-border);
-    }
-    /* ===== LOGIN ===== */
-    #login {
-      position: fixed;
-      inset: 0;
-      z-index: 50;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
-    .login-card { max-width: 380px; }
-    .input-group {
-      position: relative;
-      margin-bottom: 20px;
-    }
-    .input-group input {
-      width: 100%;
-      padding: 16px 16px 16px 48px;
-      border-radius: 16px;
-      border: 1px solid var(--input-border);
-      background: var(--input-bg);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: var(--text);
-      font-size: 16px;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .input-group input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.15);
-    }
-    .input-group .input-icon {
-      position: absolute;
-      left: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      color: var(--text-secondary);
-      pointer-events: none;
-    }
-    .input-group .toggle-password {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 24px;
-      height: 24px;
-      cursor: pointer;
-      color: var(--text-secondary);
-      background: none;
-      border: none;
-      padding: 0;
-    }
-    .social-login {
-      display: flex;
-      gap: 12px;
-      margin: 16px 0;
-    }
-    .social-btn {
-      flex: 1;
-      padding: 12px;
-      border-radius: 16px;
-      border: 1px solid var(--card-border);
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      color: var(--text);
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .social-btn:active { transform: scale(0.97); }
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-secondary);
-      font-size: 13px;
-      margin: 20px 0;
-    }
-    .divider::before, .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--card-border);
-    }
-    /* ===== APP LAYOUT ===== */
-    #app {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    .app-header {
-      padding: 16px 20px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-    }
-    .greeting h1 {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      margin-bottom: 2px;
-    }
-    .greeting h2 {
-      font-size: 24px;
-      font-weight: 700;
-    }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .weather-mini {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-    .avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--accent-gradient);
-      display: grid;
-      place-items: center;
-      color: white;
-      font-weight: 700;
-      font-size: 16px;
-      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
-    }
-    .theme-toggle {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--card-border);
-      background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      color: var(--text);
-      transition: transform 0.2s;
-    }
-    .theme-toggle:active { transform: scale(0.9); }
-    /* ===== BENTO GRID ===== */
-    .bento-scroll {
-      flex: 1;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding: 8px 20px 100px;
-      scroll-behavior: smooth;
-    }
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .bento-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(var(--card-blur));
-      -webkit-backdrop-filter: blur(var(--card-blur));
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-card);
-      box-shadow: var(--card-shadow), inset 0 1px 0 var(--glass-highlight);
-      padding: 16px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-    }
-    .bento-card:active {
-      transform: scale(0.97);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    }
-    .bento-card .card-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 4px;
-    }
-    .bento-card .card-value {
-      font-size: 48px;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.03em;
-    }
-    .bento-card .card-value.sm { font-size: 32px; }
-    .bento-card .card-value.xs { font-size: 24px; }
-    .bento-card .card-sub {
-      font-size: 13px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-    .bento-card .card-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 8px;
-      background: var(--accent-gradient);
-      color: white;
-    }
-    /* Weather card */
-    .bento-weather {
-      grid-column: span 2;
-      grid-row: span 2;
-      background: linear-gradient(145deg, #ff9a9e, #fad0c4);
-      color: #1a1a1a;
-      min-height: 180px;
-      justify-content: space-between;
-    }
-    [data-theme="dark"] .bento-weather {
-      background: linear-gradient(145deg, #ff6b6b, #ee5a24);
-      color: white;
-    }
-    .bento-weather .weather-temp {
-      font-size: 64px;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-    .bento-weather .weather-loc {
-      font-size: 15px;
-      font-weight: 600;
-      opacity: 0.8;
-      margin-bottom: 4px;
-    }
-    .bento-weather .weather-desc {
-      font-size: 14px;
-      opacity: 0.7;
-    }
-    .sun-arc {
-      position: relative;
-      height: 60px;
-      margin-top: 8px;
-    }
-    .sun-arc svg {
-      width: 100%;
-      height: 100%;
-    }
-    .sun-times {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      font-weight: 600;
-      opacity: 0.8;
-      margin-top: 2px;
-    }
-    /* Analytics card */
-    .bento-analytics {
-      grid-column: span 2;
-      grid-row: span 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 12px;
-    }
-    .analytics-item {
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 18px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    [data-theme="dark"] .analytics-item {
-      background: rgba(255, 255, 255, 0.06);
-    }
-    .analytics-item .a-label {
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-secondary);
-    }
-    .analytics-item .a-value {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .analytics-item .a-unit {
-      font-size: 11px;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-    /* Ring card */
-    .bento-ring {
-      grid-column: span 1;
-      grid-row: span 1;
-      align-items: center;
-      justify-content: center;
-      min-height: 110px;
-    }
-    .ring-chart {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: conic-gradient(var(--accent) 0% 85%, rgba(0, 122, 255, 0.15) 85% 100%);
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-    .ring-chart::after {
-      content: '85';
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--text);
-      background: var(--card-bg);
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      position: absolute;
-    }
-    /* Alarm card */
-    .bento-alarm {
-      grid-column: span 1;
-      grid-row: span 1;
-      min-height: 110px;
-      justify-content: center;
-    }
-    .bento-alarm .alarm-time {
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-    }
-    /* Moon card */
-    .bento-moon {
-      grid-column: span 1;
-      grid-row: span 1;
-      min-height: 110px;
-      justify-content: center;
-      background: linear-gradient(145deg, #a18cd1, #fbc2eb);
-      color: #1a1a1a;
-    }
-    [data-theme="dark"] .bento-moon {
-      background: linear-gradient(145deg, #4b3f72, #2a1e4a);
-      color: white;
-    }
-    .moon-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #fff, #ddd);
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-      margin-bottom: 8px;
-      position: relative;
-    }
-    .moon-icon::after {
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.1);
-    }
-    /* Voce card */
-    .bento-voce {
-      grid-column: span 2;
-      grid-row: span 1;
-      flex-direction: row;
-      align-items: center;
-      gap: 16px;
-      min-height: 110px;
-    }
-    .voce-bars {
-      display: flex;
-      align-items: flex-end;
-      gap: 4px;
-      height: 50px;
-    }
-    .voce-bar {
-      width: 8px;
-      border-radius: 4px;
-      background: var(--accent-gradient);
-      animation: voceWave 1.2s ease-in-out infinite;
-    }
-    .voce-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
-    .voce-bar:nth-child(2) { height: 35px; animation-delay: 0.2s; }
-    .voce-bar:nth-child(3) { height: 50px; animation-delay: 0.4s; }
-    .voce-bar:nth-child(4) { height: 35px; animation-delay: 0.6s; }
-    .voce-bar:nth-child(5) { height: 20px; animation-delay: 0.8s; }
-    @keyframes voceWave {
-      0%, 100% { transform: scaleY(1); }
-      50% { transform: scaleY(1.4); }
-    }
-    /* ===== BOTTOM NAV ===== */
-    .bottom-nav {
-      position: fixed;
-      bottom: 16px;
-      left: 20px;
-      right: 20px;
-      z-index: 30;
-      background: var(--nav-bg);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      border: 1px solid var(--nav-border);
-      border-radius: var(--radius-pill);
-      display: flex;
-      justify-content: space-around;
-      padding: 8px;
-      box-shadow: var(--card-shadow);
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-      padding: 8px 16px;
-      border-radius: var(--radius-pill);
-      border: none;
-      background: transparent;
-      color: var(--text-secondary);
-      font-family: inherit;
-      font-size: 10px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s, transform 0.2s;
-    }
-    .nav-item.active {
-      background: var(--card-bg);
-      color: var(--accent);
-    }
-    .nav-item:active { transform: scale(0.9); }
-    .nav-item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
-    /* Profile page placeholder */
-    #page-profile {
-      display: none;
-      flex-direction: column;
-      padding: 20px;
-      overflow-y: auto;
-      flex: 1;
-      max-width: 600px;
-      margin: 0 auto;
-      width: 100%;
-    }
-    #page-profile.active { display: flex; }
-    .profile-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-    .profile-avatar-lg {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: var(--accent-gradient);
-      display: grid;
-      place-items: center;
-      color: white;
-      font-size: 32px;
-      font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
-    }
-    .profile-name { font-size: 24px; font-weight: 700; }
-    .profile-role { font-size: 14px; color: var(--text-secondary); }
-    .setting-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px;
-      border-radius: 18px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      margin-bottom: 12px;
-      backdrop-filter: blur(15px);
-    }
-    /* Utility */
-    .hidden { display: none !important; }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      .aurora { animation: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<title>Kelasku - AI OS Redesign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Light Theme Variables */
+  --bg: #f2f2f7;
+  --text: #1c1c1e;
+  --text-muted: #8e8e93;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  --accent-1: #ff7eb3;
+  --accent-2: #8a2387;
+  --accent-3: #00d2ff;
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --card-grad-1: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  --card-grad-2: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+  --card-grad-3: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+  --card-grad-4: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+body.dark {
+  /* Dark Theme Variables */
+  --bg: #000000;
+  --text: #ffffff;
+  --text-muted: #888888;
+  --glass-bg: rgba(30, 30, 30, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --nav-bg: rgba(20, 20, 20, 0.8);
+  --card-grad-1: linear-gradient(135deg, #ff2d55 0%, #ff9500 100%);
+  --card-grad-2: linear-gradient(135deg, #5e5ce6 0%, #bf5af2 100%);
+  --card-grad-3: linear-gradient(135deg, #30d158 0%, #00d2ff 100%);
+  --card-grad-4: linear-gradient(135deg, #ff9f0a 0%, #ff453a 100%);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+/* Interactive Animated Background */
+.bg-container {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  transition: transform 0.2s ease-out;
+}
+.orb-1 { width: 40vw; height: 40vw; background: var(--accent-1); top: -10%; left: -10%; animation: float 15s infinite alternate; }
+.orb-2 { width: 50vw; height: 50vw; background: var(--accent-2); bottom: -20%; right: -10%; animation: float 20s infinite alternate-reverse; }
+.orb-3 { width: 30vw; height: 30vw; background: var(--accent-3); top: 40%; left: 30%; animation: float 25s infinite alternate; opacity: 0.3; }
+
+@keyframes float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(50px, 50px) scale(1.2); }
+}
+
+/* App Container */
+#app {
+  width: 100%;
+  max-width: 480px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 28px;
+}
+
+/* Content Area */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px 20px 120px 20px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.content::-webkit-scrollbar { display: none; }
+
+/* Header */
+.header {
+  padding: 20px 20px 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
+.header p { font-size: 14px; color: var(--text-muted); margin-top: 2px; font-weight: 500; }
+
+/* Icons */
+.icon-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: var(--text);
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.icon-btn:active { transform: scale(0.9); }
+
+/* Widgets */
+.widget-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.widget {
+  aspect-ratio: 1;
+  border-radius: 28px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: #1c1c1e; /* Teks gelap untuk background terang */
+}
+.widget:active { transform: scale(0.95); }
+.widget.grad-1 { background: var(--card-grad-1); }
+.widget.grad-2 { background: var(--card-grad-2); color: #fff; }
+.widget.grad-3 { background: var(--card-grad-3); grid-column: span 2; aspect-ratio: 2.1/1; }
+.widget.grad-4 { background: var(--card-grad-4); }
+
+.widget-icon { font-size: 28px; margin-bottom: 8px; }
+.widget-label { font-size: 13px; font-weight: 600; opacity: 0.8; }
+.widget-value { font-size: 32px; font-weight: 800; line-height: 1.1; letter-spacing: -1px; }
+
+/* Cards */
+.card {
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card:active { transform: scale(0.97); }
+
+/* Bottom Navigation */
+.nav-container {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+.bottom-nav {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 99px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+}
+.nav-item {
+  padding: 12px 24px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  cursor: pointer;
+}
+.nav-item svg { width: 20px; height: 20px; }
+.nav-item.active {
+  background: var(--text);
+  color: var(--bg);
+}
+.nav-item:active { transform: scale(0.92); }
+
+/* Buttons */
+.btn {
+  padding: 14px 24px;
+  border-radius: 99px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.btn:active { transform: scale(0.95); }
+.btn-primary { background: var(--text); color: var(--bg); }
+.btn-glass { background: var(--glass-bg); color: var(--text); border: 1px solid var(--glass-border); }
+
+/* Animations */
+.animate-in { animation: fadeUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.delay-1 { animation-delay: 0.05s; }
+.delay-2 { animation-delay: 0.1s; }
+.delay-3 { animation-delay: 0.15s; }
+
+/* Tab Content */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Profil */
+.profile-avatar {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: var(--card-grad-1);
+  margin: 0 auto 16px;
+  display: grid; place-items: center;
+  font-size: 54px;
+  box-shadow: 0 12px 24px rgba(255,154,158,0.4);
+  border: 3px solid var(--glass-border);
+}
+.profile-stats {
+  display: flex; justify-content: space-around; margin-top: 24px;
+  padding-top: 20px; border-top: 1px solid var(--glass-border);
+}
+.stat-item { text-align: center; }
+.stat-val { font-size: 22px; font-weight: 800; }
+.stat-lbl { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+
+/* Custom Switch */
+.switch {
+  position: relative; display: inline-block; width: 52px; height: 32px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--text-muted); transition: .4s; border-radius: 34px;
+}
+.slider:before {
+  position: absolute; content: ""; height: 24px; width: 24px;
+  left: 4px; bottom: 4px; background-color: white;
+  transition: .4s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+input:checked + .slider { background-color: var(--text); }
+input:checked + .slider:before { transform: translateX(20px); }
+</style>
 </head>
 <body>
 
-  <!-- Aurora Background -->
-  <div class="aurora-wrap" aria-hidden="true">
-    <div class="aurora light"></div>
-    <div class="aurora dark"></div>
-  </div>
+<!-- Background Orbs (Interaktif) -->
+<div class="bg-container" id="bg">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3" id="cursorOrb"></div>
+</div>
 
-  <!-- Splash Screen -->
-  <div id="splash">
-    <div class="splash-logo">
-      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/>
-        <path d="M12 6v6l4 2"/>
-      </svg>
+<!-- App Container -->
+<div id="app">
+  
+  <!-- HEADER -->
+  <header class="header animate-in">
+    <div>
+      <h1>Halo, Ketua</h1>
+      <p id="header-date">Selamat datang di Kelasku</p>
     </div>
-    <div class="splash-progress">
-      <div class="splash-progress-fill" id="splashProgress"></div>
-    </div>
-    <div class="splash-status" id="splashStatus">
-      <span class="status-dot"></span>
-      <span>Parsing...</span>
-    </div>
-  </div>
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Ganti Tema">
+      <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+    </button>
+  </header>
 
-  <!-- Onboarding -->
-  <div id="onboarding">
-    <div class="glass-card">
-      <div class="radar-container">
-        <div class="radar-circle"></div>
-        <div class="radar-circle"></div>
-        <div class="radar-circle"></div>
-        <div class="radar-sweep"></div>
-        <div class="radar-device">
-          <svg viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 15a5 5 0 1 1 5-5 5 5 0 0 1-5 5z"/></svg>
-        </div>
-      </div>
-      <h2 class="onboarding-title">Connect the Device</h2>
-      <p class="onboarding-desc">Pastikan perangkat Bluetooth kamu aktif untuk menemukan kelas di sekitar.</p>
-      <button class="btn-pill btn-primary" id="nextOnboarding">
-        Next Step
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </button>
-    </div>
-  </div>
-
-  <!-- Login -->
-  <div id="login">
-    <div class="glass-card login-card">
-      <h2 style="font-size:24px;font-weight:700;text-align:center;margin-bottom:8px;">Welcome back</h2>
-      <p style="text-align:center;color:var(--text-secondary);font-size:14px;margin-bottom:24px;">Masuk ke akunmu untuk melanjutkan</p>
-      <form id="loginForm">
-        <div class="input-group">
-          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <input type="email" id="email" placeholder="Email" autocomplete="email" required>
-        </div>
-        <div class="input-group">
-          <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
-          <button type="button" class="toggle-password" id="togglePassword">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </button>
-        </div>
-        <button type="submit" class="btn-pill btn-primary">Sign In</button>
-      </form>
-      <div class="divider">atau lanjutkan dengan</div>
-      <div class="social-login">
-        <button class="social-btn" type="button">
-          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-          Google
-        </button>
-        <button class="social-btn" type="button">
-          <svg width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Apple
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main App -->
-  <div id="app">
-    <div class="app-header">
-      <div class="greeting">
-        <h1>Good Morning</h1>
-        <h2 id="userName">Alif</h2>
-      </div>
-      <div class="header-actions">
-        <div class="weather-mini">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <span>32°</span>
-        </div>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        </button>
-        <div class="avatar" id="avatar">A</div>
-      </div>
-    </div>
-
-    <div class="bento-scroll">
-      <div class="bento-grid" id="bentoGrid">
-        <!-- Weather Card -->
-        <div class="bento-card bento-weather">
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    
+    <!-- TAB: BERANDA -->
+    <div id="tab-home" class="tab-content active">
+      
+      <!-- Kartu Streak -->
+      <div class="card glass animate-in delay-1" style="background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
           <div>
-            <div class="weather-loc">Jakarta</div>
-            <div class="weather-temp">29°</div>
-            <div class="weather-desc">Sunny • Clear</div>
+            <h2 style="font-size: 18px; font-weight: 700;">Streak Belajar</h2>
+            <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px; font-weight: 500;">Konsisten setiap hari</p>
           </div>
-          <div class="sun-arc">
-            <svg viewBox="0 0 200 60">
-              <path d="M10 50 Q100 0 190 50" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="3" stroke-dasharray="4 6"/>
-              <circle cx="100" cy="18" r="8" fill="#fff" opacity="0.9"/>
-              <circle cx="100" cy="18" r="12" fill="#fff" opacity="0.3"/>
-            </svg>
-            <div class="sun-times"><span>6:14</span><span>17:21</span></div>
+          <div style="font-size: 40px; font-weight: 800; background: linear-gradient(135deg, #ff5a5a, #ffb347); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -2px;">12</div>
+        </div>
+      </div>
+
+      <!-- Widget Grid -->
+      <div class="widget-grid animate-in delay-2">
+        <div class="widget grad-1">
+          <div class="widget-icon">📚</div>
+          <div>
+            <div class="widget-label">Tugas</div>
+            <div class="widget-value">3</div>
           </div>
         </div>
-
-        <!-- Analytics Card -->
-        <div class="bento-card bento-analytics">
-          <div class="analytics-item">
-            <span class="a-label">Balance</span>
-            <span class="a-value">85</span>
-            <span class="a-unit">%</span>
-          </div>
-          <div class="analytics-item">
-            <span class="a-label">Wind</span>
-            <span class="a-value">07</span>
-            <span class="a-unit">km/h</span>
-          </div>
-          <div class="analytics-item">
-            <span class="a-label">Sleep</span>
-            <span class="a-value">7.5</span>
-            <span class="a-unit">h</span>
-          </div>
-          <div class="analytics-item">
-            <span class="a-label">Water</span>
-            <span class="a-value">32</span>
-            <span class="a-unit">%</span>
+        <div class="widget grad-2">
+          <div class="widget-icon">✨</div>
+          <div>
+            <div class="widget-label">Koleksi</div>
+            <div class="widget-value">12</div>
           </div>
         </div>
-
-        <!-- Ring Card -->
-        <div class="bento-card bento-ring">
-          <div class="ring-chart"></div>
-          <div class="card-sub" style="margin-top:8px;">Activity</div>
-        </div>
-
-        <!-- Alarm Card -->
-        <div class="bento-card bento-alarm">
-          <div class="alarm-time">09:50</div>
-          <div class="card-sub">Alarm</div>
-        </div>
-
-        <!-- Moon Card -->
-        <div class="bento-card bento-moon">
-          <div class="moon-icon"></div>
-          <div class="card-value sm">Full Moon</div>
-          <div class="card-sub">22:14</div>
-        </div>
-
-        <!-- Voce Card -->
-        <div class="bento-card bento-voce">
-          <div class="voce-bars">
-            <div class="voce-bar"></div>
-            <div class="voce-bar"></div>
-            <div class="voce-bar"></div>
-            <div class="voce-bar"></div>
-            <div class="voce-bar"></div>
+        <div class="widget grad-3">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div class="widget-icon">🎮</div>
+            <div style="font-size:12px; font-weight:700; opacity:0.8;">Main bareng</div>
           </div>
           <div>
-            <div class="card-label">Voce</div>
-            <div class="card-value xs">Now Playing</div>
-            <div class="card-sub">Morning Vibes</div>
+            <div style="font-size:20px; font-weight:800;">Petualangan Kelas</div>
+            <div style="font-size:12px; opacity:0.8; margin-top:2px;">Lempar dadu hari ini</div>
           </div>
+        </div>
+        <div class="widget grad-4">
+          <div class="widget-icon">🔥</div>
+          <div>
+            <div class="widget-label">Hadir</div>
+            <div class="widget-value">85%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acara Berikutnya -->
+      <h3 style="margin: 28px 0 12px 4px; font-size: 18px; font-weight: 700;" class="animate-in delay-3">Acara Berikutnya</h3>
+      <div class="card glass animate-in delay-3" style="display: flex; gap: 16px; align-items: center;">
+        <div style="width: 64px; height: 64px; border-radius: 20px; background: var(--card-grad-2); display: grid; place-items: center; font-size: 32px; flex-shrink: 0;">🎓</div>
+        <div>
+          <div style="font-weight: 700; font-size: 16px;">Ujian Tengah Semester</div>
+          <div style="font-size: 14px; color: var(--text-muted); margin-top: 4px; font-weight: 500;">Besok, 08:00 - 10:00</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: KALENDER -->
+    <div id="tab-cal" class="tab-content">
+      <div class="card glass animate-in" style="padding: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <h2 style="font-size: 20px; font-weight: 800;">Kalender</h2>
+          <div style="font-size:14px; font-weight:600; color:var(--text-muted);">Mei 2024</div>
+        </div>
+        
+        <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:12px; text-align:center; font-size:13px; font-weight:700; color:var(--text-muted); margin-bottom:12px;">
+          <div>Min</div><div>Sen</div><div>Sel</div><div>Rab</div><div>Kam</div><div>Jum</div><div>Sab</div>
+        </div>
+        
+        <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:12px; text-align:center; font-size:15px; font-weight:600;">
+          <div style="opacity:0.3;">28</div><div style="opacity:0.3;">29</div><div style="opacity:0.3;">30</div>
+          <div>1</div><div>2</div><div>3</div><div>4</div>
+          <div>5</div><div>6</div><div>7</div><div>8</div><div>9</div><div>10</div><div>11</div>
+          <div>12</div><div>13</div><div>14</div>
+          <!-- Hari ini -->
+          <div style="width:36px; height:36px; margin:0 auto; background:var(--text); color:var(--bg); border-radius:50%; display:grid; place-items:center; font-weight:800; box-shadow:0 4px 12px rgba(0,0,0,0.2);">15</div>
+          <div>16</div><div>17</div><div>18</div>
+          <div>19</div><div>20</div><div>21</div><div>22</div><div>23</div><div>24</div><div>25</div>
+          <div>26</div><div>27</div><div>28</div><div>29</div><div>30</div><div>31</div><div style="opacity:0.3;">1</div>
         </div>
       </div>
     </div>
 
-    <!-- Profile Page (hidden by default) -->
-    <div id="page-profile">
-      <div class="profile-header">
-        <div class="profile-avatar-lg" id="profileAvatar">A</div>
-        <div class="profile-name" id="profileName">Alif</div>
-        <div class="profile-role">Ketua Kelas • XII IPA 2</div>
+    <!-- TAB: PROFIL -->
+    <div id="tab-profile" class="tab-content">
+      <div class="card glass animate-in" style="text-align: center; padding: 32px 20px;">
+        <div class="profile-avatar">🐱</div>
+        <h2 style="font-size: 24px; font-weight: 800;">Ketua Kelas</h2>
+        <p style="color: var(--text-muted); font-size: 14px; font-weight: 600; margin-top: 4px;">XII IPA 2</p>
+        
+        <div class="profile-stats">
+          <div class="stat-item">
+            <div class="stat-val">12</div>
+            <div class="stat-lbl">Streak</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">85%</div>
+            <div class="stat-lbl">Hadir</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val">24</div>
+            <div class="stat-lbl">Koleksi</div>
+          </div>
+        </div>
       </div>
-      <div class="setting-item" onclick="document.getElementById('themeToggle').click()">
-        <span>Dark Mode</span>
-        <span id="themeLabel">Off</span>
+
+      <div class="card glass animate-in delay-1">
+        <h3 style="margin-bottom: 16px; font-size: 16px; font-weight: 700;">Pengaturan</h3>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--glass-border);">
+          <div style="font-weight:600; font-size:15px;">Tema Gelap</div>
+          <label class="switch">
+            <input type="checkbox" id="themeSwitch" onchange="toggleTheme()">
+            <span class="slider"></span>
+          </label>
+        </div>
+        
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:16px 0;">
+          <div style="font-weight:600; font-size:15px;">Mode Pemilik</div>
+          <button class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;">Masuk</button>
+        </div>
       </div>
-      <div class="setting-item">
-        <span>About</span>
-        <span style="color:var(--text-secondary);">v2.0</span>
-      </div>
-      <button class="btn-pill btn-ghost" style="margin-top:20px;" id="logoutBtn">Logout</button>
     </div>
 
-    <!-- Bottom Navigation -->
+  </main>
+
+  <!-- BOTTOM NAVIGATION -->
+  <div class="nav-container">
     <nav class="bottom-nav">
-      <button class="nav-item active" data-page="home">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        Home
-      </button>
-      <button class="nav-item" data-page="calendar">
-        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Calendar
-      </button>
-      <button class="nav-item" data-page="profile">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        Profile
-      </button>
+      <div class="nav-item active" onclick="switchTab('home', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>Beranda</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('cal', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        <span>Kalender</span>
+      </div>
+      <div class="nav-item" onclick="switchTab('profile', this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span>Profil</span>
+      </div>
     </nav>
   </div>
 
-  <script>
-    // ===== Theme Management =====
-    const html = document.documentElement;
-    const themeToggle = document.getElementById('themeToggle');
-    const themeLabel = document.getElementById('themeLabel');
-    const splash = document.getElementById('splash');
-    const onboarding = document.getElementById('onboarding');
-    const login = document.getElementById('login');
-    const app = document.getElementById('app');
-    const pageProfile = document.getElementById('page-profile');
-    const bentoScroll = document.querySelector('.bento-scroll');
+</div>
 
-    function setTheme(theme) {
-      html.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-      if (themeLabel) themeLabel.textContent = theme === 'dark' ? 'On' : 'Off';
-    }
+<script>
+// ==========================================
+// 1. PENGATURAN TEMA (DARK / LIGHT MODE)
+// ==========================================
+const root = document.documentElement;
+const themeSwitch = document.getElementById('themeSwitch');
 
-    // Initial theme
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+// Cek preferensi sistem saat pertama kali dimuat
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.body.classList.add('dark');
+  if(themeSwitch) themeSwitch.checked = true;
+}
 
-    // System theme change
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if (!localStorage.getItem('theme')) setTheme(e.matches ? 'dark' : 'light');
-    });
+function toggleTheme() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  
+  // Sinkronisasi switch di tab profil
+  if(themeSwitch) themeSwitch.checked = isDark;
+  
+  // Haptic feedback (getar halus di HP)
+  if (navigator.vibrate) navigator.vibrate(15);
+  
+  // Simpan preferensi ke localStorage
+  localStorage.setItem('kelasku-theme', isDark ? 'dark' : 'light');
+}
 
-    themeToggle.addEventListener('click', () => {
-      const current = html.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
+// Muat tema dari localStorage jika ada
+const savedTheme = localStorage.getItem('kelasku-theme');
+if (savedTheme === 'dark') {
+  document.body.classList.add('dark');
+  if(themeSwitch) themeSwitch.checked = true;
+} else if (savedTheme === 'light') {
+  document.body.classList.remove('dark');
+  if(themeSwitch) themeSwitch.checked = false;
+}
 
-    // ===== Splash Screen Animation =====
-    let splashProgress = 0;
-    const progressEl = document.getElementById('splashProgress');
-    const statusEl = document.getElementById('splashStatus').querySelector('span:last-child');
-    const statuses = ['Parsing...', 'Planning...', 'Reasoning...', 'Writing...'];
-    let statusIndex = 0;
+// ==========================================
+// 2. NAVIGASI TAB
+// ==========================================
+function switchTab(tabId, element) {
+  // Sembunyikan semua tab
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.classList.remove('active');
+    tab.classList.remove('animate-in');
+  });
 
-    const splashInterval = setInterval(() => {
-      splashProgress += 5;
-      if (splashProgress > 100) splashProgress = 100;
-      progressEl.style.width = splashProgress + '%';
+  // Hapus status aktif dari semua menu nav
+  document.querySelectorAll('.nav-item').forEach(nav => {
+    nav.classList.remove('active');
+  });
 
-      if (splashProgress > 25 && statusIndex === 0) { statusIndex = 1; statusEl.textContent = statuses[1]; }
-      else if (splashProgress > 50 && statusIndex === 1) { statusIndex = 2; statusEl.textContent = statuses[2]; }
-      else if (splashProgress > 75 && statusIndex === 2) { statusIndex = 3; statusEl.textContent = statuses[3]; }
+  // Tampilkan tab yang dipilih
+  const targetTab = document.getElementById('tab-' + tabId);
+  if(targetTab) {
+    targetTab.classList.add('active');
+    // Trigger reflow untuk mengulang animasi
+    void targetTab.offsetWidth; 
+    targetTab.classList.add('animate-in');
+  }
 
-      if (splashProgress >= 100) {
-        clearInterval(splashInterval);
-        setTimeout(() => {
-          splash.classList.add('hidden');
-          onboarding.classList.add('active');
-        }, 300);
-      }
-    }, 80);
+  // Jadikan menu nav aktif
+  element.classList.add('active');
 
-    // ===== Onboarding =====
-    document.getElementById('nextOnboarding').addEventListener('click', () => {
-      onboarding.classList.remove('active');
-      login.classList.add('active');
-    });
+  // Haptic feedback
+  if (navigator.vibrate) navigator.vibrate(10);
+}
 
-    // ===== Login =====
-    const togglePassword = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-    togglePassword.addEventListener('click', () => {
-      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-      passwordInput.setAttribute('type', type);
-      togglePassword.innerHTML = type === 'password' 
-        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>'
-        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
-    });
+// ==========================================
+// 3. INTERACTIVE BACKGROUND (Cursor / Touch Tracker)
+// ==========================================
+const cursorOrb = document.getElementById('cursorOrb');
 
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const pass = document.getElementById('password').value;
-      if (email && pass.length >= 6) {
-        // Mock login success
-        login.classList.remove('active');
-        app.classList.add('active');
-        // Set user name from email
-        const name = email.split('@')[0] || 'Alif';
-        document.getElementById('userName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
-        document.getElementById('avatar').textContent = name.charAt(0).toUpperCase();
-        document.getElementById('profileName').textContent = name.charAt(0).toUpperCase() + name.slice(1);
-        document.getElementById('profileAvatar').textContent = name.charAt(0).toUpperCase();
-      } else {
-        alert('Password minimal 6 karakter');
-      }
-    });
+document.addEventListener('pointermove', (e) => {
+  if(!cursorOrb) return;
+  const x = e.clientX;
+  const y = e.clientY;
+  // Menggerakkan orb agar mengikuti kursor dengan transisi halus
+  cursorOrb.style.transform = `translate(${x - 150}px, ${y - 150}px) scale(1.2)`;
+  cursorOrb.style.opacity = '0.5';
+});
 
-    // ===== Bottom Navigation =====
-    const navItems = document.querySelectorAll('.nav-item');
-    const bentoGrid = document.getElementById('bentoGrid');
-    const pageCalendar = document.createElement('div');
-    pageCalendar.id = 'page-calendar';
-    pageCalendar.style.display = 'none';
-    pageCalendar.style.padding = '20px';
-    pageCalendar.innerHTML = '<h2 style="margin-bottom:20px;">Calendar</h2><p style="color:var(--text-secondary);">Coming soon...</p>';
-    app.appendChild(pageCalendar);
+document.addEventListener('pointerleave', () => {
+  if(!cursorOrb) return;
+  cursorOrb.style.opacity = '0.2';
+});
 
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        navItems.forEach(n => n.classList.remove('active'));
-        item.classList.add('active');
-        const page = item.dataset.page;
-        
-        bentoScroll.style.display = page === 'home' ? 'block' : 'none';
-        pageProfile.classList.toggle('active', page === 'profile');
-        pageCalendar.style.display = page === 'calendar' ? 'block' : 'none';
-        
-        if (page === 'profile') {
-          pageProfile.style.display = 'flex';
-        } else {
-          pageProfile.style.display = 'none';
-        }
-      });
-    });
-
-    // ===== Logout =====
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-      app.classList.remove('active');
-      login.classList.add('active');
-      // Reset splash? No.
-    });
-
-    // ===== Card Tap Animation (already via CSS) =====
-
-    // ===== Update Time in Splash? Not needed =====
-  </script>
+// ==========================================
+// 4. TANGGAL OTOMATIS DI HEADER
+// ==========================================
+const dateEl = document.getElementById('header-date');
+if (dateEl) {
+  const now = new Date();
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  dateEl.textContent = now.toLocaleDateString('id-ID', options);
+}
+</script>
 </body>
 </html>
